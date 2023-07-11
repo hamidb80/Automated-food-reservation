@@ -46,8 +46,3 @@ when isMainModule:
 
     else:
       quit "Error"
-
-
-  # let el = resp.body.q.select("input")
-  # writeFile "login.html", resp.body
-  # echo el.l

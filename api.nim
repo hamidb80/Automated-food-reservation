@@ -44,4 +44,4 @@ func loginForm*(user, pass, captcha, token: string): auto =
     "username": user,
     "password": pass,
     "Captcha": captcha,
-    "idsrv.xsrf": extractLoginXsrfToken data}
+    "idsrv.xsrf": token}
