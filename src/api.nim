@@ -55,13 +55,12 @@ template staticApi(name, typecast, url): untyped =
 
 # ----- API -----
 
-staticApi isCapchaEnabled, bool, "https://food.shahed.ac.ir/api/v0/Captcha?isactive=wehavecaptcha"
-staticApi credit, int, "https://food.shahed.ac.ir/api/v0/Credit"
-
 const
   baseUrl* = "https://food.shahed.ac.ir"
-  userPage* = "https://food.shahed.ac.ir/#!/UserIndex"
-  capchaUrlRaw = "https://food.shahed.ac.ir/api/v0/Captcha?id="
+  userPage* = baseUrl & "/#!/UserIndex"
 
 proc freshCapchaUrl*: string =
-  capchaUrlRaw & $(rand 1..1000000)
+  baseUrl & "/api/v0/Captcha?id=" & $(rand 1..1000000)
+
+staticApi isCapchaEnabled, bool, baseUrl & "/api/v0/Captcha?isactive=wehavecaptcha"
+staticApi credit, int, baseUrl & "/api/v0/Credit"
