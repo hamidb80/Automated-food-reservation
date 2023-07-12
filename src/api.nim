@@ -12,22 +12,40 @@ type
     fisAll = 1
     fisLast = 2
 
-# ----- convertors -----
-
-func toBool*(i: int): bool =
-  i == 1
-
-func parseBool*(s: string): bool =
-  toBool parseInt s
-
-func parseRial*(s: string): Rial =
-  Rial parseInt s
-
 # ----- consts -----
 
 const
   baseUrl* = "https://food.shahed.ac.ir"
   apiv0* = baseUrl & "/api/v0"
+
+# ----- emoji -----
+
+const foods = {
+  "ماکارونی": "🍝", # Spaghetti
+  "مرغ": "🍗",           # Chicken
+  "کره": "🧈",           # Butter
+  "ماهی": "🐟",         # Fish
+  "برنج": "🍚",         # Rice
+  "پلو": "🍚",           # Rice
+  "میگو": "🦐",         # Shrimp
+  "خورشت": "🍛",       # Stew
+  "کوکو": "🧆",         # Falafel, koo koooooo
+  "زیره": "🍘",
+  "رشته": "🍜",         # String
+  "کباب": "🥓",         # Kebab
+  "ماهیچه": "🥩",     # Muscle
+  "مرگ": "💀",           # Death
+  "خالی": "🍽️",      # Nothing
+  "گوجه": "🍅",         # Tomamto
+  "سوپ": "🥣",           # Soup
+
+  "دوغ": "🥛",           # Dough
+  "ماست": "⚪",          # Yogurt
+  "دلستر": "🍺 ",      # Beer
+  "سالاد": "🥗",       # Salad
+  "نمک": "🧂",           # Salt
+  "یخ": "🧊",             # Ice
+}
 
 # ----- utils -----
 
@@ -67,6 +85,17 @@ func loginForm*(user, pass, captcha, token: string): auto =
 
 func cleanLoginCaptcha*(binary: string): string =
   binary.cutAfter jpegTail
+
+# ----- convertors -----
+
+func toBool*(i: int): bool =
+  i == 1
+
+func parseBool*(s: string): bool =
+  toBool parseInt s
+
+func parseRial*(s: string): Rial =
+  Rial parseInt s
 
 # ----- meta programming -----
 
