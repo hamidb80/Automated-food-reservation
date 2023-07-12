@@ -1,4 +1,4 @@
-import std/[strutils, sequtils, json, nre, htmlparser, random, macros]
+import std/[strformat, strutils, sequtils, json, nre, htmlparser, random, macros]
 import client, std/httpclient
 import utils
 import macroplus
@@ -102,5 +102,26 @@ proc freshCapchaUrl*: string =
 
 defAPI isCapchaEnabled, bool, "/Captcha?isactive=wehavecaptcha"
 defAPI credit, Rial, "/Credit"
-defAPI reservation(week: int), JsonNode,
-  "/Reservation?lastdate=&navigation=" & $(week*7)
+defAPI instantSale, JsonNode, "/InstantSale"
+
+defAPI reservation(week: int), JsonNode:
+  fmt"/Reservation?lastdate=&navigation={week*7}"
+
+
+# defAPI purchaseInvoice(bid: int, amount: Rial), JsonNode:
+#   fmt"/Chargecard?IpgBankId={bid}&amount={amount.int}"
+
+# defAPI availableBanks, JsonNode, "/Chargecard"
+
+# func goPurchase(c: var CustomHttpClient): string = 
+#   c.sendData("https://sadad.shaparak.ir/purchase", HttpPost).body
+
+  # CardAcqID
+  # AmountTrans
+  # ORDERID
+  # TerminalID
+  # TimeStamp
+  # FP
+  # RedirectURL
+  # CustomerEmailAddress
+  # OptionalPaymentParameter
