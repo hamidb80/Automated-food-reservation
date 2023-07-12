@@ -1,4 +1,5 @@
 import std/[strutils, json, nre, htmlparser, random]
+import client, std/httpclient
 import utils
 
 const
@@ -39,7 +40,7 @@ func extractLoginXsrfToken*(loginPageData: JsonNode): string =
   getStr loginPageData{"antiForgery", "value"}
 
 
-func loginForm*(user, pass, captcha, token: string): auto = 
+func loginForm*(user, pass, captcha, token: string): auto =
   {
     "username": user,
     "password": pass,
@@ -47,5 +48,19 @@ func loginForm*(user, pass, captcha, token: string): auto =
     "idsrv.xsrf": token}
 
 
-func cleanLoginCapcha*(binary: string): string = 
+func cleanLoginCapcha*(binary: string): string =
   binary.truncOn jfifTail
+
+# ----------------
+
+template convertFn(t: type bool): untyped = toBool
+template convertFn(t: type int): untyped = parseInt
+template convertFn(t: type JsonNode): untyped = parseJson
+
+
+template staticApi(name, typecast, url): untyped =
+  proc name*(c: CustomHttpClient): typecast =
+    convertFn(typecast)(c.httpc.getcontent url)
+
+staticApi isCapchaEnabled, bool, "https://food.shahed.ac.ir/api/v0/Captcha?isactive=wehavecaptcha"
+staticApi credit, int, "https://food.shahed.ac.ir/api/v0/Credit"

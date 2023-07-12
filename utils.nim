@@ -4,6 +4,12 @@ import std/[os, strutils]
 const jfifTail* = [byte 0xff, 0xd9]
 
 
+func toBool*(i: int): bool =
+  i == 1
+
+func toBool*(s: string): bool =
+  toBool parseInt s
+
 proc refreshDir*(path: string) =
   if dirExists path:
     removeDir path
@@ -21,4 +27,3 @@ func truncOn*(s: string, patt: openArray[byte]): string =
 
 
 template last*(s: seq): untyped = s[^1]
-  

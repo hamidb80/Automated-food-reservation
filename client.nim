@@ -104,8 +104,7 @@ proc sendData*(
     else:
       break
 
-
   # remove temporary headers
+  c.httpc.headers.del "content-type"
   for (h, _) in tempHeaders:
     c.httpc.headers.del h
-  c.httpc.headers.del "content-type"

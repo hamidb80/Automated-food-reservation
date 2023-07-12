@@ -1,4 +1,4 @@
-import std/[uri, times, os, httpclient, json, htmlparser, xmltree]
+import std/[uri, times, os, httpclient, json, htmlparser, xmltree, sugar]
 import utils, client, api
 import iterrr
 
@@ -64,4 +64,9 @@ when isMainModule:
 
       url = form.attr "action"
       let resp2 = hc.sendData(url, HttpPost, cForm, inputs.encodeQuery)
+      writeFile "./temp/cookie.txt", hc.httpc.headers["cookie"]
 
+      echo "\n\n"
+      dump hc.credit
+      dump hc.isCapchaEnabled
+      break
