@@ -1,5 +1,6 @@
-import std/[uri, times, os, httpclient, json]
+import std/[uri, times, os, httpclient, json, htmlparser, xmltree]
 import utils, client, api
+import iterrr
 
 type
   State = enum
@@ -51,4 +52,16 @@ when isMainModule:
           capcha,
           extractLoginXsrfToken data))
 
-      url = userPage
+      assert resp1.code.is2xx
+      writeFile "./temp/submit.html", $resp1.body.parsehtml
+
+      let
+        form = resp1.body.parsehtml.findAll("form")[0]
+        inputs = form.findall("input").items.iterrr:
+          map el => (el.attr("name"), el.attr("value"))
+          toseq()
+
+
+      url = form.attr "action"
+      let resp2 = hc.sendData(url, HttpPost, cForm, inputs.encodeQuery)
+
