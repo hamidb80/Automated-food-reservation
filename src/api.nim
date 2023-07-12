@@ -110,7 +110,7 @@ defAPI credit, Rial, "/Credit"
 defAPI personalNotifs, JsonNode, "/PersonalNotification?postname=LastNotifications"
 defAPI instantSale, JsonNode, "/InstantSale"
 defAPI finantialInfo(state: FinantialInfoState), JsonNode:
-  fmt"/ReservationFinancial?state={s.int}"
+  fmt"/ReservationFinancial?state={state.int}"
 defAPI reservation(week: int), JsonNode:
   fmt"/Reservation?lastdate=&navigation={week*7}"
 
