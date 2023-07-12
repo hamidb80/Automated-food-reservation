@@ -2,18 +2,11 @@ import std/[uri, times, os, httpclient, json, htmlparser, xmltree, sugar]
 import utils, client, api
 import iterrr
 
-type
-  State = enum
-    sInit
-    sGetCapcha
-    sDoLogin
-
 
 when isMainModule:
   var
     hc = initCustomHttpClient()
     url = baseUrl
-    state = sInit
 
   refreshDir "./temp"
 

@@ -2,6 +2,9 @@ import std/[strutils, json, nre, htmlparser, random]
 import client, std/httpclient
 import utils
 
+# ----- consts -----
+
+const baseUrl* = "https://food.shahed.ac.ir"
 
 # ----- utils -----
 
@@ -55,9 +58,7 @@ template staticApi(name, typecast, url): untyped =
 
 # ----- API -----
 
-const
-  baseUrl* = "https://food.shahed.ac.ir"
-  userPage* = baseUrl & "/#!/UserIndex"
+const userPage* = baseUrl & "/#!/UserIndex"
 
 proc freshCapchaUrl*: string =
   baseUrl & "/api/v0/Captcha?id=" & $(rand 1..1000000)
