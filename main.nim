@@ -34,16 +34,11 @@ when isMainModule:
       assert resp.code.is2xx
       let
         data = extractLoginPageData resp.body
-
-
-      hc.httpc.headers = newHttpHeaders()
-
-      let
         raw = hc.sendData(freshCapchaUrl(), HttpGet, tempHeaders = {
-            "Referer": "https://food.shahed.ac.ir/identity/login?signin=4921d8f61dbd48652f48ef179f186d5d"}).body
+            "Referer": hc.history.last}).body
 
-      writeFile "./temp/login-data.json", data.pretty
-      writeFile "./temp/capcha.jfif", raw.cleanLoginCapcha
+      # writeFile "./temp/login-data.json", data.pretty
+      writeFile "./temp/capcha.jpeg", raw.cleanLoginCapcha
 
       echo "code?: "
       let capcha = stdin.readline
@@ -55,3 +50,5 @@ when isMainModule:
           "@123456789",
           capcha,
           extractLoginXsrfToken data))
+
+      url = userPage

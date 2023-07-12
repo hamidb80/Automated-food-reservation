@@ -48,4 +48,4 @@ func loginForm*(user, pass, captcha, token: string): auto =
 
 
 func cleanLoginCapcha*(binary: string): string = 
-  binary.truncOn [byte 0xff, 0xd9]
+  binary.truncOn jfifTail

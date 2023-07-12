@@ -12,6 +12,7 @@ type
   CustomHttpClient* = object
     httpc*: HttpClient
     counter*: int
+    history*: seq[string]
 
 
 var logger = newConsoleLogger()
@@ -43,35 +44,6 @@ proc updateCookie*(c: var CustomHttpClient, resp: Response) =
 
   c.httpc.headers["Cookie"] = toCookies q
 
-proc resolveRedirects(c: var CustomHttpClient, resp: Response,
-    maxRedirects = 10): Response =
-  var lastResp = resp
-
-  for _ in 1..maxRedirects:
-    if lastResp.code.is3xx:
-      let url = lastResp.headers["location"]
-      
-      lastResp = c.httpc.get url
-      updateCookie c, lastResp
-      inc c.counter
-      
-      info fmt"[{c.counter}]"
-      info "URL: ", url
-      info "Method: ", HttpGet
-      info "Status: ", lastResp.code
-      info "Sent Headers: "
-      for k, h in c.httpc.headers.pairs:
-        info fmt"  {k} = {h}"
-      # info "Resp Headers: "
-      # for k, h in resp.headers.pairs:
-      #   info fmt"  {k} = {h}"
-      echo ""
-
-    else:
-      break
-
-  lastResp
-
 
 proc sendData*(
   c: var CustomHttpClient,
@@ -79,7 +51,8 @@ proc sendData*(
   `method`: HttpMethod,
   content: Content = cNot,
   data: string = "",
-  tempHeaders: openArray[tuple[header, value: string]] = @[]
+  tempHeaders: openArray[tuple[header, value: string]] = @[],
+  maxRedirects = 10,
   ): Response =
 
   # apply temporary headers
@@ -89,34 +62,50 @@ proc sendData*(
   for (h, v) in tempHeaders:
     c.httpc.headers[h] = v
 
-  let resp = c.httpc.request(url, `method`, data)
+  var
+    currentUrl = url
+    isRedirected = false
 
-  info fmt"[{c.counter}]"
-  info "URL: ", url
-  info "Method: ", `method`
-  info "Status: ", resp.code
-  info "Sent Headers: "
-  for k, h in c.httpc.headers.pairs:
-    info fmt"  {k} = {h}"
-  # info "Resp Headers: "
-  # for k, h in resp.headers.pairs:
-  #   info fmt"  {k} = {h}"
-  if data.len > 0:
-    info "Body: " & data
+  for _ in 1..maxRedirects:
+    c.history.add currentUrl
 
-  if resp.body.len > 0:
-    let p = "./temp/" / ($c.counter & ".html")
-    writefile p, resp.body
-    info "Result: ", p
+    let
+      currentMethod =
+        if isRedirected: HttpGet
+        else: `method`
 
-  echo "\n"
-  inc c.counter
+    result = c.httpc.request(currentUrl, currentMethod, data)
 
-  updateCookie c, resp
+    info fmt"[{c.counter}]"
+    info "URL: ", url
+    info "Method: ", currentMethod
+    info "Status: ", result.code
+    info "Sent Headers: "
+    for k, h in c.httpc.headers.pairs:
+      info fmt"  {k} = {h}"
+    # info "Resp Headers: "
+    # for k, h in result.headers.pairs:
+    #   info fmt"  {k} = {h}"
+    if data.len > 0:
+      info "Body: " & data
+
+    if result.body.len > 0:
+      let p = "./temp/" / ($c.counter & ".html")
+      writefile p, result.body
+      info "Result: ", p
+
+    echo "\n"
+    inc c.counter
+    updateCookie c, result
+
+    if result.code.is3xx:
+      isRedirected = true
+      currentUrl = result.headers["location"]
+    else:
+      break
+
 
   # remove temporary headers
   for (h, _) in tempHeaders:
     c.httpc.headers.del h
   c.httpc.headers.del "content-type"
-
-  resolveRedirects c, resp
