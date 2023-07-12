@@ -10,8 +10,8 @@ type
 
 when isMainModule:
   var
-    hc = newHttpClient(maxRedirects = 0)
-    url = ""
+    hc = initCustomHttpClient()
+    url = baseUrl
     state = sInit
 
   refreshDir "./temp"
@@ -24,25 +24,34 @@ when isMainModule:
     # of sGetCapcha:
     # of sDoLogin:
 
-    let resp = hc.sendData(url, HttpGet)
+    if hc.counter >= 10:
+      quit "I quit..."
 
-    assert resp.code.is2xx
-    let
-      data = extractLoginPageData resp.body
-      raw = hc.sendData(freshCapchaUrl(), HttpGet).body
+    else:
+      sleep 100
+      let resp = hc.sendData(url, HttpGet)
 
-    writeFile "./temp/login-data.json", data.pretty
-    writeFile "./temp/capcha.jfif", raw
+      assert resp.code.is2xx
+      let
+        data = extractLoginPageData resp.body
 
-    echo "code?: "
-    let capcha = stdin.readline
 
-    let resp1 = hc.sendData(
-      extractLoginUrl data, HttpPost,
-      cForm, encodeQuery loginForm(
-        "992164019",
-        "@123456789",
-        capcha,
-        extractLoginXsrfToken data),
-        {"Referer": "https://food.shahed.ac.ir/identity/login?signin=4921d8f61dbd48652f48ef179f186d5d"})
+      hc.httpc.headers = newHttpHeaders()
 
+      let
+        raw = hc.sendData(freshCapchaUrl(), HttpGet, tempHeaders = {
+            "Referer": "https://food.shahed.ac.ir/identity/login?signin=4921d8f61dbd48652f48ef179f186d5d"}).body
+
+      writeFile "./temp/login-data.json", data.pretty
+      writeFile "./temp/capcha.jfif", raw.cleanLoginCapcha
+
+      echo "code?: "
+      let capcha = stdin.readline
+
+      let resp1 = hc.sendData(
+        extractLoginUrl data, HttpPost,
+        cForm, encodeQuery loginForm(
+          "992164019",
+          "@123456789",
+          capcha,
+          extractLoginXsrfToken data))

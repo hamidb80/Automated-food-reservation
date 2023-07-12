@@ -1,12 +1,21 @@
 import std/[strutils, uri, tables, strtabs, os, cookies, strformat, httpclient]
-
+import std/logging
 import iterrr
 
 
-type Content* = enum
-  cNot = ""
-  cCsp = "application/csp-report"
-  cForm = "application/x-www-form-urlencoded"
+type
+  Content* = enum
+    cNot = ""
+    cCsp = "application/csp-report"
+    cForm = "application/x-www-form-urlencoded"
+
+  CustomHttpClient* = object
+    httpc*: HttpClient
+    counter*: int
+
+
+var logger = newConsoleLogger()
+addHandler logger
 
 
 func toCookie(name, val: string): string =
@@ -18,8 +27,12 @@ func toCookies(s: StringTableRef): string =
     strjoin "; "
 
 
-proc updateCookie*(client: var HttpClient, resp: Response) =
-  var q = parseCookies client.headers.getOrDefault "Cookie"
+proc initCustomHttpClient*: CustomHttpClient =
+  result.httpc = newHttpClient(maxRedirects = 0)
+
+
+proc updateCookie*(c: var CustomHttpClient, resp: Response) =
+  var q = parseCookies c.httpc.headers.getOrDefault "Cookie"
 
   if "set-cookie" in resp.headers.table:
     for c in resp.headers.table["set-cookie"]:
@@ -28,63 +41,82 @@ proc updateCookie*(client: var HttpClient, resp: Response) =
       for k, v in qq:
         q[k] = v
 
-  client.headers["Cookie"] = toCookies q
+  c.httpc.headers["Cookie"] = toCookies q
 
+proc resolveRedirects(c: var CustomHttpClient, resp: Response,
+    maxRedirects = 10): Response =
+  var lastResp = resp
 
-var counter = 0
+  for _ in 1..maxRedirects:
+    if lastResp.code.is3xx:
+      let url = lastResp.headers["location"]
+      
+      lastResp = c.httpc.get url
+      updateCookie c, lastResp
+      inc c.counter
+      
+      info fmt"[{c.counter}]"
+      info "URL: ", url
+      info "Method: ", HttpGet
+      info "Status: ", lastResp.code
+      info "Sent Headers: "
+      for k, h in c.httpc.headers.pairs:
+        info fmt"  {k} = {h}"
+      # info "Resp Headers: "
+      # for k, h in resp.headers.pairs:
+      #   info fmt"  {k} = {h}"
+      echo ""
 
-proc sendData*(
-  client: var HttpClient,
-  url: string,
-  `method`: HttpMethod,
-  content: Content = cNot,
-  data: string = "", 
-  tempHeaders: openArray[tuple[header, value: string]] = @[]): Response =
-
-  client.headers["Content-Type"] = $content
-  var 
-    varUrl = url
-    redirected = false
-
-  # apply temporary headers
-  for (h,v) in tempHeaders:
-    client.headers[h] = v
-
-  while true:
-    let m = 
-      if redirected: HttpGet
-      else: `method`
-    
-    result = client.request(varUrl, m, data)
-    # client.headers.del "content-type"
-
-    echo fmt"[{counter}]"
-    echo "URL: ", url
-    echo "Method: ", `method`
-    echo "Status: ", result.code
-    echo "Headers: "
-    for k, h in client.headers.pairs:
-      echo "  ", k, " = ", h
-    if data.len > 0:
-      echo "Body: ", data
-
-    if result.body.len > 0:
-      let p = "./temp/" / ($counter & ".html")
-      writefile p, result.body
-      echo "Result: ", p
-
-    echo "\n"
-    inc counter
-
-
-    updateCookie client, result
-
-    if result.code.is3xx:
-      varUrl = result.headers["location"]
-      redirected = true
     else:
       break
 
+  lastResp
+
+
+proc sendData*(
+  c: var CustomHttpClient,
+  url: string,
+  `method`: HttpMethod,
+  content: Content = cNot,
+  data: string = "",
+  tempHeaders: openArray[tuple[header, value: string]] = @[]
+  ): Response =
+
+  # apply temporary headers
+  if data.len > 0:
+    c.httpc.headers["Content-Type"] = $content
+
+  for (h, v) in tempHeaders:
+    c.httpc.headers[h] = v
+
+  let resp = c.httpc.request(url, `method`, data)
+
+  info fmt"[{c.counter}]"
+  info "URL: ", url
+  info "Method: ", `method`
+  info "Status: ", resp.code
+  info "Sent Headers: "
+  for k, h in c.httpc.headers.pairs:
+    info fmt"  {k} = {h}"
+  # info "Resp Headers: "
+  # for k, h in resp.headers.pairs:
+  #   info fmt"  {k} = {h}"
+  if data.len > 0:
+    info "Body: " & data
+
+  if resp.body.len > 0:
+    let p = "./temp/" / ($c.counter & ".html")
+    writefile p, resp.body
+    info "Result: ", p
+
+  echo "\n"
+  inc c.counter
+
+  updateCookie c, resp
+
   # remove temporary headers
   for (h, _) in tempHeaders:
-    client.headers.del h
+    c.httpc.headers.del h
+  c.httpc.headers.del "content-type"
+
+  resolveRedirects c, resp

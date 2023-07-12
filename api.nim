@@ -1,5 +1,5 @@
 import std/[strutils, json, nre, htmlparser, random]
-
+import utils
 
 const
   baseUrl* = "https://food.shahed.ac.ir"
@@ -45,3 +45,7 @@ func loginForm*(user, pass, captcha, token: string): auto =
     "password": pass,
     "Captcha": captcha,
     "idsrv.xsrf": token}
+
+
+func cleanLoginCapcha*(binary: string): string = 
+  binary.truncOn [byte 0xff, 0xd9]
