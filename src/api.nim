@@ -1,10 +1,29 @@
-import std/[strutils, json, nre, htmlparser, random]
+import std/[strutils, sequtils, json, nre, htmlparser, random, macros]
 import client, std/httpclient
 import utils
+import macroplus
 
 # ----- consts -----
 
-const baseUrl* = "https://food.shahed.ac.ir"
+type
+  Rial* = distinct int
+
+# ----- convertors -----
+
+func toBool*(i: int): bool =
+  i == 1
+
+func parseBool*(s: string): bool =
+  toBool parseInt s
+
+func parseRial*(s: string): Rial =
+  Rial parseInt s
+
+# ----- consts -----
+
+const
+  baseUrl* = "https://food.shahed.ac.ir"
+  apiv0* = baseUrl & "/api/v0"
 
 # ----- utils -----
 
@@ -47,21 +66,41 @@ func cleanLoginCapcha*(binary: string): string =
 
 # ----- meta programming -----
 
-template convertFn(t: type bool): untyped = toBool
+template convertFn(t: type bool): untyped = parseBool
 template convertFn(t: type int): untyped = parseInt
+template convertFn(t: type Rial): untyped = parseRial
 template convertFn(t: type JsonNode): untyped = parseJson
 
 
-template staticApi(name, typecast, url): untyped =
-  proc name*(c: CustomHttpClient): typecast =
-    convertFn(typecast)(c.httpc.getcontent url)
+macro defAPI(pattern, typecast, url): untyped =
+  let
+    (name, extraArgs) =
+      case pattern.kind
+      of nnkIdent: (pattern, @[])
+      of nnkObjConstr: (pattern[ObjConstrIdent], pattern[ObjConstrFields])
+      else: raise newException(ValueError, "invalid API pattern: " &
+          treeRepr pattern)
+
+    body = quote:
+      let data = c.sendData(apiv0 & `url`, accept = cJson).body
+      convertFn(`typecast`)(data)
+
+    args = extraArgs.mapIt newIdentDefs(it[0], it[1])
+
+  newProc(name.exported,
+    @[typecast, newIdentDefs(
+      ident "c",
+      newTree(nnkVarTy, ident "CustomHttpClient"))] & args,
+    body)
 
 # ----- API -----
 
 const userPage* = baseUrl & "/#!/UserIndex"
 
 proc freshCapchaUrl*: string =
-  baseUrl & "/api/v0/Captcha?id=" & $(rand 1..1000000)
+  apiv0 & "/Captcha?id=" & $(rand 1..1000000)
 
-staticApi isCapchaEnabled, bool, baseUrl & "/api/v0/Captcha?isactive=wehavecaptcha"
-staticApi credit, int, baseUrl & "/api/v0/Credit"
+defAPI isCapchaEnabled, bool, "/Captcha?isactive=wehavecaptcha"
+defAPI credit, Rial, "/Credit"
+defAPI reservation(week: int), JsonNode,
+  "/Reservation?lastdate=&navigation=" & $(week*7)

@@ -1,4 +1,4 @@
-import std/[uri, times, os, httpclient, json, htmlparser, xmltree, sugar]
+import std/[strutils, strformat, uri, httpclient, json, htmlparser, xmltree, sugar]
 import utils, client, api
 import iterrr
 
@@ -9,8 +9,6 @@ when isMainModule:
     url = baseUrl
 
   refreshDir "./temp"
-
-  echo "Time-Line ", now()
 
   let resp = hc.sendData(url, HttpGet)
 
@@ -28,11 +26,12 @@ when isMainModule:
 
   let resp1 = hc.sendData(
     extractLoginUrl data, HttpPost,
-    cForm, encodeQuery loginForm(
+    encodeQuery loginForm(
       "992164019",
       "@123456789",
       capcha,
-      extractLoginXsrfToken data))
+      extractLoginXsrfToken data),
+    content = cForm)
 
   assert resp1.code.is2xx
   writeFile "./temp/submit.html", $resp1.body.parsehtml
@@ -45,10 +44,22 @@ when isMainModule:
 
 
   url = form.attr "action"
-  # echo ":: ", url
-  let resp2 = hc.sendData(url, HttpPost, cForm, inputs.encodeQuery)
-  writeFile "./temp/cookie.txt", hc.httpc.headers["cookie"]
 
-  echo "\n\n"
-  dump hc.credit
-  dump hc.isCapchaEnabled
+  if url.startsWith "{{":
+    echo "invalid data"
+
+  else:
+    let resp2 = hc.sendData(url, HttpPost, inputs.encodeQuery, content = cForm)
+    writeFile "./temp/cookie.txt", hc.httpc.headers["cookie"]
+
+    let
+      credit = hc.credit.int
+      isCapchaEnabled = hc.isCapchaEnabled
+
+    echo "------------------"
+    dump credit
+    dump isCapchaEnabled
+
+    for n in -1..3:
+      let resv = hc.reservation n
+      writefile fmt"./temp/reserve-{n}.json", resv.pretty

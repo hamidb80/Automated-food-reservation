@@ -5,9 +5,10 @@ import iterrr
 
 type
   Content* = enum
-    cNot = ""
+    cAnyThing = "*/*"
     cCsp = "application/csp-report"
     cForm = "application/x-www-form-urlencoded"
+    cJson = "application/json"
 
   CustomHttpClient* = object
     httpc*: HttpClient
@@ -15,7 +16,7 @@ type
     history*: seq[string]
 
 
-var logger = newConsoleLogger()
+var logger = newConsoleLogger(lvlInfo)
 addHandler logger
 
 
@@ -26,11 +27,6 @@ func toCookies(s: StringTableRef): string =
   s.pairs.iterrr:
     map (k, v) => toCookie(k, v)
     strjoin "; "
-
-
-proc initCustomHttpClient*: CustomHttpClient =
-  result.httpc = newHttpClient(maxRedirects = 0)
-
 
 proc updateCookie*(c: var CustomHttpClient, resp: Response) =
   var q = parseCookies c.httpc.headers.getOrDefault "Cookie"
@@ -44,20 +40,25 @@ proc updateCookie*(c: var CustomHttpClient, resp: Response) =
 
   c.httpc.headers["Cookie"] = toCookies q
 
+proc initCustomHttpClient*: CustomHttpClient =
+  result.httpc = newHttpClient(maxRedirects = 0)
 
 proc sendData*(
   c: var CustomHttpClient,
   url: string,
-  `method`: HttpMethod,
-  content: Content = cNot,
-  data: string = "",
+  `method` = HttpGet,
+  data = "",
   tempHeaders: openArray[tuple[header, value: string]] = @[],
   maxRedirects = 10,
+  accept = cAnyThing,
+  content = cAnyThing,
   ): Response =
 
   # apply temporary headers
+  c.httpc.headers["Accept"] = $accept
   if data.len > 0:
     c.httpc.headers["Content-Type"] = $content
+
 
   for (h, v) in tempHeaders:
     c.httpc.headers[h] = v
@@ -77,24 +78,18 @@ proc sendData*(
     result = c.httpc.request(currentUrl, currentMethod, data)
 
     info fmt"[{c.counter}]"
-    info "URL: ", url
-    info "Method: ", currentMethod
+    info currentMethod, " to ", url
     info "Status: ", result.code
-    info "Sent Headers: "
+    debug "Sent Headers: "
     for k, h in c.httpc.headers.pairs:
-      info fmt"  {k} = {h}"
-    # info "Resp Headers: "
-    # for k, h in result.headers.pairs:
-    #   info fmt"  {k} = {h}"
+      debug fmt"  {k} = {h}"
     if data.len > 0:
-      info "Body: " & data
-
+      debug "Body: " & data
     if result.body.len > 0:
       let p = "./temp/" / ($c.counter & ".html")
       writefile p, result.body
-      info "Result: ", p
+      debug "Result: ", p
 
-    echo "\n"
     inc c.counter
     updateCookie c, result
 
@@ -106,5 +101,6 @@ proc sendData*(
 
   # remove temporary headers
   c.httpc.headers.del "content-type"
+  c.httpc.headers.del "Accept"
   for (h, _) in tempHeaders:
     c.httpc.headers.del h
