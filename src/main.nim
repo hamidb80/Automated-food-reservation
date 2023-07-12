@@ -51,3 +51,4 @@ when isMainModule:
   else:
     let resp2 = hc.sendData(url, HttpPost, inputs.encodeQuery, content = cForm)
     writeFile "./temp/cookie.txt", hc.httpc.headers["cookie"]
+    # logged in, do whatever you want
