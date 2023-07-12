@@ -19,54 +19,43 @@ when isMainModule:
 
   echo "Time-Line ", now()
 
-  while true:
-    # case state
-    # of sInit:
-    # of sGetCapcha:
-    # of sDoLogin:
+  let resp = hc.sendData(url, HttpGet)
 
-    if hc.counter >= 10:
-      quit "I quit..."
+  assert resp.code.is2xx
+  let
+    data = extractLoginPageData resp.body
+    raw = hc.sendData(freshCapchaUrl(), HttpGet, tempHeaders = {
+        "Referer": hc.history.last}).body
 
-    else:
-      sleep 100
-      let resp = hc.sendData(url, HttpGet)
+  # writeFile "./temp/login-data.json", data.pretty
+  writeFile "./temp/capcha.jpeg", raw.cleanLoginCapcha
 
-      assert resp.code.is2xx
-      let
-        data = extractLoginPageData resp.body
-        raw = hc.sendData(freshCapchaUrl(), HttpGet, tempHeaders = {
-            "Referer": hc.history.last}).body
+  echo "code?: "
+  let capcha = stdin.readline
 
-      # writeFile "./temp/login-data.json", data.pretty
-      writeFile "./temp/capcha.jpeg", raw.cleanLoginCapcha
+  let resp1 = hc.sendData(
+    extractLoginUrl data, HttpPost,
+    cForm, encodeQuery loginForm(
+      "992164019",
+      "@123456789",
+      capcha,
+      extractLoginXsrfToken data))
 
-      echo "code?: "
-      let capcha = stdin.readline
+  assert resp1.code.is2xx
+  writeFile "./temp/submit.html", $resp1.body.parsehtml
 
-      let resp1 = hc.sendData(
-        extractLoginUrl data, HttpPost,
-        cForm, encodeQuery loginForm(
-          "992164019",
-          "@123456789",
-          capcha,
-          extractLoginXsrfToken data))
-
-      assert resp1.code.is2xx
-      writeFile "./temp/submit.html", $resp1.body.parsehtml
-
-      let
-        form = resp1.body.parsehtml.findAll("form")[0]
-        inputs = form.findall("input").items.iterrr:
-          map el => (el.attr("name"), el.attr("value"))
-          toseq()
+  let
+    form = resp1.body.parsehtml.findAll("form")[0]
+    inputs = form.findall("input").items.iterrr:
+      map el => (el.attr("name"), el.attr("value"))
+      toseq()
 
 
-      url = form.attr "action"
-      let resp2 = hc.sendData(url, HttpPost, cForm, inputs.encodeQuery)
-      writeFile "./temp/cookie.txt", hc.httpc.headers["cookie"]
+  url = form.attr "action"
+  # echo ":: ", url
+  let resp2 = hc.sendData(url, HttpPost, cForm, inputs.encodeQuery)
+  writeFile "./temp/cookie.txt", hc.httpc.headers["cookie"]
 
-      echo "\n\n"
-      dump hc.credit
-      dump hc.isCapchaEnabled
-      break
+  echo "\n\n"
+  dump hc.credit
+  dump hc.isCapchaEnabled
