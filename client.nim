@@ -1,10 +1,9 @@
-import std/[strutils, uri, tables, strtabs, times, random,
-  nre, htmlparser, json, os, cookies, strformat, httpclient]
+import std/[strutils, uri, tables, strtabs, os, cookies, strformat, httpclient]
 
 import iterrr
 
 
-type Content = enum
+type Content* = enum
   cNot = ""
   cCsp = "application/csp-report"
   cForm = "application/x-www-form-urlencoded"
@@ -19,18 +18,8 @@ func toCookies(s: StringTableRef): string =
     strjoin "; "
 
 
-proc applyHeaders(c: var HttpClient) =
-  c.headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0"
-  c.headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
-  c.headers["Content-Type"] = "application/x-www-form-urlencoded"
-  c.headers["Upgrade-Insecure-Requests"] = "1"
-  c.headers["Sec-Fetch-Dest"] = "document"
-  c.headers["Sec-Fetch-Mode"] = "navigate"
-  c.headers["Sec-Fetch-Site"] = "same-origin"
-  c.headers["Sec-Fetch-User"] = "?1"
-
-proc updateCookie(client: var HttpClient, resp: Response) =
-  var q = parseCookies client.headers.getOrDefault("Cookie").toString
+proc updateCookie*(client: var HttpClient, resp: Response) =
+  var q = parseCookies client.headers.getOrDefault "Cookie"
 
   if "set-cookie" in resp.headers.table:
     for c in resp.headers.table["set-cookie"]:
@@ -41,31 +30,61 @@ proc updateCookie(client: var HttpClient, resp: Response) =
 
   client.headers["Cookie"] = toCookies q
 
+
+var counter = 0
+
 proc sendData*(
   client: var HttpClient,
   url: string,
   `method`: HttpMethod,
   content: Content = cNot,
-  data: string = ""): Response =
+  data: string = "", 
+  tempHeaders: openArray[tuple[header, value: string]] = @[]): Response =
 
   client.headers["Content-Type"] = $content
-  result = client.request(url, `method`, data)
-  client.headers.del "content-type"
+  var 
+    varUrl = url
+    redirected = false
 
-  echo fmt"[{counter}]"
-  echo "URL: ", url
-  echo "Method: ", `method`
-  echo "Status: ", result.code
-  echo "Headers: "
-  for k, h in client.headers.pairs:
-    echo "  ", k, " = ", h
-  if data.len > 0:
-    echo "Body: ", data
+  # apply temporary headers
+  for (h,v) in tempHeaders:
+    client.headers[h] = v
 
-  if result.body.len > 0:
-    let p = "./temp/" / ($counter & ".html")
-    writefile p, result.body
-    echo "Result: ", p
+  while true:
+    let m = 
+      if redirected: HttpGet
+      else: `method`
+    
+    result = client.request(varUrl, m, data)
+    # client.headers.del "content-type"
 
-  echo "\n"
-  inc counter
+    echo fmt"[{counter}]"
+    echo "URL: ", url
+    echo "Method: ", `method`
+    echo "Status: ", result.code
+    echo "Headers: "
+    for k, h in client.headers.pairs:
+      echo "  ", k, " = ", h
+    if data.len > 0:
+      echo "Body: ", data
+
+    if result.body.len > 0:
+      let p = "./temp/" / ($counter & ".html")
+      writefile p, result.body
+      echo "Result: ", p
+
+    echo "\n"
+    inc counter
+
+
+    updateCookie client, result
+
+    if result.code.is3xx:
+      varUrl = result.headers["location"]
+      redirected = true
+    else:
+      break
+
+  # remove temporary headers
+  for (h, _) in tempHeaders:
+    client.headers.del h

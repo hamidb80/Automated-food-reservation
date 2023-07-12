@@ -1,48 +1,48 @@
-import std/[strutils, uri, tables, strtabs, times, random,
-  nre, htmlparser, json, os, cookies, strformat, httpclient]
+import std/[uri, times, os, httpclient, json]
+import utils, client, api
 
-import iterrr
+type
+  State = enum
+    sInit
+    sGetCapcha
+    sDoLogin
 
 
 when isMainModule:
   var
-    client = newHttpClient(maxRedirects = 0)
-    url = baseUrl
-    counter = 0
+    hc = newHttpClient(maxRedirects = 0)
+    url = ""
+    state = sInit
 
   refreshDir "./temp"
-  discard tryRemoveFile "./out.txt"
 
   echo "Time-Line ", now()
-  applyHeaders client
 
   while true:
-    let resp = client.sendData(url, HttpGet)
-    updateCookie client, resp
+    # case state
+    # of sInit:
+    # of sGetCapcha:
+    # of sDoLogin:
 
-    if resp.code.is2xx:
-      let data = extractLoginPageData resp.body
-      # writeFile "./temp/capcha.jfif", client.sendData(imgUrl, HttpGet).body
+    let resp = hc.sendData(url, HttpGet)
 
-      let resp = client.sendData(
-        extractLoginUrl data, HttpPost, 
-        cForm, encodeQuery loginForm(
-          "992164019",
-          "@123456789",
-          "@123456789",
-          extractLoginXsrfToken data))
+    assert resp.code.is2xx
+    let
+      data = extractLoginPageData resp.body
+      raw = hc.sendData(freshCapchaUrl(), HttpGet).body
 
-      url = userPage
-      # break
+    writeFile "./temp/login-data.json", data.pretty
+    writeFile "./temp/capcha.jfif", raw
 
-    elif counter >= 10:
-      quit "I give up trying ..."
+    echo "code?: "
+    let capcha = stdin.readline
 
-    elif resp.code.is3xx:
-      url = resp.headers["location"]
+    let resp1 = hc.sendData(
+      extractLoginUrl data, HttpPost,
+      cForm, encodeQuery loginForm(
+        "992164019",
+        "@123456789",
+        capcha,
+        extractLoginXsrfToken data),
+        {"Referer": "https://food.shahed.ac.ir/identity/login?signin=4921d8f61dbd48652f48ef179f186d5d"})
 
-    elif resp.code.is4xx:
-      discard
-
-    else:
-      quit "Error"

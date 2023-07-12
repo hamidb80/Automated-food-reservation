@@ -17,8 +17,15 @@ client.headers = newHttpHeaders({
   "Referer": "https://food.shahed.ac.ir/identity/login?signin=4921d8f61dbd48652f48ef179f186d5d", ## mandatory
 })
 
+import std/strutils
 
-while true:
-  let resp = client.request("https://food.shahed.ac.ir/api/v0/Captcha?id=2", HttpGet)
-  writeFile "./temp/pin.jfif", resp.body
-  sleep 1000
+func toStr(bytes: openArray[byte]): string =
+  for b in bytes:
+    result.add b.char
+
+func truncOn(s: string, patt: openArray[byte]): string = 
+  let i = s.rfind patt.toStr
+  s[0..<i+patt.len]
+
+let resp = client.request("https://food.shahed.ac.ir/api/v0/Captcha?id=2", HttpGet)
+writeFile "./temp/pin.jfif", resp.body.truncOn([byte 0xff, 0xd9])
