@@ -8,6 +8,10 @@ import macroplus
 type
   Rial* = distinct int
 
+  FinantialInfoState* = enum
+    fisAll = 1
+    fisLast = 2
+
 # ----- convertors -----
 
 func toBool*(i: int): bool =
@@ -61,7 +65,7 @@ func loginForm*(user, pass, captcha, token: string): auto =
     "Captcha": captcha,
     "idsrv.xsrf": token}
 
-func cleanLoginCapcha*(binary: string): string =
+func cleanLoginCaptcha*(binary: string): string =
   binary.cutAfter jpegTail
 
 # ----- meta programming -----
@@ -97,25 +101,24 @@ macro defAPI(pattern, typecast, url): untyped =
 
 const userPage* = baseUrl & "/#!/UserIndex"
 
-proc freshCapchaUrl*: string =
+proc freshCaptchaUrl*: string =
   apiv0 & "/Captcha?id=" & $(rand 1..1000000)
 
-defAPI isCapchaEnabled, bool, "/Captcha?isactive=wehavecaptcha"
+defAPI isCaptchaEnabled, bool, "/Captcha?isactive=wehavecaptcha"
+defAPI personalInfo, JsonNode, "/Student"
 defAPI credit, Rial, "/Credit"
+defAPI personalNotifs, JsonNode, "/PersonalNotification?postname=LastNotifications"
 defAPI instantSale, JsonNode, "/InstantSale"
-
+defAPI finantialInfo(state: FinantialInfoState), JsonNode:
+  fmt"/ReservationFinancial?state={s.int}"
 defAPI reservation(week: int), JsonNode:
   fmt"/Reservation?lastdate=&navigation={week*7}"
 
-
+# defAPI availableBanks, JsonNode, "/Chargecard"
 # defAPI purchaseInvoice(bid: int, amount: Rial), JsonNode:
 #   fmt"/Chargecard?IpgBankId={bid}&amount={amount.int}"
-
-# defAPI availableBanks, JsonNode, "/Chargecard"
-
-# func goPurchase(c: var CustomHttpClient): string = 
+# func goPurchase(c: var CustomHttpClient): string =
 #   c.sendData("https://sadad.shaparak.ir/purchase", HttpPost).body
-
   # CardAcqID
   # AmountTrans
   # ORDERID

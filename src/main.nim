@@ -15,11 +15,11 @@ when isMainModule:
   assert resp.code.is2xx
   let
     data = extractLoginPageData resp.body
-    raw = hc.sendData(freshCapchaUrl(), HttpGet, tempHeaders = {
+    raw = hc.sendData(freshCaptchaUrl(), HttpGet, tempHeaders = {
         "Referer": hc.history.last}).body
 
   # writeFile "./temp/login-data.json", data.pretty
-  writeFile "./temp/capcha.jpeg", raw.cleanLoginCapcha
+  writeFile "./temp/capcha.jpeg", raw.cleanLoginCaptcha
 
   echo "code?: "
   let capcha = stdin.readline
@@ -54,11 +54,11 @@ when isMainModule:
 
     let
       credit = hc.credit.int
-      isCapchaEnabled = hc.isCapchaEnabled
+      isCaptchaEnabled = hc.isCaptchaEnabled
 
     echo "------------------"
     dump credit
-    dump isCapchaEnabled
+    dump isCaptchaEnabled
 
     for n in -1..3:
       let resv = hc.reservation n
