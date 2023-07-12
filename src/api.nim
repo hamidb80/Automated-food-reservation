@@ -21,30 +21,41 @@ const
 # ----- emoji -----
 
 const foods = {
-  "ماکارونی": "🍝", # Spaghetti
-  "مرغ": "🍗",           # Chicken
-  "کره": "🧈",           # Butter
-  "ماهی": "🐟",         # Fish
-  "برنج": "🍚",         # Rice
-  "پلو": "🍚",           # Rice
-  "میگو": "🦐",         # Shrimp
-  "خورشت": "🍛",       # Stew
-  "کوکو": "🧆",         # Falafel, koo koooooo
-  "زیره": "🍘",
-  "رشته": "🍜",         # String
-  "کباب": "🥓",         # Kebab
-  "ماهیچه": "🥩",     # Muscle
-  "مرگ": "💀",           # Death
-  "خالی": "🍽️",      # Nothing
-  "گوجه": "🍅",         # Tomamto
-  "سوپ": "🥣",           # Soup
+  "ماکارونی": "🍝",  # Spaghetti
+  "مرغ": "🍗",            # Chicken
+  "کره": "🧈",            # Butter
+  "ماهی": "🐟",          # Fish
+  "برنج": "🍚",          # Rice
+  "پلو": "🍚",            # Rice
+  "میگو": "🦐",          # Shrimp
+  "خورشت": "🍛",        # Stew
+  "کوکو": "🧆",          # koo koooooo
+  "کتلت": "🥮",          # cutlet
+  "زیره": "🍘",          # Caraway
+  "رشته": "🍜",          # String
+  "کباب": "🥓",          # Kebab
+  "ماهیچه": "🥩",      # Muscle
+  "مرگ": "💀",            # Death
+  "خالی": "🍽️",       # Nothing
+  "گوجه": "🍅",          # Tomamto
+  "سوپ": "🥣",            # Soup
+  "قارچ": "🍄",          # Mushroom
+  "کرفس": "🥬",          # Leafy Green
+  "بادمجان": "🍆",    # Eggplant
+  "هویج": "🥕",          # Carrot
+  "پیاز": "🧅",          # Onion
+  "سیب زمینی": "🥔", # Potato
+  "سیر": "🧄",            # Garlic
+  "لیمو": "🍋",          # Lemon
+  "آلو": "🫐",            # Plum
+  "زیتون": "🫒",        # Olive
 
-  "دوغ": "🥛",           # Dough
-  "ماست": "⚪",          # Yogurt
-  "دلستر": "🍺",       # Beer
-  "سالاد": "🥗",       # Salad
-  "نمک": "🧂",           # Salt
-  "یخ": "🧊",             # Ice
+  "دوغ": "🥛",            # Dough
+  "ماست": "⚪",           # Yogurt
+  "دلستر": "🍺",        # Beer
+  "سالاد": "🥗",        # Salad
+  "نمک": "🧂",            # Salt
+  "یخ": "🧊",              # Ice
 }
 
 # ----- utils -----
