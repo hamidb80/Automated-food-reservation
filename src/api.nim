@@ -40,7 +40,7 @@ func loginForm*(user, pass, captcha, token: string): auto =
     "idsrv.xsrf": token}
 
 func cleanLoginCapcha*(binary: string): string =
-  binary.truncOn jfifTail
+  binary.cutAfter jpegTail
 
 # ----- meta programming -----
 

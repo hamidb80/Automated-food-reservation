@@ -1,7 +1,7 @@
 import std/[os, strutils]
 
 
-const jfifTail* = [byte 0xff, 0xd9]
+const jpegTail* = [byte 0xff, 0xd9]
 
 
 func toBool*(i: int): bool =
@@ -21,7 +21,7 @@ func toStr(bytes: openArray[byte]): string =
   for b in bytes:
     result.add b.char
 
-func truncOn*(s: string, patt: openArray[byte]): string =
+func cutAfter*(s: string, patt: openArray[byte]): string =
   let i = s.rfind patt.toStr
   s[0..<i+patt.len]
 
