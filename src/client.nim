@@ -52,7 +52,7 @@ proc sendData*(
   maxRedirects = 10,
   accept = cAnyThing,
   content = cAnyThing,
-  ): Response =
+): Response =
 
   # apply temporary headers
   c.httpc.headers["Accept"] = $accept

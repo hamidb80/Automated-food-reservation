@@ -17,7 +17,7 @@ func cutAfter*(s: string, patt: openArray[byte]): string =
   let i = s.rfind patt.toStr
   s[0..<i+patt.len]
 
-func formatDate*(y,m,d: int): string = 
-  fmt"{y}/{m:02}/{d:02}"
+# func formatDate*(y,m,d: int): string = 
+#   fmt"{y}/{m:02}/{d:02}"
 
 template last*(s: seq): untyped = s[^1]
