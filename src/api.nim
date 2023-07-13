@@ -3,6 +3,7 @@ import std/[strformat, strutils, sequtils, json, nre, uri, htmlparser, xmltree,
 import client, std/httpclient
 import utils
 import macroplus, iterrr
+import karax/[karaxdsl, vdom]
 
 # ----- types -----
 
@@ -96,6 +97,28 @@ func loginForm(user, pass, captcha, token: string): auto =
 func cleanLoginCaptcha(binary: string): string =
   binary.cutAfter jpegTail
 
+func genRedirectTransactionForm*(data: JsonNode): VNode =
+  ## Code: <StatusCode>,
+  ## Result: <Msg>,
+  ## Action: <RedirectUrl>,
+  ## ActionType: <HttpMethod>,
+  ## Tokenitems: Array[FormInput]
+  ##    {"Name": "...", "Value": "..."}
+
+  buildHtml tdiv:
+    form(
+      id = "X",
+      action = getstr data["Action"],
+      `method` = getstr data["ActionType"]
+    ):
+      for token in data["Tokenitems"]:
+        input(
+          name = getstr token["Name"],
+          value = getstr token["Value"])
+
+    script:
+      verbatim "document.getElementById('X').submit()"
+
 # ----- convertors -----
 
 func toBool*(i: int): bool =
@@ -109,13 +132,16 @@ func parseRial*(s: string): Rial =
 
 # ----- meta programming -----
 
+template self(smth): untyped = smth
+
+template convertFn(t: type string): untyped = self
 template convertFn(t: type bool): untyped = parseBool
 template convertFn(t: type int): untyped = parseInt
 template convertFn(t: type Rial): untyped = parseRial
 template convertFn(t: type JsonNode): untyped = parseJson
 
 
-macro defAPI(pattern, typecast, url): untyped =
+macro staticAPI(pattern, typecast, url): untyped =
   let
     (name, extraArgs) =
       case pattern.kind
@@ -145,30 +171,38 @@ proc freshCaptchaUrl*: string =
 
 # --- json API
 
-defAPI isCaptchaEnabled, bool, "/Captcha?isactive=wehavecaptcha"
-defAPI personalInfo, JsonNode, "/Student"
-defAPI credit, Rial, "/Credit"
-defAPI personalNotifs, JsonNode, "/PersonalNotification?postname=LastNotifications"
-defAPI instantSale, JsonNode, "/InstantSale"
-defAPI financialInfo(state: FinancialInfoState), JsonNode:
+staticAPI isCaptchaEnabled, bool, "/Captcha?isactive=wehavecaptcha"
+staticAPI personalInfo, JsonNode, "/Student"
+staticAPI credit, Rial, "/Credit"
+staticAPI personalNotifs, JsonNode, "/PersonalNotification?postname=LastNotifications"
+staticAPI instantSale, JsonNode, "/InstantSale"
+staticAPI availableBanks, JsonNode, "/Chargecard"
+
+staticAPI financialInfo(state: FinancialInfoState), JsonNode:
   fmt"/ReservationFinancial?state={state.int}"
-defAPI reservation(week: int), JsonNode:
+
+staticAPI reservation(week: int), JsonNode:
   fmt"/Reservation?lastdate=&navigation={week*7}"
 
-# defAPI availableBanks, JsonNode, "/Chargecard"
-# defAPI purchaseInvoice(bid: int, amount: Rial), JsonNode:
-#   fmt"/Chargecard?IpgBankId={bid}&amount={amount.int}"
-# func goPurchase(c: var CustomHttpClient): string =
-#   c.request("https://sadad.shaparak.ir/purchase", HttpPost).body
-  # CardAcqID
-  # AmountTrans
-  # ORDERID
-  # TerminalID
-  # TimeStamp
-  # FP
-  # RedirectURL
-  # CustomerEmailAddress
-  # OptionalPaymentParameter
+staticAPI registerInvoice(bid: int, amount: Rial), JsonNode:
+  fmt"/Chargecard?IpgBankId={bid}&amount={amount.int}"
+
+proc prepareBankTransaction*(c: var CustomHttpClient,
+    invoiceId: int,
+    amount: Rial
+): JsonNode =
+
+  let data = %* {
+      "amount": $amount.int,
+      "Applicant": "web",
+      "invoicenumber": invoiceId}
+
+  c.request(
+    apiv0 & "/Chargecard", HttpPost,
+    $data,
+    content = cJson,
+    accept = cJson
+  ).body.parseJson
 
 # --- login API
 
