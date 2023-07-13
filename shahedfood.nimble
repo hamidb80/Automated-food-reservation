@@ -13,3 +13,4 @@ bin           = @["Automated_food_reservation"]
 requires "nim >= 1.6.14"
 requires "macroplus"
 requires "iterrr"
+requires "karax"
