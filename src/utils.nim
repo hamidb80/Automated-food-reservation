@@ -1,7 +1,8 @@
-import std/[os, strutils, strformat]
+import std/[os, strutils]
 
 
 const jpegTail* = [byte 0xff, 0xd9]
+
 
 proc refreshDir*(path: string) =
   if dirExists path:

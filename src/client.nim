@@ -1,4 +1,4 @@
-import std/[strutils, uri, tables, strtabs, os, cookies, strformat, httpclient]
+import std/[strutils, uri, tables, strtabs, cookies, strformat, httpclient]
 import std/logging
 import iterrr
 
@@ -43,7 +43,7 @@ proc updateCookie*(c: var CustomHttpClient, resp: Response) =
 proc initCustomHttpClient*: CustomHttpClient =
   result.httpc = newHttpClient(maxRedirects = 0)
 
-proc sendData*(
+proc request*(
   c: var CustomHttpClient,
   url: string,
   `method` = HttpGet,
@@ -86,9 +86,10 @@ proc sendData*(
     if data.len > 0:
       debug "Body: " & data
     if result.body.len > 0:
-      let p = "./temp/" / ($c.counter & ".html")
-      writefile p, result.body
-      debug "Result: ", p
+      when defined debug:
+        let p = "./temp/" / ($c.counter & ".html")
+        writefile p, result.body
+        debug "Result: ", p
 
     inc c.counter
     updateCookie c, result
