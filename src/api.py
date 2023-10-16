@@ -210,43 +210,6 @@ class ShahedFoodApi:
         """
         return to_json(self.currentSession.get(f"{apiv0}/Credit"))
 
-    def getFood(self):
-        api_url = f"{apiv0}/Reservation?lastdate=&navigation=0"
-        headers = {
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "accept-language": "en-US,en;q=0.9,fa;q=0.8",
-            "cache-control": "max-age=0",
-            "sec-ch-ua": "\"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"114\", \"Google Chrome\";v=\"114\"",
-            "sec-ch-ua-mobile": "?1",
-            "sec-ch-ua-platform": "\"Android\"",
-            "sec-fetch-dest": "document",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "none",
-            "sec-fetch-user": "?1",
-            "upgrade-insecure-requests": "1"
-        }
-        response = self.currentSession.get(api_url)
-        return parse_data(response.content.decode('utf8').replace("'", '"'))
-
-    def reserveFood(self, food):
-        api_url = f"{apiv0}/Reservation"
-        headers = {
-            "Host": "food.shahed.ac.ir",
-            "Accept": "application/json, text/plain, */*",
-            "Accept-Language": "en-US,en;q=0.5",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Content-Type": "application/json;charset=utf-8",
-            "Origin": "https://food.shahed.ac.ir",
-            "Connection": "keep-alive",
-            "Referer": "https://food.shahed.ac.ir/",
-            "Sec-Fetch-Dest": "empty",
-            "Sec-Fetch-Mode": "cors",
-            "Sec-Fetch-Site": "same-origin"
-        }
-        response = self.currentSession.post(
-            api_url, data=f"{[food]}".encode('utf-8'), headers=headers)
-        return response.content
-
     def is_captcha_enabled(self) -> bool:
         return to_json(self.currentSession.get(f"{apiv0}/Captcha?isactive=wehavecaptcha"))
 
