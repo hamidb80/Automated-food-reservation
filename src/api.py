@@ -113,14 +113,18 @@ def genRedirectTransactionForm(data: dict):
 def freshCaptchaUrl() -> str:
     return f"{apiv0}/Captcha?id=" + str(randint(1, 10000))
 
+
 def to_json(response) -> dict:
     return json.loads(response.content)
+
+# --- API
+
 
 class ShahedFoodApi:
     def __init__(self) -> None:
         self.currentSession = HttpSession()
         self.signedIn = False
-        
+
     def login_before_captcha(self):
         """
         returns tuple of [login_data: dict, captcha_binary: bstr]
@@ -140,8 +144,8 @@ class ShahedFoodApi:
         return (a, b)
 
     def login_after_captcha(self,
-                          loginPageData: dict,
-                          uname, passw, capcha: str):
+                            loginPageData: dict,
+                            uname, passw, capcha: str):
 
         resp = self.currentSession.post(
             extractLoginUrl(loginPageData),
@@ -168,8 +172,8 @@ class ShahedFoodApi:
         """
         returns the credit in Rials
         """
-        return to_json(self.c.get(f"{apiv0}/Credit"))
-    
+        return to_json(self.currentSession.get(f"{apiv0}/Credit"))
+
     def getFood(self):
         api_url = f"{apiv0}/Reservation?lastdate=&navigation=0"
         headers = {
@@ -187,41 +191,41 @@ class ShahedFoodApi:
         }
         response = self.currentSession.get(api_url)
         return parse_data(response.content.decode('utf8').replace("'", '"'))
-    
-    def reserveFood(self,food):
+
+    def reserveFood(self, food):
         api_url = f"{apiv0}/Reservation"
         headers = {
-            "Host":"food.shahed.ac.ir",
-            "Accept":"application/json, text/plain, */*",
-            "Accept-Language":"en-US,en;q=0.5",
-            "Accept-Encoding":"gzip, deflate, br",
-            "Content-Type":"application/json;charset=utf-8",
+            "Host": "food.shahed.ac.ir",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "en-US,en;q=0.5",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Content-Type": "application/json;charset=utf-8",
             "Origin": "https://food.shahed.ac.ir",
-            "Connection":"keep-alive",
-            "Referer":"https://food.shahed.ac.ir/",
-            "Sec-Fetch-Dest":"empty",
-            "Sec-Fetch-Mode":"cors",
-            "Sec-Fetch-Site":"same-origin"
-            }
-        response = self.currentSession.post(api_url,data=f"{[food]}".encode('utf-8'),headers=headers)
+            "Connection": "keep-alive",
+            "Referer": "https://food.shahed.ac.ir/",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin"
+        }
+        response = self.currentSession.post(
+            api_url, data=f"{[food]}".encode('utf-8'), headers=headers)
         return response.content
 
-
     def is_captcha_enabled(self) -> bool:
-        return to_json(self.c.get(f"{apiv0}/Captcha?isactive=wehavecaptcha"))
+        return to_json(self.currentSession.get(f"{apiv0}/Captcha?isactive=wehavecaptcha"))
 
     def personal_info(self) -> dict:
-        return to_json(self.c.get(f"{apiv0}/Student"))
+        return to_json(self.currentSession.get(f"{apiv0}/Student"))
 
     def personal_notifs(self) -> dict:
-        return to_json(self.c.get(
+        return to_json(self.currentSession.get(
             f"{apiv0}/PersonalNotification?postname=LastNotifications"))
 
     def instant_sale(self) -> dict:
-        return to_json(self.c.get(f"{apiv0}/InstantSale"))
+        return to_json(self.currentSession.get(f"{apiv0}/InstantSale"))
 
     def available_banks(self) -> dict:
-        return to_json(self.c.get(f"{apiv0}/Chargecard"))
+        return to_json(self.currentSession.get(f"{apiv0}/Chargecard"))
 
     def financial_info(self, state=1) -> dict:
         """
@@ -229,49 +233,104 @@ class ShahedFoodApi:
             all = 1
             last = 2
         """
-        return to_json(self.c.get(f"{apiv0}/ReservationFinancial?state={state}"))
+        return to_json(self.currentSession.get(f"{apiv0}/ReservationFinancial?state={state}"))
 
-    def reservation(self, week: int = 0) -> dict:
-        return to_json(self.c.get(f"{apiv0}/Reservation?lastdate=&navigation={week*7}"))
+    def reservation_program(self, week: int = 0) -> dict:
+        return to_json(self.currentSession.get(f"{apiv0}/Reservation?lastdate=&navigation={week*7}"))
+
+    def reserve_food(self, food_data) -> dict:
+        d = {
+            "State": 0,
+            "Counts": 1,
+            "LastCounts": 0,
+
+            "Date":  "1402/07/26",
+            "DayIndex": 4,
+            "DayName":  "چهارشنبه",
+
+            "FoodId": 45,
+            "FoodName":  "چلو کباب کوبیده گوشت",
+
+            "Id": 14,
+            "MealId": 2,
+            "MealIndex": 1,
+            "MealName": "ناهار",
+
+            "Price": 100000,
+            "PriceType": 2,
+
+            "SelfId": 1,
+            "SelfName": "مرکزی",
+
+            "OP": 1,
+            "OpCategory": 1,
+            "Provider": 1,
+            "Row": 1,
+            "Saved": 0,
+
+            "SobsidPrice": 0,
+            "Type": 1,
+        }
+
+        return to_json(self.currentSession.post(f"{apiv0}/Reservation", json=[d]))
+
+    def cancel_food(self, food_data) -> dict:
+        d = {
+            "State": 2,
+            "Counts": 0,
+            "LastCounts": 1,
+
+            "Date": "1402/07/26",
+            "DayIndex": 4,
+            "DayName": "چهارشنبه",
+
+            "FoodId": 45,
+            "FoodName": "چلو کباب کوبیده گوشت",
+
+            "Id": 14,
+            "MealId": 2,
+            "MealIndex": 1,
+            "MealName": "ناهار",
+
+            "Price": 100000,
+            "PriceType": 2,
+
+            "SelfId": 1,
+            "SelfName": "مرکزی",
+
+            "OP": 1,
+            "OpCategory": 1,
+            "Provider": 1,
+            "Row": 1,
+            "Saved": 0,
+            "SobsidPrice": 0,
+            "Type": 1,
+        }
+
+        return to_json(self.currentSession.post(f"{apiv0}/Reservation", json=[d]))
 
     def register_invoice(self, bid, amount: int) -> dict:
-        return to_json(self.c.get(f"{apiv0}/Chargecard?IpgBankId={bid}&amount={amount}"))
+        return to_json(self.currentSession.get(f"{apiv0}/Chargecard?IpgBankId={bid}&amount={amount}"))
 
     def prepare_bank_transaction(self, invoiceId: int, amount: int) -> dict:
-        return to_json(self.c.post(f"{apiv0}/Chargecard", data={
+        return to_json(self.currentSession.post(f"{apiv0}/Chargecard", data={
             "amount": amount,
             "Applicant": "web",
             "invoicenumber": invoiceId}))
-
-
-
-if __name__ == "__main__":
-    """
-    usage 
-    """
-    sfa = ShahedFoodApi()
-    days = [2,3]
-    (login_data, capcha_binary) = sfa.loginBeforeCaptcha()
-    #write_file_bin("c.png", capcha_binary)
-    print(sfa.getCredit())
-    foodlist  = sfa.getFood()
-    for day in days:
-        print(sfa.reserveFood(foodlist[day]))
 
 
 def parse_reservation(week_program) -> list:
     result = []
     for day_program in week_program:
         p = {
-            # "DayId": day_program["DayId"],
-            # "DayName": day_program["DayName"],
-            # "GDate": day_program["MiladiDayDate"],
-            # "JDate": day_program["DayDate"],
-            "date": day_program["DayDate"],
+            "DayId": day_program["DayId"],
+            "DayDate": day_program["DayDate"],
+            # "Meals": [],
             "foods": [],
         }
 
         for meal in day_program["Meals"]:
+            # "LastReserved":
             for food in meal["FoodMenu"]:
                 p["foods"].append({
                     "id": food["FoodId"],
@@ -282,4 +341,3 @@ def parse_reservation(week_program) -> list:
 
         result.append(p)
     return result
-

@@ -14,11 +14,14 @@ if __name__ == "__main__":
 
     sfa.login_after_captcha(
         login_data,
-        "992164012", "@123456789",
+        "992164019", "@123456789",
         input("read capcha: "))
 
     print(sfa.credit())
-    weekProgram = sfa.reservation()
+    weekProgram = sfa.reservation_program()
     write_file("./temp/data1.json", dumps(weekProgram, ensure_ascii=False))
     write_file("./temp/data2.json",
                dumps(parse_reservation(weekProgram), ensure_ascii=False))
+
+    # sfa.reserve_food(1)
+    sfa.cancel_food(0)
