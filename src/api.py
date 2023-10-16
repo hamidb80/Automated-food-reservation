@@ -2,7 +2,7 @@ from requests import Session as HttpSession
 from random import randint
 import json
 from bs4 import BeautifulSoup
-from parseFoodData import parse_data
+
 
 baseUrl = "https://food.shahed.ac.ir"
 apiv0 = baseUrl + "/api/v0"
