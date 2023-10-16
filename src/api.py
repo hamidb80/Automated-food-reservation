@@ -120,6 +120,42 @@ def to_json(response) -> dict:
 # --- API
 
 
+def rich_food_info(
+    id, meal_id, meal_index, meal_name,
+    food_id, food_name,
+    price,
+    self_id, self_name,
+    jdate, day_index, day_name,
+):
+    return {
+        "Id": id,
+        "MealId": meal_id,
+        "MealIndex": meal_index,
+        "MealName": meal_name,
+
+        "FoodId": food_id,
+        "FoodName": food_name,
+
+        "Price": price,
+        "PriceType": 2,
+
+        "SelfId": self_id,
+        "SelfName": self_name,
+
+        "Date": jdate,
+        "DayIndex": day_index,
+        "DayName": day_name,
+
+        "OP": 1,
+        "OpCategory": 1,
+        "Provider": 1,
+        "Row": 1,
+        "Saved": 0,
+        "SobsidPrice": 0,
+        "Type": 1,
+    }
+
+
 class ShahedFoodApi:
     def __init__(self) -> None:
         self.currentSession = HttpSession()
@@ -238,73 +274,22 @@ class ShahedFoodApi:
     def reservation_program(self, week: int = 0) -> dict:
         return to_json(self.currentSession.get(f"{apiv0}/Reservation?lastdate=&navigation={week*7}"))
 
-    def reserve_food(self, food_data) -> dict:
+    def reserve_food(self, rich_food_data) -> dict:
         d = {
             "State": 0,
             "Counts": 1,
             "LastCounts": 0,
-
-            "Date":  "1402/07/26",
-            "DayIndex": 4,
-            "DayName":  "چهارشنبه",
-
-            "FoodId": 45,
-            "FoodName":  "چلو کباب کوبیده گوشت",
-
-            "Id": 14,
-            "MealId": 2,
-            "MealIndex": 1,
-            "MealName": "ناهار",
-
-            "Price": 100000,
-            "PriceType": 2,
-
-            "SelfId": 1,
-            "SelfName": "مرکزی",
-
-            "OP": 1,
-            "OpCategory": 1,
-            "Provider": 1,
-            "Row": 1,
-            "Saved": 0,
-
-            "SobsidPrice": 0,
-            "Type": 1,
+            **rich_food_data()
         }
 
         return to_json(self.currentSession.post(f"{apiv0}/Reservation", json=[d]))
 
-    def cancel_food(self, food_data) -> dict:
+    def cancel_food(self, rich_food_data) -> dict:
         d = {
             "State": 2,
             "Counts": 0,
             "LastCounts": 1,
-
-            "Date": "1402/07/26",
-            "DayIndex": 4,
-            "DayName": "چهارشنبه",
-
-            "FoodId": 45,
-            "FoodName": "چلو کباب کوبیده گوشت",
-
-            "Id": 14,
-            "MealId": 2,
-            "MealIndex": 1,
-            "MealName": "ناهار",
-
-            "Price": 100000,
-            "PriceType": 2,
-
-            "SelfId": 1,
-            "SelfName": "مرکزی",
-
-            "OP": 1,
-            "OpCategory": 1,
-            "Provider": 1,
-            "Row": 1,
-            "Saved": 0,
-            "SobsidPrice": 0,
-            "Type": 1,
+            **rich_food_data()
         }
 
         return to_json(self.currentSession.post(f"{apiv0}/Reservation", json=[d]))

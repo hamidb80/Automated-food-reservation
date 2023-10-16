@@ -23,5 +23,5 @@ if __name__ == "__main__":
     write_file("./temp/data2.json",
                dumps(parse_reservation(weekProgram), ensure_ascii=False))
 
-    # sfa.reserve_food(1)
+    sfa.reserve_food(1)
     sfa.cancel_food(0)
