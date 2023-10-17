@@ -265,27 +265,3 @@ class ShahedFoodApi:
             "amount": amount,
             "Applicant": "web",
             "invoicenumber": invoiceId}))
-
-
-def parse_reservation(week_program) -> list:
-    result = []
-    for day_program in week_program:
-        p = {
-            "DayId": day_program["DayId"],
-            "DayDate": day_program["DayDate"],
-            # "Meals": [],
-            "foods": [],
-        }
-
-        for meal in day_program["Meals"]:
-            # "LastReserved":
-            for food in meal["FoodMenu"]:
-                p["foods"].append({
-                    "id": food["FoodId"],
-                    "name": food["FoodName"],
-                    "state": food["FoodState"],
-                    "price": food["SelfMenu"][0]["ShowPrice"],
-                })
-
-        result.append(p)
-    return result
