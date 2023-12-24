@@ -1,7 +1,8 @@
 import std/[
   strformat,
   httpclient,
-  json]
+  json,
+  os]
 
 import cookiejar
 
@@ -133,7 +134,7 @@ when isMainModule:
 
   echo "capcha: "
   let 
-    rr = apiLogin(c, "992164019", "salam.12", readLine stdin)
+    rr = apiLogin(c, "992164019", getEnv "SHAHED_PASS", readLine stdin)
     cc = apiNav(c, extractBehestanMust rr)
     dd = apiProcessSysMenu0(c, extractBehestanMust cc)
 
