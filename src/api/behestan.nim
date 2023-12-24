@@ -67,6 +67,7 @@ proc apiLogin(c: var CustomHttpClient, username, password,
     accept = cJson,
     content = cJson)
 
+# TODO these fields differs among the nav api calls: f, seq, su, nf
 proc apiNav(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
   func genData(bm: BehestanMust): JsonNode =
     %* {
@@ -157,6 +158,122 @@ proc apiProcessStdTotalInfoTrmStat(c: var CustomHttpClient, bm: BehestanMust,
     accept = cJson,
     content = cJson)
 
+proc apiProcessStdPersonallyBh(c: var CustomHttpClient, bm: BehestanMust,
+    username: string): JsonNode =
+  func genData(bm: BehestanMust,
+      username: string): JsonNode =
+    %* {
+      "act": "08",
+      "r": {
+        "AUWs": username},
+      "aut": {
+        "u": bm.userId,
+        "ft": "0",
+        "f": "11121",
+        "seq": "6",
+        "subfrm": "0",
+        "su": "3",
+        "tck": bm.ticket,
+        "ut": "0",
+        "ttyp": "2",
+        "ri": "",
+        "actsign": "1",
+        "sid": bm.sessionId}}
+
+  parseJson body request(
+    c,
+    fmt"{apiRoot}/F1809_PROCESS_STD_Personally_BH/F1809_PROCESS_STD_Personally_BH.svc/",
+    HttpPost,
+    $genData(bm, username),
+    accept = cJson,
+    content = cJson)
+
+proc apiEdu0301TermsTrmNoLookup(c: var CustomHttpClient,
+    bm: BehestanMust): JsonNode =
+  func genData(bm: BehestanMust): JsonNode =
+    %* {
+      "act": "20",
+      "r": {},
+      "aut": {
+        "u": bm.userId,
+        "ft": "0",
+        "f": "11147",
+        "seq": "5",
+        "subfrm": "0",
+        "su": "3",
+        "tck": bm.ticket,
+        "ut": "0",
+        "ttyp": "2",
+        "ri": "",
+        "actsign": "1",
+        "sid": bm.sessionId}}
+
+  parseJson body request(
+    c,
+    fmt"{apiRoot}/Edu0301_Terms_TrmNo_Lookup/Edu0301_Terms_TrmNo_Lookup.svc/",
+    HttpPost,
+    $genData(bm),
+    accept = cJson,
+    content = cJson)
+
+proc apiEdu1002UnvFacFacNoLookup(c: var CustomHttpClient,
+    bm: BehestanMust): JsonNode =
+  func genData(bm: BehestanMust): JsonNode =
+    %* {
+      "act": "20",
+      "r": {
+        "A3zg": "1",
+        "v1n": "1",
+        "MaxHlp": 200},
+      "aut": {
+        "u": bm.userId,
+        "ft": "0",
+        "f": "11147",
+        "seq": "5",
+        "subfrm": "0",
+        "su": "3",
+        "tck": bm.ticket,
+        "ut": "0",
+        "ttyp": "2",
+        "ri": "",
+        "actsign": "1",
+        "sid": bm.sessionId}}
+
+  parseJson body request(
+    c,
+    fmt"{apiRoot}/Edu1002_UnvFac_FacNo_Lookup/Edu1002_UnvFac_FacNo_Lookup.svc/",
+    HttpPost,
+    $genData(bm),
+    accept = cJson,
+    content = cJson)
+
+proc apiEdu1021UnvBranchesBrnnoLookup(c: var CustomHttpClient,
+    bm: BehestanMust): JsonNode =
+  func genData(bm: BehestanMust): JsonNode =
+    %* {
+      "act": "20",
+      "r": {},
+      "aut": {
+        "u": bm.userId,
+        "ft": "0",
+        "f": "11147",
+        "seq": "5",
+        "subfrm": "0",
+        "su": "3",
+        "tck": bm.ticket,
+        "ut": "0",
+        "ttyp": "2",
+        "ri": "",
+        "actsign": "1",
+        "sid": bm.sessionId}}
+
+  parseJson body request(
+    c,
+    fmt"{apiRoot}/Edu1021_UNVBRANCHES_Brnno_Lookup/Edu1021_UNVBRANCHES_Brnno_Lookup.svc/",
+    HttpPost,
+    $genData(bm),
+    accept = cJson,
+    content = cJson)
 
 when isMainModule:
   var c = initCustomHttpClient()
@@ -167,9 +284,9 @@ when isMainModule:
   echo "capcha: "
   let
     rr = apiLogin(c, "992164019", getEnv "SHAHED_PASS", readLine stdin)
-    cc = apiNav(c, extractBehestanMust rr)
-    dd = apiProcessSysMenu0(c, extractBehestanMust cc)
-    ee = apiProcessStdTotalInfoTrmStat(c, extractBehestanMust dd, "992164019")
+    # cc = apiNav(c, extractBehestanMust rr)
+    dd = apiProcessSysMenu0(c, extractBehestanMust rr)
+    # ee = apiProcessStdTotalInfoTrmStat(c, extractBehestanMust dd, "992164019")
 
   writeFile "./temp/dd.json", pretty dd
-  writeFile "./temp/ee.json", pretty ee
+  # writeFile "./temp/ee.json", pretty ee
