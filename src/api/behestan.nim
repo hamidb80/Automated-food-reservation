@@ -284,6 +284,7 @@ when isMainModule:
   echo "capcha: "
   let
     rr = apiLogin(c, "992164019", getEnv "SHAHED_PASS", readLine stdin)
+    # XXX calling APIs without calling nav API does not work
     # cc = apiNav(c, extractBehestanMust rr)
     dd = apiProcessSysMenu0(c, extractBehestanMust rr)
     # ee = apiProcessStdTotalInfoTrmStat(c, extractBehestanMust dd, "992164019")
