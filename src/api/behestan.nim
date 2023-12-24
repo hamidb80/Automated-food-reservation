@@ -17,11 +17,11 @@ type
 const apiRoot = "https://eduportal.shahed.ac.ir/frm"
 
 
-func extractBehestanMust(j: JsonNode): BehestanMust = 
-    (
-      getStr j["aut"]["sid"], 
-      getStr j["aut"]["u"], 
-      getStr j["aut"]["tck"])
+func extractBehestanMust(j: JsonNode): BehestanMust =
+  (
+    getStr j["aut"]["sid"],
+    getStr j["aut"]["u"],
+    getStr j["aut"]["tck"])
 
 func defaultBehestanHeaders: HttpHeaders =
   newHttpHeaders {
@@ -38,7 +38,8 @@ proc apiGetCapcha(c: var CustomHttpClient): tuple[image, sessionId: string] =
 
   (resp.body, ck.value)
 
-proc apiLogin(c: var CustomHttpClient, username, password, capcha: string): JsonNode =
+proc apiLogin(c: var CustomHttpClient, username, password,
+    capcha: string): JsonNode =
   func genData(username, password, capcha: string): JsonNode =
     %*{
       "act": "09",
@@ -126,8 +127,10 @@ proc apiProcessSysMenu0(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
     accept = cJson,
     content = cJson)
 
-proc apiProcessStdTotalInfoTrmStat(c: var CustomHttpClient, bm: BehestanMust, username: string): JsonNode =
-  func genProcessStdTotalInfoTrmStatData(bm: BehestanMust, username: string): JsonNode =
+proc apiProcessStdTotalInfoTrmStat(c: var CustomHttpClient, bm: BehestanMust,
+    username: string): JsonNode =
+  func genData(bm: BehestanMust,
+      username: string): JsonNode =
     %* {
       "act": "20",
       "r": {
@@ -150,7 +153,7 @@ proc apiProcessStdTotalInfoTrmStat(c: var CustomHttpClient, bm: BehestanMust, us
     c,
     fmt"{apiRoot}/F1825_PROCESS_STDTOTALINFOTrmStat_BEH/F1825_PROCESS_STDTOTALINFOTrmStat_BEH.svc/",
     HttpPost,
-    $genProcessStdTotalInfoTrmStatData(bm, username),
+    $genData(bm, username),
     accept = cJson,
     content = cJson)
 
@@ -162,7 +165,7 @@ when isMainModule:
   writeFile "./temp.png", c.apiGetCapcha.image
 
   echo "capcha: "
-  let 
+  let
     rr = apiLogin(c, "992164019", getEnv "SHAHED_PASS", readLine stdin)
     cc = apiNav(c, extractBehestanMust rr)
     dd = apiProcessSysMenu0(c, extractBehestanMust cc)
