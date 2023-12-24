@@ -1,5 +1,5 @@
 import std/[sugar, json, browsers]
-import client, api, utils
+import client, api/food, utils
 
 import karax/vdom
 

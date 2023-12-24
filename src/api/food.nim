@@ -1,9 +1,20 @@
-import std/[strformat, strutils, sequtils, json, nre, uri, htmlparser, xmltree,
-    random, macros]
-import client, std/httpclient
-import utils
-import macroplus, iterrr
+import std/[
+  strformat,
+  strutils,
+  sequtils,
+  json,
+  nre,
+  uri,
+  htmlparser,
+  xmltree,
+  random,
+  macros]
+
+import ../client, std/httpclient
+import ../utils
+
 import karax/[karaxdsl, vdom]
+import macroplus, iterrr
 
 # ----- types -----
 
@@ -64,7 +75,8 @@ func repl(match: RegexMatch): string =
   match.captures[0].entityToUtf8
 
 func toHumanReadable(s: string): string =
-  s.replace(re"&(\w+);", repl)
+  {.cast(noSideEffect).}:
+    s.replace(re"&(\w+);", repl)
 
 # ----- working with data objects -----
 

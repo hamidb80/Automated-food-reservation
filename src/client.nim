@@ -1,5 +1,13 @@
-import std/[strutils, uri, tables, strtabs, cookies, strformat, httpclient]
-import std/logging
+import std/[
+  strutils,
+  uri,
+  tables,
+  strtabs,
+  cookies,
+  strformat,
+  httpclient,
+  logging]
+
 import iterrr
 
 
@@ -77,16 +85,16 @@ proc request*(
 
     result = c.httpc.request(currentUrl, currentMethod, data)
 
-    info fmt"[{c.counter}]"
-    info currentMethod, " to ", url
-    info "Status: ", result.code
-    debug "Sent Headers: "
-    for k, h in c.httpc.headers.pairs:
-      debug fmt"  {k} = {h}"
-    if data.len > 0:
-      debug "Body: " & data
-    if result.body.len > 0:
-      when defined debug:
+    when defined debug:
+      info fmt"[{c.counter}]"
+      info currentMethod, " to ", url
+      info "Status: ", result.code
+      debug "Sent Headers: "
+      for k, h in c.httpc.headers.pairs:
+        debug fmt"  {k} = {h}"
+      if data.len > 0:
+        debug "Body: " & data
+      if result.body.len > 0:
         let p = "./temp/" / ($c.counter & ".html")
         writefile p, result.body
         debug "Result: ", p
