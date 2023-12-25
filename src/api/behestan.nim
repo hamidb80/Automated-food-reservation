@@ -13,9 +13,36 @@ type
   BehestanMust* = tuple
     sessionId, userId, ticket: string
 
+  NavParams* = object
+    f, `seq`, su, nf: int
 
-const apiRoot = "https://eduportal.shahed.ac.ir/frm"
 
+const
+  apiRoot = "https://eduportal.shahed.ac.ir/frm"
+
+  homeNavParams = NavParams(
+    f: 1,
+    `seq`: 1,
+    su: 0,
+    nf: 11130)
+
+  stdInfoNavParams = NavParams(
+    f: 11147,
+    `seq`: 5,
+    su: 3,
+    nf: 11121)
+
+  # "f": "11130",
+  # "seq": "3",
+  # "su": "3",
+
+template toStr(smth): untyped = $(smth)
+
+
+proc inspect(j: JsonNode): JsonNode =
+  echo "-------------"
+  echo pretty j
+  j
 
 func extractBehestanMust(j: JsonNode): BehestanMust =
   (
@@ -31,16 +58,16 @@ func defaultBehestanHeaders: HttpHeaders =
     "sec-ch-ua-platform": "Windows"}
 
 
-proc apiGetCapcha(c: var CustomHttpClient): tuple[image, sessionId: string] =
+proc apiGetCapcha*(c: var CustomHttpClient): tuple[image, sessionId: string] =
   let
     resp = request(c, fmt"{apiRoot}/captcha/captcha.ashx", HttpGet)
     ck = initCookie resp.headers["Set-Cookie"]
 
   (resp.body, ck.value)
 
-proc apiLogin(c: var CustomHttpClient, username, password,
+proc apiLogin*(c: var CustomHttpClient, username, password,
     capcha: string): JsonNode =
-  func genData(username, password, capcha: string): JsonNode =
+  func payload(username, password, capcha: string): JsonNode =
     %*{
       "act": "09",
       "r": {
@@ -63,23 +90,27 @@ proc apiLogin(c: var CustomHttpClient, username, password,
     c,
     fmt"{apiRoot}/loginapi/loginapi.svc/",
     HttpPost,
-    $genData(username, password, capcha),
+    $payload(username, password, capcha),
     accept = cJson,
     content = cJson)
 
-# TODO these fields differs among the nav api calls: f, seq, su, nf
-proc apiNav(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
-  func genData(bm: BehestanMust): JsonNode =
+
+proc apiNav*(c: var CustomHttpClient, np: NavParams,
+    bm: BehestanMust): JsonNode =
+
+  echo bm
+  func payload(np: NavParams, bm: BehestanMust): JsonNode =
     %* {
       "r": {
-        "act": ""},
+        "act": ""
+      },
       "aut": {
         "u": bm.userId,
         "ft": "0",
-        "f": "1",
-        "seq": "1",
+        "f": toStr np.f,
+        "seq": toStr np.seq,
         "subfrm": "",
-        "su": "0",
+        "su": toStr np.su,
         "tck": bm.ticket,
         "ut": "0",
         "ttyp": "",
@@ -87,7 +118,7 @@ proc apiNav(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
         "actsign": "1",
         "sid": bm.sessionId,
         "nft": "0",
-        "nf": "11130",
+        "nf": toStr np.nf,
         "sguid": "5a4e3d7e-4243-427b-9d5a-32b9eea3df71",
         "b": "0",
         "l": "0"}}
@@ -96,12 +127,12 @@ proc apiNav(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
     c,
     fmt"{apiRoot}/nav/nav.svc/",
     HttpPost,
-    $genData(bm),
+    $inspect payload(np, bm),
     accept = cJson,
     content = cJson)
 
-proc apiProcessSysMenu0(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
-  func genData(bm: BehestanMust): JsonNode =
+proc apiProcessSysMenu0*(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
+  func payload(bm: BehestanMust): JsonNode =
     %* {
       "act": "10",
       "r": {},
@@ -124,13 +155,13 @@ proc apiProcessSysMenu0(c: var CustomHttpClient, bm: BehestanMust): JsonNode =
     c,
     fmt"{apiRoot}/F0213_PROCESS_SYSMENU0/F0213_PROCESS_SYSMENU0.svc/",
     HttpPost,
-    $genData(bm),
+    $payload(bm),
     accept = cJson,
     content = cJson)
 
-proc apiProcessStdTotalInfoTrmStat(c: var CustomHttpClient, bm: BehestanMust,
+proc apiProcessStdTotalInfoTrmStat*(c: var CustomHttpClient, bm: BehestanMust,
     username: string): JsonNode =
-  func genData(bm: BehestanMust,
+  func payload(bm: BehestanMust,
       username: string): JsonNode =
     %* {
       "act": "20",
@@ -154,13 +185,13 @@ proc apiProcessStdTotalInfoTrmStat(c: var CustomHttpClient, bm: BehestanMust,
     c,
     fmt"{apiRoot}/F1825_PROCESS_STDTOTALINFOTrmStat_BEH/F1825_PROCESS_STDTOTALINFOTrmStat_BEH.svc/",
     HttpPost,
-    $genData(bm, username),
+    $payload(bm, username),
     accept = cJson,
     content = cJson)
 
-proc apiProcessStdPersonallyBh(c: var CustomHttpClient, bm: BehestanMust,
+proc apiProcessStdPersonallyBh*(c: var CustomHttpClient, bm: BehestanMust,
     username: string): JsonNode =
-  func genData(bm: BehestanMust,
+  func payload(bm: BehestanMust,
       username: string): JsonNode =
     %* {
       "act": "08",
@@ -184,13 +215,13 @@ proc apiProcessStdPersonallyBh(c: var CustomHttpClient, bm: BehestanMust,
     c,
     fmt"{apiRoot}/F1809_PROCESS_STD_Personally_BH/F1809_PROCESS_STD_Personally_BH.svc/",
     HttpPost,
-    $genData(bm, username),
+    $payload(bm, username),
     accept = cJson,
     content = cJson)
 
-proc apiEdu0301TermsTrmNoLookup(c: var CustomHttpClient,
+proc apiEdu0301TermsTrmNoLookup*(c: var CustomHttpClient,
     bm: BehestanMust): JsonNode =
-  func genData(bm: BehestanMust): JsonNode =
+  func payload(bm: BehestanMust): JsonNode =
     %* {
       "act": "20",
       "r": {},
@@ -212,13 +243,13 @@ proc apiEdu0301TermsTrmNoLookup(c: var CustomHttpClient,
     c,
     fmt"{apiRoot}/Edu0301_Terms_TrmNo_Lookup/Edu0301_Terms_TrmNo_Lookup.svc/",
     HttpPost,
-    $genData(bm),
+    $payload(bm),
     accept = cJson,
     content = cJson)
 
-proc apiEdu1002UnvFacFacNoLookup(c: var CustomHttpClient,
+proc apiEdu1002UnvFacFacNoLookup*(c: var CustomHttpClient,
     bm: BehestanMust): JsonNode =
-  func genData(bm: BehestanMust): JsonNode =
+  func payload(bm: BehestanMust): JsonNode =
     %* {
       "act": "20",
       "r": {
@@ -243,13 +274,13 @@ proc apiEdu1002UnvFacFacNoLookup(c: var CustomHttpClient,
     c,
     fmt"{apiRoot}/Edu1002_UnvFac_FacNo_Lookup/Edu1002_UnvFac_FacNo_Lookup.svc/",
     HttpPost,
-    $genData(bm),
+    $payload(bm),
     accept = cJson,
     content = cJson)
 
-proc apiEdu1021UnvBranchesBrnnoLookup(c: var CustomHttpClient,
+proc apiEdu1021UnvBranchesBrnnoLookup*(c: var CustomHttpClient,
     bm: BehestanMust): JsonNode =
-  func genData(bm: BehestanMust): JsonNode =
+  func payload(bm: BehestanMust): JsonNode =
     %* {
       "act": "20",
       "r": {},
@@ -271,9 +302,13 @@ proc apiEdu1021UnvBranchesBrnnoLookup(c: var CustomHttpClient,
     c,
     fmt"{apiRoot}/Edu1021_UNVBRANCHES_Brnno_Lookup/Edu1021_UNVBRANCHES_Brnno_Lookup.svc/",
     HttpPost,
-    $genData(bm),
+    $payload(bm),
     accept = cJson,
     content = cJson)
+
+
+# XXX sguid: just random uuid4
+# XXX calling APIs without calling nav API does not work
 
 when isMainModule:
   var c = initCustomHttpClient()
@@ -281,13 +316,18 @@ when isMainModule:
 
   writeFile "./temp.png", c.apiGetCapcha.image
 
+  let pass = getEnv "SHAHED_PASS"
+  echo "pass: '", pass, "'"
   echo "capcha: "
   let
-    rr = apiLogin(c, "992164019", getEnv "SHAHED_PASS", readLine stdin)
-    # XXX calling APIs without calling nav API does not work
-    # cc = apiNav(c, extractBehestanMust rr)
-    dd = apiProcessSysMenu0(c, extractBehestanMust rr)
-    # ee = apiProcessStdTotalInfoTrmStat(c, extractBehestanMust dd, "992164019")
+    aa = apiLogin(c, "992164019", pass, readLine stdin)
+    bb = apiNav(c, homeNavParams, extractBehestanMust aa)
+    cc = apiProcessSysMenu0(c, extractBehestanMust bb)
+    dd = apiNav(c, stdInfoNavParams, extractBehestanMust cc)
+    ee = apiProcessStdTotalInfoTrmStat(c, extractBehestanMust dd, "992164019")
 
+  writeFile "./temp/aa.json", pretty aa
+  writeFile "./temp/bb.json", pretty bb
+  writeFile "./temp/cc.json", pretty cc
   writeFile "./temp/dd.json", pretty dd
-  # writeFile "./temp/ee.json", pretty ee
+  writeFile "./temp/ee.json", pretty ee

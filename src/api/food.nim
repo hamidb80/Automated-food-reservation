@@ -31,7 +31,7 @@ const
   baseUrl* = "https://food.shahed.ac.ir"
   apiv0* = baseUrl & "/api/v0"
 
-  foods = {
+  foodsEmoji = {
     "ماکارونی": "🍝",  # Spaghetti
     "مرغ": "🍗",            # Chicken
     "کره": "🧈",            # Butter
@@ -209,12 +209,12 @@ proc prepareBankTransaction*(c: var CustomHttpClient,
       "Applicant": "web",
       "invoicenumber": invoiceId}
 
-  c.request(
+  parseJson body request(
+    c,
     apiv0 & "/Chargecard", HttpPost,
     $data,
     content = cJson,
-    accept = cJson
-  ).body.parseJson
+    accept = cJson)
 
 # --- login API
 
@@ -224,12 +224,12 @@ proc loginBeforeCaptcha*(c: var CustomHttpClient
   let resp = c.request(baseUrl, HttpGet)
   assert resp.code.is2xx
 
-  result.loginPageData = extractLoginPageData resp.body
-  result.captchaBinary = c.request(
+  result.loginPageData = extractLoginPageData body resp
+  result.captchaBinary = cleanLoginCaptcha body request(
+    c,
     freshCaptchaUrl(),
     HttpGet,
-    tempHeaders = {"Referer": c.history.last}
-  ).body.cleanLoginCaptcha
+    tempHeaders = {"Referer": c.history.last})
 
 proc loginAfterCaptcha*(c: var CustomHttpClient,
   loginPageData: JsonNode,
