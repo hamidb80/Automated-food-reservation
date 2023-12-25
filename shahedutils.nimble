@@ -2,10 +2,10 @@
 
 version       = "0.0.1"
 author        = "hamidb80"
-description   = "food.shahed.ac.ir automation"
+description   = "Shahed University websites automation"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["Automated_food_reservation"]
+bin           = @["main"]
 
 
 # Dependencies
