@@ -98,12 +98,10 @@ proc apiLogin*(c: var CustomHttpClient, username, password,
 proc apiNav*(c: var CustomHttpClient, np: NavParams,
     bm: BehestanMust): JsonNode =
 
-  echo bm
   func payload(np: NavParams, bm: BehestanMust): JsonNode =
     %* {
       "r": {
-        "act": ""
-      },
+        "act": ""},
       "aut": {
         "u": bm.userId,
         "ft": "0",
