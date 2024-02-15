@@ -21,7 +21,6 @@ type
   CustomHttpClient* = object
     httpc*: HttpClient
     counter*: int
-    history*: seq[string]
 
 
 var logger = newConsoleLogger(lvlInfo)
@@ -76,8 +75,6 @@ proc request*(
     isRedirected = false
 
   for _ in 1..maxRedirects:
-    c.history.add currentUrl
-
     let
       currentMethod =
         if isRedirected: HttpGet

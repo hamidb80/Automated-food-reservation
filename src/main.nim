@@ -1,4 +1,4 @@
-import std/[sugar, json, browsers]
+import std/[sugar, json, browsers, os]
 import client, api/food, utils
 
 import karax/vdom
@@ -11,9 +11,11 @@ when isMainModule:
 
   writeFile "./temp/capcha.jpg", captchaBin
   echo "enter captcha: "
-  let captcha = readLine stdin
-
-  loginAfterCaptcha(c, data, "992164019", "@123456789", captcha)
+  c.loginAfterCaptcha(
+    data, 
+    "992164019", 
+    getEnv "FOOD_PASS", 
+    readLine stdin)
 
   # ----- logged in now -----
 

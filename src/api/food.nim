@@ -229,7 +229,7 @@ proc loginBeforeCaptcha*(c: var CustomHttpClient
     c,
     freshCaptchaUrl(),
     HttpGet,
-    tempHeaders = {"Referer": c.history.last})
+    tempHeaders = {"Referer": "https://food.shahed.ac.ir/identity/login?"})
 
 proc loginAfterCaptcha*(c: var CustomHttpClient,
   loginPageData: JsonNode,

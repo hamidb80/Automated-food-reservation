@@ -1,5 +1,15 @@
-import std/[json, options, uri, httpclient]
+import std/[
+  json,
+  options,
+  uri,
+  httpclient,
+  strutils,
+  sugar]
+
 import questionable
+
+import ../src/client
+import ../src/api/behestan
 
 ## object types are created by `nimjson`
 
@@ -9,33 +19,10 @@ type
     log: Log
   Log = ref object
     version: string
-    creator: Creator
-    browser: Browser
-    pages: seq[Pages]
     entries: seq[Entries]
-  Creator = ref object
-    name: string
-    version: string
-  Browser = ref object
-    name: string
-    version: string
-  Pages = ref object
-    id: string
-    pageTimings: PageTimings
-    startedDateTime: string
-    title: string
-  PageTimings = ref object
-    onContentLoad: int
-    onLoad: int
   Entries = ref object
-    startedDateTime: string
     request: Request
     response: Response
-    cache: Cache
-    timings: Timings
-    time: int
-    # `_securityState`: string
-    pageref: string
   Request = ref object
     bodySize: int
     `method`: string
@@ -54,7 +41,6 @@ type
     value: string
   PostData = ref object
     mimeType: string
-    params: seq[NilType]
     text: string
   Response = ref object
     status: int
@@ -69,33 +55,79 @@ type
   Content = ref object
     mimeType: string
     size: int
-    text: string
-  Cache = ref object
-  Timings = ref object
-    blocked: int
-    dns: int
-    ssl: int
-    connect: int
-    send: int
-    wait: int
-    receive: int
+    text: ?string
 
 
+func toHttpMethod(m: string): HttpMethod =
+  case m
+  of "POST": HttpPost
+  else: HttpGet
 
-let
-  j = to(parseJson readfile "eduportal.shahed.ac.ir.har", HarObject)
-  c = newHttpClient()
+# func deepUpdateImpl(j: var JsonNode, u: JsonNode) =
+#   for k, v in u:
 
+proc deepUpdate(j, u: JsonNode) =
+  for k, v in u:
+    case v.kind
+    of JObject:
+      deepUpdate j[k], v
+    else:
+      j[k] = v
 
-for e in j.log.entries:
-  echo e.request.url.parseUri.path
+func toJson(bm: BehestanMust): JsonNode = %*{
+  "aut": {
+    "sid": bm.sessionId,
+    "u": bm.userId,
+    "tck": bm.ticket}}
 
-  case e.request.`method`
-  of "POST":
-    let d = e.request.postData.?text |? "null"
-    # echo pretty parseJson d
-    # echo ""
-    echo c.post(e.request.url, d).body
+when isMainModule:
+  var
+    c = initCustomHttpClient()
+    bh: BehestanMust = ("1", "1", "1")
+    tck2 = ""
+  let
+    j = to(parseJson readfile "eduportal.shahed.ac.ir.har", HarObject)
 
-  else:
-    discard
+  for e in j.log.entries:
+    let
+      u = e.request.url
+      p = u.parseUri.path
+      m = toHttpMethod e.request.`method`
+      d = e.request.postData.map(p => parseJson p.text)
+
+    # case p
+    # of "/frm/loginapi/loginapi.svc/":
+    #   discard
+
+    # of "/frm/nav/nav.svc":
+    #   discard
+
+    # else:
+    #   discard
+
+    if endsWith(u, ".js") or endsWith(u, ".css") or endsWith(u, ".png"):
+      continue
+    else:
+      let 
+        resp = request(c, u, m, if issome d: $d.get else: "")
+        ct = resp.headers["content-type"]
+        data = body resp
+        jdata = 
+          if ct == "application/json": parseJson data
+          else: nil
+
+      if nil != jdata:
+        bh = extractBehestanMust jdata
+
+      case p
+      of "/frm/captcha/captcha.ashx":
+        writefile "./temp/capcha.png", data
+
+      of "/frm/loginapi/loginapi.svc/":
+        discard
+
+      of "/frm/nav/nav.svc":
+        tck2 = getStr data.parseJson{"oaut", "oa", "nmtck"}
+
+      else:
+        discard

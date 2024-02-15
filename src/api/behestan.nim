@@ -44,7 +44,7 @@ proc inspect(j: JsonNode): JsonNode =
   echo pretty j
   j
 
-func extractBehestanMust(j: JsonNode): BehestanMust =
+func extractBehestanMust*(j: JsonNode): BehestanMust =
   (
     getStr j["aut"]["sid"],
     getStr j["aut"]["u"],
