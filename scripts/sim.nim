@@ -89,12 +89,12 @@ func makeHeaders(cookies: string): HttpHeaders =
   newHttpHeaders {
     "Cookie": cookies,
     "content-type": "application/json",
-    "Host": "eduportal.shahed.ac.ir",
-    "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0",
-    "Connection":"keep-alive",
-    "Referer": "https://eduportal.shahed.ac.ir/index.html",
-    "sec-ch-ua-mobile": "?0",
-    "sec-ch-ua-platform": "Windows"
+    # "Host": "eduportal.shahed.ac.ir",
+    # "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0",
+    # "Connection":"keep-alive",
+    # "Referer": "https://eduportal.shahed.ac.ir/index.html",
+    # "sec-ch-ua-mobile": "?0",
+    # "sec-ch-ua-platform": "Windows"
   }
 
 func parseSetCookie(s: string): tuple[name, val: string] =

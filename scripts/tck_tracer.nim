@@ -2,28 +2,30 @@ import std/[json, uri]
 
 # track request and response tokens ...
 
-let j = parseJson readfile "eduportal.shahed.ac.ir.har"
+let entries = parseJson readfile "./scripts/working-test1.json"
 var i = 0
 
-for e in j{"log", "entries"}:
-  let url = getStr e{"request", "url"}
+for e in entries:
+  let url = getStr e{"req", "url"}
 
-  case getStr e{"request", "method"}
+  case getStr e{"req", "method"}
   of "POST":
     let
-      reqt = e{"request", "postData", "text"}
-      rest = e{"response", "content", "text"}
-      reqd = parseJson getStr reqt
-      resd = parseJson getStr rest
+      reqd = e{"req", "payload"}
+      resd = e{"resp", "data"}
 
     if "" != getStr reqd{"aut", "tck"}:
       echo "--------------------------------------- #", i, " -----"
       echo url["https://eduportal.shahed.ac.ir/".len .. ^1]
-    
+
       echo "-- ", getStr reqd{"aut", "tck"}
-      echo "++ ", getStr resd{"aut", "tck"}
-      echo "++ ", getStr resd{"oaut", "oa", "nmtck"}
+      echo "++ ", getStr resd{"aut", "tck"}, "  aut.tck"
+
+      let t2 = getStr resd{"oaut", "oa", "nmtck"}
+      if t2.len != 0:
+        echo "++ ", t2, "  oaut.oa.nmtck"
+
       inc i
-    
+
   of "GET":
     discard
