@@ -177,13 +177,13 @@ proc simulate(summary: JsonNode) =
     run client, ctx, entry, acc
 
   writeFile "temp.result.json", pretty %acc
-  var acc2: seq[JsonNode]
-  var acc3: string
-  for j in acc[^1]["rset"]["grd"]:
-    add acc2, parseJson getStr j["struc"]
-    add acc3, getStr j["xml"]
-  writeFile "temp.result.final.json", pretty %acc2
-  writeFile "temp.result.final.xml",  acc3
+  # var acc2: seq[JsonNode]
+  # var acc3: string
+  # for j in acc[^1]["rset"]["grd"]:
+  #   add acc2, parseJson getStr j["struc"]
+  #   add acc3, getStr j["xml"]
+  # writeFile "temp.result.final.json", pretty %acc2
+  # writeFile "temp.result.final.xml",  acc3
   echo "DONE !!!!"
 
 when isMainModule:

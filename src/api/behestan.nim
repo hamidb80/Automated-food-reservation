@@ -39,10 +39,10 @@ const
 template toStr(smth): untyped = $(smth)
 
 
-proc inspect(j: JsonNode): JsonNode =
-  echo "-------------"
-  echo pretty j
-  j
+# proc inspect(j: JsonNode): JsonNode =
+#   echo "-------------"
+#   echo pretty j
+#   j
 
 func extractBehestanMust*(j: JsonNode): BehestanMust =
   (
@@ -125,7 +125,7 @@ proc apiNav*(c: var CustomHttpClient, np: NavParams,
     c,
     fmt"{apiRoot}/nav/nav.svc/",
     HttpPost,
-    $inspect payload(np, bm),
+    $payload(np, bm),
     accept = cJson,
     content = cJson)
 
@@ -312,20 +312,23 @@ when isMainModule:
   var c = initCustomHttpClient()
   c.httpc.headers = defaultBehestanHeaders()
 
-  writeFile "./temp.png", c.apiGetCapcha.image
+  writeFile "./temp.captcha.gif", c.apiGetCapcha.image
 
-  let pass = getEnv "SHAHED_PASS"
+  let
+    stdid = getEnv "BEHESTAN_STD_ID" 
+    pass = getEnv "BEHESTAN_PASS"
   echo "pass: '", pass, "'"
   echo "capcha: "
   let
-    aa = apiLogin(c, "992164019", pass, readLine stdin)
+    aa = apiLogin(c, stdid, pass, readLine stdin)
     bb = apiNav(c, homeNavParams, extractBehestanMust aa)
-    # cc = apiProcessSysMenu0(c, extractBehestanMust bb)
-    dd = apiNav(c, stdInfoNavParams, extractBehestanMust bb)
+    cc = apiProcessSysMenu0(c, extractBehestanMust bb)
+    dd = apiNav(c, stdInfoNavParams, extractBehestanMust cc)
+    # dd = apiNav(c, stdInfoNavParams, extractBehestanMust cc)
     ee = apiProcessStdTotalInfoTrmStat(c, extractBehestanMust dd, "992164019")
 
   writeFile "./temp/aa.json", pretty aa
   writeFile "./temp/bb.json", pretty bb
-  # writeFile "./temp/cc.json", pretty cc
+  writeFile "./temp/cc.json", pretty cc
   writeFile "./temp/dd.json", pretty dd
   writeFile "./temp/ee.json", pretty ee
