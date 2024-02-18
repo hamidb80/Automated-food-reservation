@@ -1,7 +1,21 @@
+# Shahed Utils
 
-## terminology
+## Behestan
 
-### Behestan
+### Methodology
+1. export all the HTTP requests as `.har` file from `FireFox`
+2. clean it by `./scripts/har.nim`
+3. simulate by `./scripts/sim.nim`
+4. `./scripts/tck_tracer.nim` helped
+
+
+### Fun fact
+One of the http headers after you log in, is:
+```
+Authorization = Bearer [object Object]
+```
+
+### terminology
 - `tck`: ticket
 - `nmtck`: new module/mode ticket
 - `nf`: new/next/number/no. form/function
@@ -35,23 +49,28 @@
 - `suc`: success
 - `war`: warning
 - `grd`: grid
-- `struc`: struct
+- `struc`: struct (json)
 - `llogin`: log login
 - `F`: field/form
 - `C`: column
 - `f`: form/function
 - `cchg`: can change
-- `outpar`: output parameter
+- `outpar`: output parameters
 - `m`: message
 - `e`: error
 - `ttyp`: tansaction type 
-- `ut`: user topic
+- `ut`: user topic/tag
 - `n`: number (len)
 - `cmp`: compare
 - `ft`: form type
-- `nft`: next form type
+- `dat`: data
+- `tit`: title
+- `nft`: next form type/tag
 - `nopt`: new options
 - `DASHB`: dashboard
+- `IDNUMBERCOL`: id number column
+- `IDWIDTH1`: id width
+- `COLTYPE1`: column type
 - `HLP`: help
 - `I`: icon
 - `AsYt`: as your time
@@ -59,4 +78,4 @@
 - `r`:
 - `ri`:
 - `su`: 
-- `sguid`:
+- `sguid`: seems like randomly generated uuid
