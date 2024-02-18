@@ -28,7 +28,7 @@ Authorization = Bearer [object Object]
 - `frm`: form
 - `usr`: user
 - `nam`: name
-- `fam`: family
+- `fam`: family [last name]
 - `usrnam`: user name
 - `usrfam`: user family
 - `aut`: authentication
@@ -77,7 +77,7 @@ Authorization = Bearer [object Object]
 - `I`: icon
 - `AsYt`: as your time
 - `AsYs`: as your ...(day)
-- `r`:
+- `r`: [login data]
 - `ri`:
 - `su`: 
-- `sguid`: seems like randomly generated uuid
+- `sguid`: [seems like randomly generated uuid]
