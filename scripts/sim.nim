@@ -189,4 +189,4 @@ proc simulate(summary: JsonNode) =
   echo "DONE !!!!"
 
 when isMainModule:
-  simulate parseJson readFile "./temp.json"
+  simulate parseJson readFile "./scripts/working-test1.json"

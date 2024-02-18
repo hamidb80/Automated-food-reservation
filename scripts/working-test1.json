@@ -1,0 +1,2280 @@
+[
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/Bas0284_PubNotice/Bas0284_PubNotice.svc/%7B$6act$6$1$608$6,$6r$6$1%7B%7D%7D",
+      "method": "GET",
+      "payload": null,
+      "cookies": []
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "1",
+          "ft": "1",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "1",
+          "tck": null,
+          "ut": "1",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "0",
+          "sid": "a78056e068bb4891a2a37a6a2135c616"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": null
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": null,
+              "xml": "<grd id=\"AYee\"><dat><N F1=\"10 بهمن\" F2=\"قابل توجه دانشجويان تحصيلات تكميلي ورودي نيمسال اوا  1402-1403 \" F3=\"توجه مهم:&#xA;دانشجويان مقاطع تحصيلات تكميلي ورودي مهر   1402 &#xA;دانشجويان محترمي كه مدرك تحصيلي و تاييديه تحصيلي مقطع قبل خود را در زمان ثبت نام ارايه ننموده اند در اسرع وقت به مديريت تحصيلات تكميلي ارايه فرمايند تا از بستن سر ترم نيمسال بعدي جلوگيري شود.&#xA;\" F4=\"1\" /><N F1=\"1 شهريور 1401\" F2=\"راهنماي سيستم بهستان\" F3=\"&lt;nobr dir=&quot;ltr&quot;&gt;&#xA;  &lt;p&gt;&#xA;    &lt;a href=&quot;/Manuals/Emkanat_System.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به امكانات سيستم&lt;/a&gt;&#xA;    &lt;br&gt;&#xA;      &lt;a href=&quot;/Manuals/Erae-Dars.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به ارائه درس&lt;/a&gt;&#xA;      &lt;br&gt;&#xA;        &lt;a href=&quot;/Manuals/Jame-Daneshju.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به اطلاعات جامع دانشجو&lt;/a&gt;&#xA;        &lt;br&gt;&#xA;          &lt;a href=&quot;/Manuals/Jame-Ostad.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به اطلاعات جامع استاد&lt;/a&gt;&#xA;          &lt;br&gt;&#xA;            &lt;a href=&quot;/Manuals/Paziresh-Online.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به پذيرش غيرحضوري&lt;/a&gt;&#xA;            &lt;br&gt;&#xA;              &lt;a href=&quot;/Manuals/Sabtenam-Tarmim.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به ثبت نام و ترميم&lt;/a&gt;&#xA;              &lt;br&gt;&#xA;                &lt;a href=&quot;/Manuals/Vorud-Be-System.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به ورود به سيستم&lt;/a&gt;&#xA;                &lt;br&gt;&#xA;  &lt;/p&gt;&#xA;&lt;/nobr&gt;\" F4=\"1\" /></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/loginapi/loginapi.svc/",
+      "method": "POST",
+      "payload": {
+        "r": {},
+        "aut": {
+          "ft": "0",
+          "f": "1",
+          "u": "0",
+          "seq": "1",
+          "ut": "1",
+          "tck": "1",
+          "lt": "1",
+          "su": "1"
+        },
+        "act": "00"
+      },
+      "cookies": []
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "0",
+          "ft": "0",
+          "f": "1",
+          "seq": "0",
+          "subfrm": "0",
+          "su": null,
+          "tck": null,
+          "ut": null,
+          "ttyp": "",
+          "ri": "",
+          "actsign": "0",
+          "sid": "192511409a0340289ae2df8d84c6cff6"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": null
+          }
+        },
+        "outpar": {
+          "AuthProvider": "110",
+          "JsonData": "[{\"c\":110,\"lo\":\"https:\\/\\/usw.msrt.ir\\/oauth2\\/logout\",\"cap\":\"ورود از طريق احراز هويت مركزي\",\"url\":\"https:\\/\\/usw.msrt.ir\\/oauth2\\/authorize?client_id=657e9a2d06bc4fa79b037b3e8644c0dc&redirect_uri=https:\\/\\/eduportal.shahed.ac.ir\\/index.html&response_type=code&scope=openid profile&state=416949169898950\",\"verifyApi\":\"\\/frmc\\/LoginApi_SSOGOV\\/\",\"state\":\"416949169898950\"}]",
+          "_ret": "0",
+          "OutJSon": "{\"HeaderText\":\"دانشگاه شاهد\",\"SysName\":\"سامانه جامع دانشگاهي\",\"TempHeaderText\":\"دانشگاه شاهد\",\"TempSysName\":\"سامانه جامع دانشگاهي - آزمايشي\",\"golport\":\"443\",\"tempgolport\":\"4433\",\"HasBanner\":\"0\"}"
+        },
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx",
+      "method": "GET",
+      "payload": null,
+      "cookies": []
+    },
+    "resp": {
+      "status": 200,
+      "mime": "image/gif",
+      "data": "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",
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/Bas0284_PubNotice/Bas0284_PubNotice.svc/%7B$6act$6$1$608$6,$6r$6$1%7B%7D%7D",
+      "method": "GET",
+      "payload": null,
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "1",
+          "ft": "1",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "1",
+          "tck": null,
+          "ut": "1",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "0",
+          "sid": "a78056e068bb4891a2a37a6a2135c616"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": null
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": null,
+              "xml": "<grd id=\"AYee\"><dat><N F1=\"10 بهمن\" F2=\"قابل توجه دانشجويان تحصيلات تكميلي ورودي نيمسال اوا  1402-1403 \" F3=\"توجه مهم:&#xA;دانشجويان مقاطع تحصيلات تكميلي ورودي مهر   1402 &#xA;دانشجويان محترمي كه مدرك تحصيلي و تاييديه تحصيلي مقطع قبل خود را در زمان ثبت نام ارايه ننموده اند در اسرع وقت به مديريت تحصيلات تكميلي ارايه فرمايند تا از بستن سر ترم نيمسال بعدي جلوگيري شود.&#xA;\" F4=\"1\" /><N F1=\"1 شهريور 1401\" F2=\"راهنماي سيستم بهستان\" F3=\"&lt;nobr dir=&quot;ltr&quot;&gt;&#xA;  &lt;p&gt;&#xA;    &lt;a href=&quot;/Manuals/Emkanat_System.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به امكانات سيستم&lt;/a&gt;&#xA;    &lt;br&gt;&#xA;      &lt;a href=&quot;/Manuals/Erae-Dars.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به ارائه درس&lt;/a&gt;&#xA;      &lt;br&gt;&#xA;        &lt;a href=&quot;/Manuals/Jame-Daneshju.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به اطلاعات جامع دانشجو&lt;/a&gt;&#xA;        &lt;br&gt;&#xA;          &lt;a href=&quot;/Manuals/Jame-Ostad.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به اطلاعات جامع استاد&lt;/a&gt;&#xA;          &lt;br&gt;&#xA;            &lt;a href=&quot;/Manuals/Paziresh-Online.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به پذيرش غيرحضوري&lt;/a&gt;&#xA;            &lt;br&gt;&#xA;              &lt;a href=&quot;/Manuals/Sabtenam-Tarmim.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به ثبت نام و ترميم&lt;/a&gt;&#xA;              &lt;br&gt;&#xA;                &lt;a href=&quot;/Manuals/Vorud-Be-System.pdf&quot; target=&quot;_blank&quot;&gt;راهنماي مربوط به ورود به سيستم&lt;/a&gt;&#xA;                &lt;br&gt;&#xA;  &lt;/p&gt;&#xA;&lt;/nobr&gt;\" F4=\"1\" /></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/loginapi/loginapi.svc/",
+      "method": "POST",
+      "payload": {
+        "r": {},
+        "aut": {
+          "ft": "0",
+          "f": "1",
+          "u": "0",
+          "seq": "1",
+          "ut": "1",
+          "tck": "1",
+          "lt": "1",
+          "su": "1"
+        },
+        "act": "00"
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "0",
+          "ft": "0",
+          "f": "1",
+          "seq": "0",
+          "subfrm": "0",
+          "su": null,
+          "tck": null,
+          "ut": null,
+          "ttyp": "",
+          "ri": "",
+          "actsign": "0",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": null
+          }
+        },
+        "outpar": {
+          "AuthProvider": "110",
+          "JsonData": "[{\"c\":110,\"lo\":\"https:\\/\\/usw.msrt.ir\\/oauth2\\/logout\",\"cap\":\"ورود از طريق احراز هويت مركزي\",\"url\":\"https:\\/\\/usw.msrt.ir\\/oauth2\\/authorize?client_id=657e9a2d06bc4fa79b037b3e8644c0dc&redirect_uri=https:\\/\\/eduportal.shahed.ac.ir\\/index.html&response_type=code&scope=openid profile&state=39916682679407\",\"verifyApi\":\"\\/frmc\\/LoginApi_SSOGOV\\/\",\"state\":\"39916682679407\"}]",
+          "_ret": "0",
+          "OutJSon": "{\"HeaderText\":\"دانشگاه شاهد\",\"SysName\":\"سامانه جامع دانشگاهي\",\"TempHeaderText\":\"دانشگاه شاهد\",\"TempSysName\":\"سامانه جامع دانشگاهي - آزمايشي\",\"golport\":\"443\",\"tempgolport\":\"4433\",\"HasBanner\":\"0\"}"
+        },
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx",
+      "method": "GET",
+      "payload": null,
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "image/gif",
+      "data": "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",
+      "cookies": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/loginapi/loginapi.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "09",
+        "r": {
+          "l": "$STD_NUMBER",
+          "p": "$PASSWORD",
+          "c": "$CAPTCHA",
+          "code": "",
+          "ticket": "",
+          "d": "0"
+        },
+        "aut": {
+          "ft": "0",
+          "f": "1",
+          "u": "0",
+          "seq": "1",
+          "tck": "1",
+          "lt": "1",
+          "su": "1"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "0",
+          "su": "0",
+          "tck": "$TCK_1",
+          "ut": "0",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {},
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/nav/nav.svc/",
+      "method": "POST",
+      "payload": {
+        "r": {
+          "act": ""
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "0",
+          "tck": "$TCK_1",
+          "ut": "0",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION",
+          "nft": "0",
+          "nf": "11130",
+          "sguid": "bb17e32a-3f2c-4f6d-8612-3bea055257ba",
+          "b": "0",
+          "l": "0"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "2",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_2",
+          "ut": "0",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "nmtck": "$TCK_4",
+            "nam": "منوي كاربر",
+            "branch": "');",
+            "cchg": "false",
+            "nft": "0",
+            "nf": "11130",
+            "nurlp": "/frm/F0213_PROCESS_SYSMENU0",
+            "nurlf": "F0213_PROCESS_SYSMENU0",
+            "std": "$STD_NUMBER",
+            "isb": "0",
+            "idl": "1080000",
+            "acr": "1",
+            "fpc": "0",
+            "inf": "0",
+            "cmp": "11130",
+            "usrfrm": "1",
+            "usrlvl": "0",
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {},
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/F0213_PROCESS_SYSMENU0/F0213_PROCESS_SYSMENU0.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "10",
+        "r": {},
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "2",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_2",
+          "ut": "0",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION",
+          "incoaut": "1"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "2",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_3",
+          "ut": "0",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "nmtck": "$TCK_3",
+            "nam": "منوي كاربر",
+            "branch": "');",
+            "cchg": "false",
+            "usrnam": "حميدرضا",
+            "usrfam": "بلوري كاشاني",
+            "llogin": "آخرين ورود : 1402.11.26 <nobr> ساعت22:03</nobr>$$$0",
+            "nft": "0",
+            "nf": "11130",
+            "std": "$STD_NUMBER",
+            "idl": "1080000",
+            "acr": "1",
+            "fpc": "0",
+            "inf": "0",
+            "cmp": "11130",
+            "usrfrm": "1",
+            "usrlvl": "0",
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "BHE": "1",
+          "BHC": "0",
+          "BHB": "",
+          "Ahn9": "1",
+          "AsW8": "حميدرضا",
+          "AsW9": "بلوري كاشاني",
+          "AsYs": "1402.11.26",
+          "AsYt": "22:03",
+          "AsYu": "0",
+          "Ave0": "[{\"UId\":$USER_ID,\"NOFRowHLP\":200,\"NOFRowDASHB\":100,\"OrdDASHB\":1}]",
+          "_ret": "0",
+          "AP3O": "<ROOT><row H=\"10209\" L=\"اطلاعات تحصيلي\" T=\"0\" F=\"11147\" C=\"0\" O=\"7\" I=\"book-open\" /><row H=\"19426\" L=\"درخواست\" C=\"2\" O=\"17\" I=\"save\" S=\"1\" /><row H=\"10144\" P=\"10145\" L=\"ثبت درخواست مهمان تكدرس به دانشگاه ديگر\" T=\"0\" F=\"25370\" C=\"0\" O=\"1\" WM=\"0\" WS=\"514\" /><row H=\"10160\" P=\"10169\" L=\"درخواست استرداد شهريه\" T=\"0\" F=\"21330\" C=\"0\" O=\"48\" WM=\"0\" WS=\"533\" /><row H=\"11461\" P=\"10169\" L=\"درخواست بررسي امور آموزشي\" T=\"0\" F=\"16830\" C=\"0\" O=\"50\" WM=\"0\" WS=\"5\" /><row H=\"10188\" P=\"10174\" L=\"اخذ درس مطالعه آزاد\" T=\"0\" F=\"14860\" C=\"0\" O=\"22\" WM=\"0\" WS=\"506\" /><row H=\"10145\" P=\"10199\" L=\"مهمان، انتقال و تغيير رشته\" C=\"2\" O=\"31\" /><row H=\"10174\" P=\"10199\" L=\"درس، ثبت نام و امتحان\" C=\"2\" O=\"36\" /><row H=\"10169\" P=\"10199\" L=\"ساير موارد\" C=\"2\" O=\"52\" /><row H=\"10199\" P=\"19426\" L=\"درخواست\" C=\"2\" O=\"18\" /></ROOT>",
+          "AP3P": "<ROOT><row C1=\"0\" C3=\"13860\" C4=\"ارزشيابي\" /><row C1=\"0\" C3=\"18090\" C4=\"ارسال و تاييد مدارك پرونده دانشجو\" /><row C1=\"0\" C3=\"10920\" C4=\"اصلاح مشخصات انگليسي توسط دانشجو\" /><row C1=\"0\" C3=\"18620\" C4=\"اطلاعات ايثارگري - پذيرش غيرحضوري\" /><row C1=\"0\" C3=\"11121\" C4=\"اطلاعات پرسنلي دانشجو\" /><row C1=\"0\" C3=\"14210\" C4=\"اطلاعات شخصي و وابستگان دانشجو\" /><row C1=\"1\" C3=\"428\" C4=\"برنامه امتحان پايان ترم دانشجو\" /><row C1=\"1\" C3=\"1271\" C4=\"برنامه پيشنهادي به دانشجو\" /><row C1=\"1\" C3=\"78\" C4=\"برنامه هفتگي دانشجو\" /><row C1=\"1\" C3=\"88\" C4=\"برنامه هفتگي دانشجو در طول ثبت نام\" /><row C1=\"0\" C3=\"15160\" C4=\"پاسخگويي افراد به سوالهاي نظرسنجي\" /><row C1=\"0\" C3=\"15170\" C4=\"پاسخگويي افراد به سوالهاي نظرسنجي\" /><row C1=\"0\" C3=\"12880\" C4=\"پاسخگويي به سوالهاي ارزشيابي\" /><row C1=\"0\" C3=\"14080\" C4=\"پذيرش غير حضوري دانشجويان جديدالورود\" /><row C1=\"0\" C3=\"27570\" C4=\"پرداخت بدهي دانشجو\" /><row C1=\"0\" C3=\"15450\" C4=\"پرداختهاي الكترونيكي دانشجو\" /><row C1=\"1\" C3=\"107\" C4=\"پيش نياز، هم زمان، متضاد و معادل دروس\" /><row C1=\"0\" C3=\"12370\" C4=\"ترميم\" /><row C1=\"1\" C3=\"522\" C4=\"تسويه حسابهاي مورد نياز هر دانشجو\" /><row C1=\"1\" C3=\"6272\" C4=\"تطبيق دروس براي فارغ التحصيلي دانشجو\" /><row C1=\"1\" C3=\"272\" C4=\"تطبيق دروس دانشجو براي فارغ التحصيلي\" /><row C1=\"1\" C3=\"284\" C4=\"تطبيق دروس دانشجو براي فارغ التحصيلي(بدون نمره)\" /><row C1=\"0\" C3=\"12500\" C4=\"تقاضاي انتقال بصورت مهمان\" /><row C1=\"0\" C3=\"17980\" C4=\"تكميل و تاييد اطلاعات شخصي\" /><row C1=\"0\" C3=\"18690\" C4=\"ثبت تحصيلات قبلي دانشجو\" /><row C1=\"0\" C3=\"25380\" C4=\"ثبت دروس متقاضي مهمان\" /><row C1=\"0\" C3=\"12100\" C4=\"ثبت نام اصلي\" /><row C1=\"1\" C3=\"2074\" C4=\"ثبت نام دانشجو با توجه به تغييرات جديد دروس\" /><row C1=\"1\" C3=\"1574\" C4=\"خلاصه وضعيت تحصيلي و سوابق كميسيون دانشجو\" /><row C1=\"0\" C3=\"18750\" C4=\"درخواست تصويب موضوع و اساتيد فعاليتهاي آموزشي-پژوهشي\" /><row C1=\"0\" C3=\"13840\" C4=\"درخواست كارآموزي\" /><row C1=\"0\" C3=\"12460\" C4=\"درخواست گواهي اشتغال به تحصيل و شهريه\" /><row C1=\"1\" C3=\"108\" C4=\"درس در پيش نياز، هم نياز و متضاد ساير دروس\" /><row C1=\"1\" C3=\"278\" C4=\"رتبه، معدل و واحد گذرانده يك دانشجو\" /><row C1=\"1\" C3=\"3278\" C4=\"رتبه، معدل و واحد گذرانده يك دانشجو(خاص دانشجو)\" /><row C1=\"1\" C3=\"1950\" C4=\"غيبت هاي دانشجو\" /><row C1=\"0\" C3=\"20230\" C4=\"فرم الكترونيكي\" /><row C1=\"1\" C3=\"445\" C4=\"فرم مخصوص اخذ تعهد از پذيرفته شدگان رشته هاي مختلف تحصيلي\" /><row C1=\"0\" C3=\"21122\" C4=\"كار پوشه\" /><row C1=\"1\" C3=\"79\" C4=\"كارنامه ترمي دانشجو\" /><row C1=\"1\" C3=\"1000\" C4=\"كارنامه كلي - غيررسمي\" /><row C1=\"1\" C3=\"211\" C4=\"گزارش دروس ارائه شده (ويژه دانشجو)\" /><row C1=\"1\" C3=\"5260\" C4=\"گواهي پذيرش غيرحضوري دانشجويان جديدالورود\" /><row C1=\"1\" C3=\"173\" C4=\"ليست آرا  شورا\" /><row C1=\"1\" C3=\"156\" C4=\"ليست دانشجويان بدهكار\" /><row C1=\"1\" C3=\"249\" C4=\"ليست دانشجويان داراي منع ثبت نام\" /><row C1=\"1\" C3=\"212\" C4=\"ليست دروس ارائه شده (ويژه دانشجو)\" /><row C1=\"1\" C3=\"51\" C4=\"ليست دروس ارائه شده در ثبت نام مقدماتي\" /><row C1=\"1\" C3=\"84\" C4=\"ليست نامه هاي دانشجو\" /><row C1=\"1\" C3=\"38\" C4=\"ليست نامه هاي مهم دانشجويان فارغ التحصيل\" /><row C1=\"1\" C3=\"430\" C4=\"ليست نظامهاي مجاز يا غير مجاز به اخذ دروس\" /><row C1=\"1\" C3=\"568\" C4=\"معدل و واحد گذرانده لازم جهت اخذ دروس\" /><row C1=\"1\" C3=\"569\" C4=\"معدل و واحد گذرانده لازم جهت اخذ دروس هرمقطع\" /><row C1=\"0\" C3=\"14180\" C4=\"معرفين غيرخويشاوند دانشجو\" /><row C1=\"0\" C3=\"11130\" C4=\"منوي كاربر\" /><row C1=\"1\" C3=\"423\" C4=\"نتيجه ثبت نام دانشجو\" /><row C1=\"1\" C3=\"76\" C4=\"نتيجه ثبت نام مقدماتي دانشجو\" /><row C1=\"1\" C3=\"77\" C4=\"نتيجه ثبت نام(ترميم)دانشجو درطول ثبت نام\" /><row C1=\"1\" C3=\"2465\" C4=\"ورود ناموفق به سامانه\" /><row C1=\"1\" C3=\"2220\" C4=\"وضعيت گردش كار درخواست شركت در جشن دانش آموختگي\" /></ROOT>",
+          "Afll": "<ROOT><row H=\"10349\" L=\"تغيير گذرواژه\" T=\"0\" F=\"11160\" C=\"0\" O=\"1\" /><row H=\"10351\" L=\"تكميل اطلاعات شخصي\" T=\"0\" F=\"10190\" C=\"0\" O=\"2\" I=\"info\" /></ROOT>",
+          "AjEW": "[{\"mt\":\"0\",\"ri\":15,\"t\":\"دانشجويان جاري كارشناسي\",\"d\":1}]",
+          "AjEX": "2",
+          "AjEY": "0"
+        },
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/nav/nav.svc/",
+      "method": "POST",
+      "payload": {
+        "r": {
+          "act": ""
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "0",
+          "tck": "$TCK_4",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION",
+          "nft": "0",
+          "nf": "11130",
+          "sguid": "20c71429-47c6-4fc4-8e1d-5e6b222bbb54",
+          "b": "0",
+          "l": "0"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "3",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_5",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "nmtck": "$TCK_8",
+            "nam": "منوي كاربر",
+            "branch": "');",
+            "cchg": "false",
+            "nft": "0",
+            "nf": "11130",
+            "nurlp": "/frm/F0213_PROCESS_SYSMENU0",
+            "nurlf": "F0213_PROCESS_SYSMENU0",
+            "std": "$STD_NUMBER",
+            "isb": "0",
+            "idl": "1080000",
+            "acr": "1",
+            "fpc": "0",
+            "inf": "0",
+            "cmp": "11130",
+            "usrfrm": "1",
+            "usrlvl": "0",
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {},
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/BAS0274_UserFavorate_Show_Beh/BAS0274_UserFavorate_Show_Beh.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "R1",
+        "r": {},
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "3",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_5",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "3",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_6",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "_ret": "0",
+          "AoNU": ""
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"FType\",\"Name\":\"FType\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":2,\"Caption\":\"FId\",\"Name\":\"FId\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":3,\"Caption\":\"نام امكان\",\"Name\":\"MENUNAME\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0}]}",
+              "xml": "<grd id=\"AjEe\" ><dat><row F1=\"0\" F2=\"12100\" F3=\"ثبت نام اصلي\"/><row F1=\"0\" F2=\"12370\" F3=\"ترميم\"/></dat></grd>"
+            },
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"FType\",\"Name\":\"FType\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":2,\"Caption\":\"FId\",\"Name\":\"FId\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":3,\"Caption\":\"نام امكان\",\"Name\":\"MENUNAME\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0}]}",
+              "xml": "<grd id=\"AjEh\" ><dat></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/Edu0203_Desktop_BEH/Edu0203_Desktop_BEH.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "R1",
+        "r": {
+          "AVsc": 1,
+          "AVsd": 2
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "3",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_6",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11130",
+          "seq": "3",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_7",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Name\":\"A1\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":2,\"Caption\":\"Ref_Caption\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":3,\"Caption\":\"Ref_COMMENT\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title2\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":4,\"Caption\":\"Ref_LINKLABEL\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Link\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0,\"Acts\":[{\"ActName\":\"DoAct_C1\",\"ThisCmpActNo\":\"C1\",\"IconType\":3,\"Class\":\"text-info\",\"UseOpenerAut\":false}]},{\"COLSEQ\":5,\"Caption\":\"FID\",\"Name\":\"Fid\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":6,\"Caption\":\"CMPID\",\"Name\":\"CMPID\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":7,\"Caption\":\"FTYPE\",\"Name\":\"Ftype\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":8,\"Caption\":\"Newspaper_Cnt\",\"Name\":\"A8\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":9,\"Caption\":\"Future_Cnt\",\"Name\":\"A9\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":10,\"Caption\":\"WM\",\"Name\":\"WM\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":11,\"Caption\":\"WS\",\"Name\":\"WS\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"AVVZ\" ><dat><row F1=\"EVLA\" F2=\"پاسخگويي به نظرسنجي\" F3=\"لطفا نظرسنجي هاي موجود در فرم زير را تكميل نماييد.\" F4=\"پاسخگويي به نظرسنجي\" F5=\"15160\" F6=\"15160\" F7=\"0\" F8=\"1\"/></dat></grd>"
+            },
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"Title\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":2,\"Caption\":\"Title2\",\"Name\":\"Title2\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":3,\"Caption\":\"Link\",\"Width\":73,\"ShowTag\":\"0\",\"Name\":\"Link\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0}]}",
+              "xml": "<grd id=\"AVVf\" ><dat><row F1=\"كلاس : سيستم هاي نهفته و بيدرنگ(تئوري)\" F2=\"سه شنبه &lt;div class=&quot;dirltr nobr&quot;&gt;1402/11/24&lt;/div&gt; - 10:00-12:00&lt;BR&gt;\" F3=\"\"/><row F1=\"كلاس : تفسيرموضوعي نهج البلاغه(تئوري)\" F2=\"چهارشنبه &lt;div class=&quot;dirltr nobr&quot;&gt;1402/11/25&lt;/div&gt; - 15:00-17:00&lt;BR&gt;\" F3=\"\"/></dat></grd>"
+            },
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"Ref_TYPE\",\"Name\":\"Ref_TYPE\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":2,\"Caption\":\"Ref_Caption\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":3,\"Caption\":\"شرح مبلغ\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title2\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":4,\"Caption\":\"Ref_Amount\",\"ShowTag\":\"0\",\"Name\":\"Ref_Amount\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":5,\"Caption\":\"Ref_Comment\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title3\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":6,\"Caption\":\"Ref_LinkLabel\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Link\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0,\"Acts\":[{\"ActName\":\"DoAct_C1\",\"ThisCmpActNo\":\"C1\",\"IconType\":3,\"Class\":\"text-info\",\"UseOpenerAut\":false}]},{\"COLSEQ\":7,\"Caption\":\"FID\",\"Name\":\"Fid\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":0},{\"COLSEQ\":8,\"Caption\":\"CMPID\",\"ShowTag\":\"0\",\"Name\":\"CMPID\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"AVnS\" ><dat><row F1=\"TUTSTAT\" F2=\"وضعيت نهايي شهريه\" F3=\"_\" F4=\"0\" F6=\"پرداختهاي الكترونيكي دانشجو\" F7=\"27570\" F8=\"110435\"/></dat></grd>"
+            },
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Name\":\"A1\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":2,\"Caption\":\"Ref_Caption\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":3,\"Caption\":\"Ref_COMMENT\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Title2\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":4,\"Caption\":\"Ref_LINKLABEL\",\"ShowTag\":\"0\",\"Multiline\":1,\"Name\":\"Link\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0,\"Acts\":[{\"ActName\":\"DoAct_C1\",\"ThisCmpActNo\":\"C1\",\"IconType\":3,\"Class\":\"text-info\",\"UseOpenerAut\":false}]},{\"COLSEQ\":5,\"Caption\":\"FID\",\"Name\":\"Fid\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":6,\"Caption\":\"CMPID\",\"Name\":\"CMPID\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":7,\"Caption\":\"FTYPE\",\"Name\":\"Ftype\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":8,\"Caption\":\"Newspaper_Cnt\",\"Name\":\"A8\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":9,\"Caption\":\"Future_Cnt\",\"Name\":\"A9\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":10,\"Caption\":\"WM\",\"Name\":\"WM\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":11,\"Caption\":\"WS\",\"Name\":\"WS\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"AVse\" ><dat></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/nav/nav.svc/",
+      "method": "POST",
+      "payload": {
+        "r": {
+          "act": ""
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "0",
+          "tck": "$TCK_8",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION",
+          "nft": "0",
+          "nf": "21122",
+          "sguid": "59ec50d3-738d-41b1-9196-80639a36cec9",
+          "b": "0",
+          "l": "0"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "21122",
+          "seq": "4",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_10",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "nmtck": "$TCK_13",
+            "nam": "كار پوشه",
+            "branch": "');",
+            "cchg": "false",
+            "nft": "0",
+            "nf": "21122",
+            "nurlp": "/frm/F6524_PROCESS_DASHBOARD_BEH",
+            "nurlf": "F6524_PROCESS_DASHBOARD_BEH",
+            "std": "$STD_NUMBER",
+            "isb": "0",
+            "idl": "1080000",
+            "acr": "1",
+            "fpc": "0",
+            "inf": "0",
+            "cmp": "110391",
+            "usrfrm": "1",
+            "usrlvl": "227",
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {},
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/F6524_PROCESS_DASHBOARD_BEH/F6524_PROCESS_DASHBOARD_BEH.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "00",
+        "r": {},
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "21122",
+          "seq": "4",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_10",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "21122",
+          "seq": "4",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_11",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "usrfrm": "1",
+            "usrlvl": "227",
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "AvJJ": "100",
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": [
+            {
+              "d": [
+                {
+                  "val": "0",
+                  "dsc": "شخصي",
+                  "def": ""
+                }
+              ],
+              "id": "AjLR"
+            },
+            {
+              "d": [
+                {
+                  "val": "0",
+                  "dsc": "امروز"
+                },
+                {
+                  "val": "1",
+                  "dsc": "روز گذشته"
+                },
+                {
+                  "val": "3",
+                  "dsc": "سه روز گذشته"
+                },
+                {
+                  "val": "7",
+                  "dsc": "هفته گذشته"
+                },
+                {
+                  "val": "30",
+                  "dsc": "ماه گذشته"
+                },
+                {
+                  "val": "36",
+                  "dsc": "شش ماه گذشته"
+                },
+                {
+                  "val": "42",
+                  "dsc": "يک سال گذشته"
+                }
+              ],
+              "id": "AxBL"
+            }
+          ]
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/F6524_PROCESS_DASHBOARD_BEH/F6524_PROCESS_DASHBOARD_BEH.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "20",
+        "r": {
+          "AVsa": "$USER_ID",
+          "AvD9": "",
+          "AVsm": "0",
+          "AVsl": "3"
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "21122",
+          "seq": "4",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_11",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "21122",
+          "seq": "4",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_12",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [
+            {
+              "m": [
+                {
+                  "b": "",
+                  "e": "0",
+                  "m": "جستجو با موفقيت انجام شد",
+                  "s": ""
+                }
+              ],
+              "t": ""
+            }
+          ],
+          "errors": [],
+          "suc": [
+            "جستجو با موفقيت انجام شد"
+          ],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "AVsa": "$USER_ID",
+          "Adrm": "",
+          "Adw0": "",
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "",
+              "xml": "<grd id=\"AVsY\" ><tit></tit><dat></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/nav/nav.svc/",
+      "method": "POST",
+      "payload": {
+        "r": {
+          "act": ""
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "0",
+          "tck": "$TCK_13",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION",
+          "nft": "0",
+          "nf": "11147",
+          "sguid": "64e5713a-6d39-4d4d-a208-b010d5e9a868",
+          "b": "0",
+          "l": "0"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_14",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "nmtck": "617E39E3-B957-4E",
+            "nam": "اطلاعات جامع دانشجو",
+            "branch": "');",
+            "cchg": "false",
+            "nft": "0",
+            "nf": "11147",
+            "nurlp": "/frm/F1825_PROCESS_STDTOTALINFO_BEH",
+            "nurlf": "F1825_PROCESS_STDTOTALINFO_BEH",
+            "std": "$STD_NUMBER",
+            "isb": "0",
+            "idl": "1080000",
+            "acr": "1",
+            "fpc": "0",
+            "inf": "0",
+            "cmp": "110379",
+            "usrfrm": "1",
+            "usrlvl": "131070",
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {},
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/SBS1201_CODES_LOOKUP_DSC/SBS1201_CODES_LOOKUP_DSC.svc/%7B$6r$6$1%7B$6MaxHlp$6$1$610000$6,$6RWM$6$1$6LVL$6,$6_LkId$6$1$610$6,$6ySF$6$1$610$6,$6AYPX$6$1$610$6,$6AYPY$6$1$61$6%7D,$6act$6$1$620$6%7D",
+      "method": "GET",
+      "payload": null,
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "1",
+          "ft": "1",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "1",
+          "tck": null,
+          "ut": "1",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "0",
+          "sid": "f5fehwvany0nyuewv3o5vucj"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": null
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "",
+              "xml": "<grd ><tit><row IDTITLE=\"راهنماي كدها - مقاطع تحصيلي\" IDNUMBERCOL=\"11\" IDCOLUMN1=\"مقدار\" IDWIDTH1=\"0\" COLTYPE1=\"NUMBER\" IDCOLUMN2=\"شرح\" IDWIDTH2=\"300\" IDCOLUMN3=\"شرح دوم\" IDWIDTH3=\"0\" IDCOLUMN4=\"شرح سوم\" IDWIDTH4=\"0\" IDCOLUMN5=\"شرح چهارم\" IDWIDTH5=\"0\" IDCOLUMN6=\"شرح پنجم\" IDWIDTH6=\"0\" IDCOLUMN7=\"شرح ششم\" IDWIDTH7=\"0\" IDCOLUMN8=\"شرح هفتم\" IDWIDTH8=\"0\" IDCOLUMN9=\"شرح هشتم\" IDWIDTH9=\"0\" IDCOLUMN10=\"شرح نهم\" IDWIDTH10=\"0\" IDCOLUMN11=\"شرح دهم\" IDWIDTH11=\"0\" TipCol=\"C1\" KCOL=\"C1,C2\"/></tit><dat><row C1=\"1\" C2=\"كارداني\" C5=\"1\" C7=\"1\"/><row C1=\"5\" C2=\"كارشناسي ناپيوسته\" C5=\"5\" C7=\"1\"/><row C1=\"10\" C2=\"كارشناسي پيوسته\" C5=\"10\" C7=\"1\"/><row C1=\"15\" C2=\"كارشناسي ارشد ناپيوسته\" C5=\"15\" C7=\"1\"/><row C1=\"20\" C2=\"كارشناسي ارشد پيوسته\" C5=\"20\" C7=\"1\"/><row C1=\"25\" C2=\"دكتري عمومي\" C5=\"25\" C7=\"1\"/><row C1=\"30\" C2=\"دكتري تخصصي\" C5=\"30\" C7=\"1\"/><row C1=\"35\" C2=\"دكتري تخصصي پيوسته\" C5=\"35\" C7=\"1\"/><row C1=\"40\" C2=\"دستياري تخصصي\" C5=\"40\" C7=\"1\"/><row C1=\"45\" C2=\"دكتري تخصصي پژوهشي \" C5=\"45\" C7=\"1\"/><row C1=\"50\" C2=\"دانشوري\" C5=\"50\" C7=\"1\"/><row C1=\"60\" C2=\"دوره علوم پايه\" C5=\"60\" C7=\"1\"/><row C1=\"63\" C2=\"دوره فيزيوپاتولوژي\" C5=\"63\" C7=\"1\"/><row C1=\"66\" C2=\"دوره كارآموزي باليني\" C5=\"66\" C7=\"1\"/><row C1=\"69\" C2=\"دوره كارورزي\" C5=\"69\" C7=\"1\"/><row C1=\"72\" C2=\"دوره كارشناسي دكتري تخصصي\" C5=\"72\" C7=\"1\"/><row C1=\"75\" C2=\"دوره كارشناسي ارشد دكتري تخصصي\" C5=\"75\" C7=\"1\"/><row C1=\"78\" C2=\"دوره ماقبل عرصه\" C5=\"78\" C7=\"1\"/><row C1=\"82\" C2=\"دوره عرصه\" C5=\"82\" C7=\"1\"/><row C1=\"85\" C2=\"دوره پيش درمانگاهي\" C5=\"85\" C7=\"1\"/><row C1=\"88\" C2=\"دوره  درمانگاهي\" C5=\"88\" C7=\"1\"/><row C1=\"91\" C2=\"دوره اختصاصي باليني\" C5=\"91\" C7=\"1\"/><row C1=\"94\" C2=\"دوره دكتري تخصصي\" C5=\"94\" C7=\"1\"/><row C1=\"99\" C2=\"نامشخص\" C5=\"99\" C7=\"1\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/SBS1201_CODES_LOOKUP_DSC/SBS1201_CODES_LOOKUP_DSC.svc/%7B$6r$6$1%7B$6MaxHlp$6$1$610000$6,$6RWM$6$1$6SYS$6,$6_LkId$6$1$6$6,$6AYPY$6$1$61$6%7D,$6act$6$1$620$6%7D",
+      "method": "GET",
+      "payload": null,
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "1",
+          "ft": "1",
+          "f": "1",
+          "seq": "1",
+          "subfrm": "",
+          "su": "1",
+          "tck": null,
+          "ut": "1",
+          "ttyp": "",
+          "ri": "",
+          "actsign": "0",
+          "sid": "f5fehwvany0nyuewv3o5vucj"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": null
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "",
+              "xml": "<grd ><tit><row IDTITLE=\"راهنماي كدها - دوره تحصيلي\" IDNUMBERCOL=\"11\" IDCOLUMN1=\"مقدار\" IDWIDTH1=\"0\" COLTYPE1=\"NUMBER\" IDCOLUMN2=\"شرح\" IDWIDTH2=\"300\" IDCOLUMN3=\"شرح دوم\" IDWIDTH3=\"0\" IDCOLUMN4=\"شرح سوم\" IDWIDTH4=\"0\" IDCOLUMN5=\"شرح چهارم\" IDWIDTH5=\"0\" IDCOLUMN6=\"شرح پنجم\" IDWIDTH6=\"0\" IDCOLUMN7=\"شرح ششم\" IDWIDTH7=\"0\" IDCOLUMN8=\"شرح هفتم\" IDWIDTH8=\"0\" IDCOLUMN9=\"شرح هشتم\" IDWIDTH9=\"0\" IDCOLUMN10=\"شرح نهم\" IDWIDTH10=\"0\" IDCOLUMN11=\"شرح دهم\" IDWIDTH11=\"0\" TipCol=\"C1\" KCOL=\"C1,C2\"/></tit><dat><row C1=\"1\" C2=\"روزانه\" C3=\"Daily\" C4=\"1\"/><row C1=\"5\" C2=\"شبانه\" C3=\"Nightly\" C4=\"1\"/><row C1=\"10\" C2=\"آموزشهاي آزاد\" C3=\"Free Education\" C4=\"2\"/><row C1=\"15\" C2=\"نوبت دوم\" C3=\"Second Chance\" C4=\"1\"/><row C1=\"20\" C2=\"شهريه پرداز\" C4=\"3\"/><row C1=\"25\" C2=\"نيمه حضوري\" C3=\"Half\" C4=\"4\"/><row C1=\"30\" C2=\"پودماني\" C3=\"Poodemani\" C4=\"5\"/><row C1=\"35\" C2=\"قالب پرديس\" C3=\"Pardis\" C4=\"6\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": []
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/Edu0301_Terms_TrmNo_Lookup/Edu0301_Terms_TrmNo_Lookup.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "20",
+        "r": {},
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_14",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_15",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "",
+              "xml": "<grd ><tit><row IDTITLE=\"راهنماي ترمها\" IDNUMBERCOL=\"2\" IDCOLUMN1=\"شماره ترم\" IDWIDTH1=\"80\" COLTYPE1=\"NUMBER\" IDCOLUMN2=\"شرح ترم\" IDWIDTH2=\"300\" TipCol=\"C1\" KCOL=\"C1,C2\"/></tit><dat><row C1=\"9999\" C2=\"نيمسال دروس كارورزي 9999\"/><row C1=\"9998\" C2=\"نيمسال دروس كارآموزي 9998\"/><row C1=\"4031\" C2=\"اول سال تحصيلي 04-03\"/><row C1=\"4022\" C2=\"دوم سال تحصيلي 03-02\"/><row C1=\"4021\" C2=\"اول سال تحصيلي 03-02\"/><row C1=\"4020\" C2=\"سال تحصيلي 03_02\"/><row C1=\"4013\" C2=\"ترم تابستان سال تحصيلي 02_01\"/><row C1=\"4012\" C2=\"ترم دوم سال تحصيلي 02_01\"/><row C1=\"4011\" C2=\"ترم اول سال تحصيلي 02_01\"/><row C1=\"4010\" C2=\"سال تحصيلي 02_01\"/><row C1=\"4003\" C2=\"ترم تابستان سال تحصيلي 01_00\"/><row C1=\"4002\" C2=\"ترم دوم سال تحصيلي 01_00\"/><row C1=\"4001\" C2=\"ترم اول سال تحصيلي 01_00\"/><row C1=\"4000\" C2=\"سال تحصيلي 01_00\"/><row C1=\"3993\" C2=\"ترم تابستان سال تحصيلي 00_99\"/><row C1=\"3992\" C2=\"ترم دوم سال تحصيلي 00_99\"/><row C1=\"3991\" C2=\"ترم اول سال تحصيلي 00_99\"/><row C1=\"3990\" C2=\"سال تحصيلي 00_99\"/><row C1=\"3983\" C2=\"ترم تابستان سال تحصيلي 99_98\"/><row C1=\"3982\" C2=\"ترم دوم سال تحصيلي 99_98\"/><row C1=\"3981\" C2=\"ترم اول سال تحصيلي 99_98\"/><row C1=\"3980\" C2=\"سال تحصيلي 99_98\"/><row C1=\"3973\" C2=\"ترم تابستان سال تحصيلي 98_97\"/><row C1=\"3972\" C2=\"ترم دوم سال تحصيلي 98_97\"/><row C1=\"3971\" C2=\"ترم اول سال تحصيلي 98_97\"/><row C1=\"3970\" C2=\"سال تحصيلي 98_97\"/><row C1=\"3963\" C2=\"ترم تابستان سال تحصيلي 97_96\"/><row C1=\"3962\" C2=\"نيمسال دوم سال تحصيلي 97-1396\"/><row C1=\"3961\" C2=\"نيمسال اول سال تحصيلي 97-1396\"/><row C1=\"3960\" C2=\"سال تحصيلي 97_96\"/><row C1=\"3953\" C2=\"ترم تابستان سال تحصيلي 96_95\"/><row C1=\"3952\" C2=\"نيمسال دوم سال تحصيلي 96-1395\"/><row C1=\"3951\" C2=\"نيمسال اول سال تحصيلي 96-1395\"/><row C1=\"3950\" C2=\"سال تحصيلي 96_95\"/><row C1=\"3943\" C2=\"ترم تابستان سال تحصيلي 95_94\"/><row C1=\"3942\" C2=\"نيمسال دوم سال تحصيلي 95-1394\"/><row C1=\"3941\" C2=\"نيمسال اول سال تحصيلي 95-1394\"/><row C1=\"3940\" C2=\"سال تحصيلي 95_94\"/><row C1=\"3933\" C2=\"ترم تابستان سال تحصيلي 94-1393\"/><row C1=\"3932\" C2=\"نيمسال دوم تحصيلي 94-1393\"/><row C1=\"3931\" C2=\"نيمسال اول تحصيلي 94-1393\"/><row C1=\"3930\" C2=\"سال تحصيلي 94_93\"/><row C1=\"3923\" C2=\"ترم تابستان سال تحصيلي 93-1392\"/><row C1=\"3922\" C2=\"نيمسال دوم تحصيلي 93-1392\"/><row C1=\"3921\" C2=\"نيمسال اول تحصيلي 93-1392\"/><row C1=\"3920\" C2=\"سال تحصيلي 93_92\"/><row C1=\"3913\" C2=\"ترم تابستان سال تحصيلي 92-1391\"/><row C1=\"3912\" C2=\"نيمسال دوم تحصيلي 92-1391\"/><row C1=\"3911\" C2=\"ترم اول سال تحصيلي 92-91\"/><row C1=\"3910\" C2=\"سال تحصيلي 92_91\"/><row C1=\"3903\" C2=\"ترم تابستانه سال تحصيلي 91-90\"/><row C1=\"3902\" C2=\"ترم دوم سال تحصيلي 91-90\"/><row C1=\"3901\" C2=\"ترم اول سال تحصيلي 91-90\"/><row C1=\"3900\" C2=\"سال تحصيلي 91_90\"/><row C1=\"3893\" C2=\"ترم تابستان سال تحصيلي 90-89\"/><row C1=\"3892\" C2=\"نيمسال دوم سال تحصيلي 90-1389\"/><row C1=\"3891\" C2=\"ترم اول سال تحصيلي 90-89\"/><row C1=\"3890\" C2=\"سال تحصيلي 90_89\"/><row C1=\"3883\" C2=\"ترم تابستان سال تحصيلي 89-88\"/><row C1=\"3882\" C2=\"ترم دوم سال تحصيلي 89-88\"/><row C1=\"3881\" C2=\"ترم اول سال تحصيلي 89-88\"/><row C1=\"3880\" C2=\"سال تحصيلي 89_88\"/><row C1=\"3873\" C2=\"ترم تابستان سال تحصيلي 88_87\"/><row C1=\"3872\" C2=\"ترم دوم سال تحصيلي 88-87\"/><row C1=\"3871\" C2=\"ترم اول سال تحصيلي 88-87\"/><row C1=\"3870\" C2=\"سال تحصيلي 88_87\"/><row C1=\"3863\" C2=\"ترم تابستان سال تحصيلي 87_86\"/><row C1=\"3862\" C2=\"ترم دوم سال تحصيلي 87-86\"/><row C1=\"3861\" C2=\"ترم اول سال تحصيلي 87-86\"/><row C1=\"3860\" C2=\"سال تحصيلي 87_86\"/><row C1=\"3853\" C2=\"ترم تابستان سال تحصيلي 86_85\"/><row C1=\"3852\" C2=\"ترم دوم سال تحصيلي 86-85\"/><row C1=\"3851\" C2=\"ترم اول سال تحصيلي 86-85\"/><row C1=\"3843\" C2=\"ترم تابستان سال تحصيلي 85_84\"/><row C1=\"3842\" C2=\"ترم دوم سال تحصيلي 85-84\"/><row C1=\"3841\" C2=\"ترم اول سال تحصيلي 85-84\"/><row C1=\"3833\" C2=\"ترم تابستان سال تحصيلي 84_83\"/><row C1=\"3832\" C2=\"ترم دوم سال تحصيلي 84-83\"/><row C1=\"3831\" C2=\"ترم اول سال تحصيلي 84-83\"/><row C1=\"3823\" C2=\"ترم تابستان سال تحصيلي 83_82\"/><row C1=\"3822\" C2=\"ترم دوم سال تحصيلي 83_82\"/><row C1=\"3821\" C2=\"ترم اول سال تحصيلي 83_82\"/><row C1=\"3813\" C2=\"ترم تابستان سال تحصيلي 82_81\"/><row C1=\"3812\" C2=\"ترم دوم سال تحصيلي 82_81\"/><row C1=\"3811\" C2=\"ترم اول سال تحصيلي 82_81\"/><row C1=\"3803\" C2=\"ترم تابستان سال تحصيلي 81_80\"/><row C1=\"3802\" C2=\"ترم دوم سال تحصيلي 81_80\"/><row C1=\"3801\" C2=\"ترم اول سال تحصيلي 81_80\"/><row C1=\"3793\" C2=\"ترم تابستان سال تحصيلي 80_79\"/><row C1=\"3792\" C2=\"ترم دوم سال تحصيلي 80_79\"/><row C1=\"3791\" C2=\"ترم اول سال تحصيلي 80_79\"/><row C1=\"3783\" C2=\"ترم تابستان سال تحصيلي 79_78\"/><row C1=\"3782\" C2=\"ترم دوم سال تحصيلي 79_78\"/><row C1=\"3781\" C2=\"ترم اول سال تحصيلي 79_78\"/><row C1=\"3773\" C2=\"ترم تابستان سال تحصيلي 78_77\"/><row C1=\"3772\" C2=\"ترم دوم سال تحصيلي 78_77\"/><row C1=\"3771\" C2=\"ترم اول سال تحصيلي 78_77\"/><row C1=\"3763\" C2=\"ترم تابستان سال تحصيلي  77_76\"/><row C1=\"3762\" C2=\"ترم دوم سال تحصيلي 77_76\"/><row C1=\"3761\" C2=\"ترم اول سال تحصيلي 77_76\"/><row C1=\"3753\" C2=\"ترم تابستان سال تحصيلي  76_75\"/><row C1=\"3752\" C2=\"ترم دوم سال تحصيلي 76_75\"/><row C1=\"3751\" C2=\"ترم اول سال تحصيلي 76_75\"/><row C1=\"3743\" C2=\"ترم تابستان سال تحصيلي  75_74\"/><row C1=\"3742\" C2=\"ترم دوم سال تحصيلي 75_74\"/><row C1=\"3741\" C2=\"ترم اول سال تحصيلي 75_74\"/><row C1=\"3733\" C2=\"ترم تابستان سال تحصيلي  74_73\"/><row C1=\"3732\" C2=\"ترم دوم سال تحصيلي 74_73\"/><row C1=\"3731\" C2=\"ترم اول سال تحصيلي 74_73\"/><row C1=\"3723\" C2=\"ترم تابستان سال تحصيلي  73_72\"/><row C1=\"3722\" C2=\"ترم دوم سال تحصيلي 73_72\"/><row C1=\"3721\" C2=\"ترم اول سال تحصيلي 73_72\"/><row C1=\"3713\" C2=\"ترم تابستان سال تحصيلي  72_71\"/><row C1=\"3712\" C2=\"ترم دوم سال تحصيلي 72_71\"/><row C1=\"3711\" C2=\"ترم اول سال تحصيلي 72_71\"/><row C1=\"3703\" C2=\"ترم تابستان سال تحصيلي  71_70\"/><row C1=\"3702\" C2=\"ترم دوم سال تحصيلي 71_70\"/><row C1=\"3701\" C2=\"ترم اول سال تحصيلي 71_70\"/><row C1=\"3693\" C2=\"ترم تابستان سال تحصيلي  70_69\"/><row C1=\"3692\" C2=\"ترم دوم سال تحصيلي 70_69\"/><row C1=\"3691\" C2=\"ترم اول سال تحصيلي 70_69\"/><row C1=\"3683\" C2=\"ترم تابستان سال تحصيلي  69_68\"/><row C1=\"3682\" C2=\"ترم دوم سال تحصيلي 69_68\"/><row C1=\"3681\" C2=\"ترم اول سال تحصيلي 69_68\"/><row C1=\"3673\" C2=\"ترم تابستان سال تحصيلي  68_67\"/><row C1=\"3672\" C2=\"ترم دوم سال تحصيلي 68_67\"/><row C1=\"3671\" C2=\"ترم اول سال تحصيلي 68_67\"/><row C1=\"3663\" C2=\"ترم تابستان سال تحصيلي  67_66\"/><row C1=\"3662\" C2=\"ترم دوم سال تحصيلي 67_66\"/><row C1=\"3661\" C2=\"ترم اول سال تحصيلي 67_66\"/><row C1=\"3653\" C2=\"ترم تابستان سال تحصيلي  66_65\"/><row C1=\"3652\" C2=\"ترم دوم سال تحصيلي 66_65\"/><row C1=\"3651\" C2=\"ترم اول سال تحصيلي 66_65\"/><row C1=\"3643\" C2=\"ترم تابستان سال تحصيلي  65_64\"/><row C1=\"3642\" C2=\"ترم دوم سال تحصيلي 65_64\"/><row C1=\"3641\" C2=\"ترم اول سال تحصيلي 65_64\"/><row C1=\"3633\" C2=\"ترم تابستان سال تحصيلي  64_63\"/><row C1=\"3632\" C2=\"ترم دوم سال تحصيلي 64_63\"/><row C1=\"3631\" C2=\"ترم اول سال تحصيلي 64_63\"/><row C1=\"3623\" C2=\"ترم تابستان سال تحصيلي  63_62\"/><row C1=\"3622\" C2=\"ترم دوم سال تحصيلي 63_62\"/><row C1=\"3621\" C2=\"ترم اول سال تحصيلي 63_62\"/><row C1=\"3613\" C2=\"ترم تابستان سال تحصيلي  62_61\"/><row C1=\"3612\" C2=\"ترم دوم سال تحصيلي 62_61\"/><row C1=\"3611\" C2=\"ترم اول سال تحصيلي 62_61\"/><row C1=\"3603\" C2=\"ترم تابستان سال تحصيلي  61_60\"/><row C1=\"3602\" C2=\"ترم دوم سال تحصيلي 61_60\"/><row C1=\"3601\" C2=\"ترم اول سال تحصيلي 61_60\"/><row C1=\"3593\" C2=\"ترم تابستان سال تحصيلي  60_59\"/><row C1=\"3592\" C2=\"ترم دوم سال تحصيلي 60_59\"/><row C1=\"3591\" C2=\"ترم اول سال تحصيلي 60_59\"/><row C1=\"3583\" C2=\"ترم تابستان سال تحصيلي  59_58\"/><row C1=\"3582\" C2=\"ترم دوم سال تحصيلي 59_58\"/><row C1=\"3581\" C2=\"ترم اول سال تحصيلي 59_58\"/><row C1=\"3563\" C2=\"ترم تابستان سال تحصيلي 57_56\"/><row C1=\"3562\" C2=\"ترم دوم سال تحصيلي 57_56\"/><row C1=\"3561\" C2=\"ترم اول سال تحصيلي 57_56\"/><row C1=\"3451\" C2=\"ترم اول سال تحصيلي 46_45\"/><row C1=\"3117\" C2=\"ترم سالانه تستي\"/><row C1=\"3116\" C2=\"براي تبديل داده\"/><row C1=\"3115\" C2=\"995 براي تبديل داده\"/><row C1=\"3114\" C2=\"986 براي تبديل داده\"/><row C1=\"3113\" C2=\"979 براي تبديل داده\"/><row C1=\"3112\" C2=\"براي تبديل داده\"/><row C1=\"3111\" C2=\"ترم دروس انتقالي\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/Edu1002_UnvFac_FacNo_Lookup/Edu1002_UnvFac_FacNo_Lookup.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "20",
+        "r": {
+          "A3zg": "1",
+          "v1n": "1",
+          "MaxHlp": 200
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_15",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_16",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "",
+              "xml": "<grd ><tit><row IDTITLE=\"راهنماي دانشكده\" IDNUMBERCOL=\"2\" IDCOLUMN1=\"شماره دانشكده\" IDWIDTH1=\"90\" COLTYPE1=\"NUMBER\" IDCOLUMN2=\"نام دانشكده\" IDWIDTH2=\"200\" TipCol=\"C1\" KCOL=\"C1,C2\"/></tit><dat><row C1=\"11\" C2=\"پزشكي\"/><row C1=\"12\" C2=\"دندانپزشكي\"/><row C1=\"13\" C2=\"پرستاري و مامائي\"/><row C1=\"14\" C2=\"علوم پايه\"/><row C1=\"15\" C2=\"علوم كشاورزي\"/><row C1=\"16\" C2=\"هنر\"/><row C1=\"17\" C2=\"فني و مهندسي\"/><row C1=\"18\" C2=\"علوم انساني\"/><row C1=\"20\" C2=\"دامپزشكي\"/><row C1=\"22\" C2=\"پرديس خودگردان\"/><row C1=\"24\" C2=\"مراكز تحقيقاتي دانشگاه\"/><row C1=\"26\" C2=\"دانشكده طب ايراني\"/><row C1=\"30\" C2=\"آموزشهاي آزاد\"/><row C1=\"90\" C2=\"گروه هاي آموزشي مستقل\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/Edu1021_UNVBRANCHES_Brnno_Lookup/Edu1021_UNVBRANCHES_Brnno_Lookup.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "20",
+        "r": {},
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_16",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_17",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "",
+              "xml": "<grd ><tit><row IDTITLE=\"راهنماي واحدها و مراكز دانشگاهي\" IDNUMBERCOL=\"5\" IDCOLUMN1=\"شماره واخد يا مركز\" IDWIDTH1=\"70\" COLTYPE1=\"NUMBER\" IDCOLUMN2=\"نام واحد يا مركز\" IDWIDTH2=\"250\" MULTILINE2=\"2\" IDCOLUMN3=\"واحد يا مركز\" IDWIDTH3=\"150\" IDCOLUMN4=\"ناحيه\" IDWIDTH4=\"100\" IDCOLUMN5=\"محل واحد يا مركز\" IDWIDTH5=\"200\" MULTILINE5=\"2\" TipCol=\"C1\" KCOL=\"C1,C2\"/></tit><dat><row C1=\"0\" C2=\"دانشگاه\" C3=\"واحد آموزشي\" C4=\"نواحي دانشگاهي\" C5=\"\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/nav/nav.svc/",
+      "method": "POST",
+      "payload": {
+        "r": {
+          "act": ""
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "",
+          "su": "3",
+          "tck": "$TCK_17",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION",
+          "nft": "0",
+          "nf": "11121",
+          "sguid": "64e5713a-6d39-4d4d-a208-b010d5e9a868",
+          "b": "0",
+          "l": "0"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11121",
+          "seq": "6",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_18",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "nmtck": "$TCK_19",
+            "nam": "اطلاعات پرسنلي دانشجو",
+            "branch": "');",
+            "cchg": "false",
+            "nft": "0",
+            "nf": "11121",
+            "nurlp": "/frm/F1809_PROCESS_STD_Personally",
+            "nurlf": "F1809_PROCESS_STD_Personally",
+            "std": "$STD_NUMBER",
+            "isb": "0",
+            "idl": "1080000",
+            "acr": "1",
+            "fpc": "0",
+            "inf": "0",
+            "cmp": "110331",
+            "usrfrm": "1",
+            "usrlvl": "65540",
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {},
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/F1825_PROCESS_STDTOTALINFO_BEH/F1825_PROCESS_STDTOTALINFO_BEH.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "00",
+        "r": {},
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_19",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_19",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {},
+        "rset": {
+          "grd": [],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/F1825_PROCESS_STDTOTALINFO_BEH/F1825_PROCESS_STDTOTALINFO_BEH.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "RR",
+        "r": {
+          "ATxW": "$STD_NUMBER"
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_19",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_20",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"Buttons\",\"Name\":\"Buttons\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"Arsm\" ><dat><row F1=\"[{&quot;Ftype&quot;:&quot;0&quot;,&quot;Fid&quot;:11121,&quot;CMPID&quot;:110331,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;اطلاعات پرسنلي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;0\\\\\\&quot; FID=\\\\\\&quot;11121\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row STDNO=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:6272,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;تطبيق دروس\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;6272\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;940\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;0&quot;,&quot;Fid&quot;:27570,&quot;CMPID&quot;:110435,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;پرداخت بدهي دانشجو\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;0\\\\\\&quot; FID=\\\\\\&quot;27570\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row STDNO=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:77,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;نتيجه ثبت نام\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;77\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/F1809_PROCESS_STD_Personally_BH/F1809_PROCESS_STD_Personally_BH.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "08",
+        "r": {
+          "AUWs": "$STD_NUMBER"
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11121",
+          "seq": "6",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_18",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11121",
+          "seq": "6",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_21",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "AUWw": "<PHOTO>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</PHOTO>",
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"نام خانوادگي و نام\",\"Name\":\"NAME\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":2,\"Caption\":\"رشته\",\"Name\":\"DEPNAME\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":3,\"Caption\":\"گرايش\",\"Name\":\"AOFNAME\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":4,\"Caption\":\"دانشكده و گروه آموزشي\",\"Name\":\"FACNAME\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":5,\"Caption\":\"مقطع و دوره\",\"Name\":\"LVLDSC\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":6,\"Caption\":\"واحد \\/ مركز\",\"Name\":\"BRANCHNAME\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":7,\"Caption\":\"آخرين وضعيت\",\"Name\":\"STDSTATUS\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":8,\"Caption\":\"معدل كل\",\"Name\":\"GPA\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":9,\"Caption\":\"شماره دانشجويي\",\"Name\":\"NO\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":10,\"Caption\":\"Footer\",\"Name\":\"Footer\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":11,\"Caption\":\"ترم تغيير رشته\",\"ShowTag\":\"0\",\"Name\":\"CHGTRM\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":12,\"Caption\":\"رشته و مقطع قبلي\",\"Name\":\"CHGLVL\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":13,\"Name\":\"CHGDATE\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":14,\"Caption\":\"استاد راهنما\",\"Name\":\"RAHNAMATCH\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":15,\"Caption\":\"تاريخ پايان كار\",\"Name\":\"GRDDATE\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":16,\"Caption\":\"نوع ايثارگري\",\"Name\":\"JANTYPE\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":17,\"Caption\":\"رشته (دو وجهي)\",\"Name\":\"MULTIDEPNAME\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":18,\"Caption\":\"دانشكده و گروه آموزشي (دو وجهي)\",\"Name\":\"MULTIFACNAME\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":19,\"Caption\":\"مقطع و دوره (دو وجهي)\",\"Name\":\"MULTILVLSYS\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":20,\"Caption\":\"اجازه ثبت نام\",\"Name\":\"REGPERMIT\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":21,\"Caption\":\"دليل عدم اجازه ثبت نام\",\"ShowTag\":\"0\",\"Name\":\"REGNOTPERMIT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":12,\"ColXsWidth\":12,\"ShowLabel\":0}]}",
+              "xml": "<grd id=\"Aaqc\" ><dat><row F1=\"بلوري كاشاني حميدرضا\" F2=\"مهندسي كامپيوتر\" F3=\"\" F4=\"فني و مهندسي مهندسي كامپيوتر\" F5=\"كارشناسي پيوسته روزانه\" F6=\"دانشگاه\" F7=\"در حال ثبت نام\" F8=\"17.30\" F9=\"شماره دانشجويي: $STD_NUMBER\" F10=\" معدل دانشگاه : 15.62 معدل دانشکده : 14.71معدل رشته : 15.03\" F14=\"موسوي خانقاه  احسان\" F16=\"\" F19=\"\" F21=\"\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  },
+  {
+    "req": {
+      "url": "https://eduportal.shahed.ac.ir/frm/F1825_PROCESS_STDTOTALINFOTrmStat_BEH/F1825_PROCESS_STDTOTALINFOTrmStat_BEH.svc/",
+      "method": "POST",
+      "payload": {
+        "act": "20",
+        "r": {
+          "AUWo": "$STD_NUMBER"
+        },
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_20",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        }
+      },
+      "cookies": [
+        {
+          "name": "ASP.NET_SessionId",
+          "value": "$SESSION"
+        },
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        },
+        {
+          "name": "u",
+          "value": "$USER_ID"
+        },
+        {
+          "name": "lt",
+          "value": "$LT"
+        }
+      ]
+    },
+    "resp": {
+      "status": 200,
+      "mime": "application/json",
+      "data": {
+        "aut": {
+          "u": "$USER_ID",
+          "ft": "0",
+          "f": "11147",
+          "seq": "5",
+          "subfrm": "0",
+          "su": "3",
+          "tck": "$TCK_22",
+          "ut": "0",
+          "ttyp": "2",
+          "ri": "",
+          "actsign": "1",
+          "sid": "$SESSION"
+        },
+        "msg": {
+          "c": [],
+          "errors": [],
+          "suc": [],
+          "war": []
+        },
+        "oaut": {
+          "oa": {
+            "time": "1402,11,26,6,22,2"
+          }
+        },
+        "outpar": {
+          "_ret": "0"
+        },
+        "rset": {
+          "grd": [
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"معدل ترم\",\"Name\":\"Gpa\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":2,\"Caption\":\"مشروطي\",\"Name\":\"MSHTAG\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":3,\"Caption\":\"ممتازي\",\"Name\":\"Momtaz\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":4,\"Caption\":\"واحد اخذ شده تا اين ترم\",\"Name\":\"COMULREGUNT\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":5,\"Caption\":\"واحد گذرانده\",\"Name\":\"TOTPASUNT\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":6,\"Caption\":\"اعلام نشده\",\"Name\":\"NOTREPORT\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":7,\"Caption\":\"واحد ناتمام\",\"Name\":\"INCOMPLETE\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":8,\"Caption\":\"حذف شده\",\"Name\":\"TRMDROPUNT\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":9,\"Caption\":\"رد شده\",\"Name\":\"TRMFAILUNT\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":10,\"Caption\":\"Key\",\"Name\":\"Key\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":11,\"Caption\":\"Buttons\",\"Name\":\"Buttons\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":12,\"Caption\":\"Title\",\"Name\":\"Title\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":13,\"Caption\":\"Footer\",\"Name\":\"Footer\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"AUWp\" ><dat><row F1=\"\" F2=\"\" F3=\"\" F4=\"126\" F5=\"\" F6=\"\" F7=\"\" F8=\"\" F9=\"\" F10=\"4022\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4022\\\\\\&quot; T=\\\\\\&quot;4022\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم دوم 03-02\" F13=\"در حال ثبت نام\"/><row F1=\"17.3\" F2=\"\" F3=\"\" F4=\"126\" F5=\"8\" F6=\"8\" F7=\"\" F8=\"\" F9=\"\" F10=\"4021\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4021\\\\\\&quot; T=\\\\\\&quot;4021\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;4021\\\\\\&quot; T=\\\\\\&quot;4021\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم اول 03-02\" F13=\"\"/><row F1=\"20\" F2=\"_____\" F3=\"\" F4=\"110\" F5=\"1\" F6=\"\" F7=\"\" F8=\"\" F9=\"\" F10=\"4013\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4013\\\\\\&quot; T=\\\\\\&quot;4013\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;4013\\\\\\&quot; T=\\\\\\&quot;4013\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"تابستان 02-01\" F13=\"\"/><row F1=\"17.86\" F2=\"\" F3=\"\" F4=\"109\" F5=\"19\" F6=\"\" F7=\"\" F8=\"\" F9=\"\" F10=\"4012\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4012\\\\\\&quot; T=\\\\\\&quot;4012\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;4012\\\\\\&quot; T=\\\\\\&quot;4012\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم دوم 02-01\" F13=\"\"/><row F1=\"15.09\" F2=\"\" F3=\"\" F4=\"90\" F5=\"14\" F6=\"\" F7=\"\" F8=\"\" F9=\"6\" F10=\"4011\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4011\\\\\\&quot; T=\\\\\\&quot;4011\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;4011\\\\\\&quot; T=\\\\\\&quot;4011\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم اول 02-01\" F13=\"\"/><row F1=\"15.88\" F2=\"_____\" F3=\"\" F4=\"70\" F5=\"4\" F6=\"\" F7=\"\" F8=\"\" F9=\"\" F10=\"4003\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4003\\\\\\&quot; T=\\\\\\&quot;4003\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;4003\\\\\\&quot; T=\\\\\\&quot;4003\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"تابستان 01-00\" F13=\"\"/><row F1=\"19.47\" F2=\"\" F3=\"\" F4=\"66\" F5=\"17\" F6=\"\" F7=\"\" F8=\"\" F9=\"\" F10=\"4002\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4002\\\\\\&quot; T=\\\\\\&quot;4002\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;4002\\\\\\&quot; T=\\\\\\&quot;4002\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم دوم 01-00\" F13=\"\"/><row F1=\"12.76\" F2=\"\" F3=\"\" F4=\"49\" F5=\"10\" F6=\"\" F7=\"\" F8=\"3\" F9=\"6\" F10=\"4001\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;4001\\\\\\&quot; T=\\\\\\&quot;4001\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;4001\\\\\\&quot; T=\\\\\\&quot;4001\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم اول 01-00\" F13=\"\"/><row F1=\"13.7\" F2=\"\" F3=\"\" F4=\"30\" F5=\"12\" F6=\"\" F7=\"\" F8=\"3\" F9=\"3\" F10=\"3992\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;3992\\\\\\&quot; T=\\\\\\&quot;3992\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;3992\\\\\\&quot; T=\\\\\\&quot;3992\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم دوم 00-99\" F13=\"\"/><row F1=\"14.75\" F2=\"\" F3=\"\" F4=\"12\" F5=\"9\" F6=\"\" F7=\"\" F8=\"3\" F9=\"\" F10=\"3991\" F11=\"[{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:428,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;برنامه امتحاني\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;428\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;15\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F=\\\\\\&quot;3991\\\\\\&quot; T=\\\\\\&quot;3991\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;},{&quot;Ftype&quot;:&quot;1&quot;,&quot;Fid&quot;:79,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;كارنامه ترمي\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;1\\\\\\&quot; FID=\\\\\\&quot;79\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row MERGEREPFILTER=\\\\\\&quot;2\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;PubFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;6\\\\\\&quot; id=\\\\\\&quot;4\\\\\\&quot; F1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; T1=\\\\\\&quot;$STD_NUMBER\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PubFilter&gt;&lt;PriFilter&gt;&lt;Root&gt;&lt;N UQID=\\\\\\&quot;10\\\\\\&quot; id=\\\\\\&quot;2\\\\\\&quot; F=\\\\\\&quot;3991\\\\\\&quot; T=\\\\\\&quot;3991\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Root&gt;&lt;\\\\\\/PriFilter&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F12=\"ترم اول 00-99\" F13=\"\"/></dat></grd>"
+            },
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"نام درس\",\"Name\":\"Title\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":2,\"Caption\":\"شماره و گروه درس\",\"Dir\":\"LTR-farnum\",\"Name\":\"LESNO\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":0},{\"COLSEQ\":3,\"Caption\":\"CFACNO\",\"Name\":\"CFACNO\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":4,\"Caption\":\"CGRPNO\",\"Name\":\"CGRPNO\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":5,\"Caption\":\"CRSNO\",\"Name\":\"CRSNO\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":6,\"Caption\":\"GRP\",\"Name\":\"GRP\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":7,\"Caption\":\"واحد تئوري\",\"Name\":\"UNITS\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":8,\"Caption\":\"واحد عملي\",\"Name\":\"LABUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":9,\"Caption\":\"نمره\",\"Name\":\"GRADE\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":10,\"Caption\":\"نتيجه نمره\",\"Name\":\"GOODGRD\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":11,\"Caption\":\"وضع نمره\",\"Name\":\"GRADEMODE\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":12,\"Caption\":\"وضع درس\",\"Name\":\"CRSMODE\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":13,\"Caption\":\"نوع درس\",\"Name\":\"CRSTYPE\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":14,\"Caption\":\"نوع ثبت نام\",\"Name\":\"REGMODE\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":15,\"Caption\":\"شهريه متغير\",\"Name\":\"CrsTut\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":16,\"Caption\":\"GRDTIP\",\"Name\":\"GRDTIP\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":17,\"Caption\":\"TRMNO\",\"Name\":\"Key\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":18,\"Caption\":\"Buttons\",\"Name\":\"Buttons\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":19,\"Caption\":\"موضوع\",\"Multiline\":1,\"Name\":\"PRJDSC\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":20,\"Caption\":\"تاريخ دفاع\",\"Name\":\"DEFENDDATE\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":21,\"Caption\":\"تاريخ تصويب\",\"Name\":\"APPRDATE\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"AUWr\" ><dat><row F1=\"رياضي(1)\" F2=\"1712001 گروه 01\" F3=\"17\" F4=\"12\" F5=\"001\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"13\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3991\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"كارگاه برنامه نويسي مطلب\" F2=\"1712003 گروه 01\" F3=\"17\" F4=\"12\" F5=\"003\" F6=\"01\" F7=\"0\" F8=\"1\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اختياري\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 09:56 تاريخ 1401.06.16 امکان پذير بوده است\" F17=\"4002\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"فيزيك(1)\" F2=\"1712008 گروه 01\" F3=\"17\" F4=\"12\" F5=\"008\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"\" F10=\"\" F11=\"حذف مجاز بي اثر\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3991\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"فيزيك(1)\" F2=\"1712008 گروه 01\" F3=\"17\" F4=\"12\" F5=\"008\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"13\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3992\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"فيزيك(2)\" F2=\"1712009 گروه 01\" F3=\"17\" F4=\"12\" F5=\"009\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"9.75\" F10=\"رد\" F11=\"اعلام شده\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"ساختمان داده ها\" F2=\"1712019 گروه 01\" F3=\"17\" F4=\"12\" F5=\"019\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4002\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"رياضي مهندسي\" F2=\"1712025 گروه 02\" F3=\"17\" F4=\"12\" F5=\"025\" F6=\"02\" F7=\"3\" F8=\"\" F9=\"18.25\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1402.05.11 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"نظريه زبان ها وماشين ها\" F2=\"1712030 گروه 01\" F3=\"17\" F4=\"12\" F5=\"030\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"15.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.26 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"مدارهاي الكترونيكي\" F2=\"1712034 گروه 01\" F3=\"17\" F4=\"12\" F5=\"034\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"18.8\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اختصاصي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 10:20 تاريخ 1402.11.16 امکان پذير بوده است\" F17=\"4021\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آزمايشگاه شبكه هاي كامپيوتري\" F2=\"1712058 گروه 01\" F3=\"17\" F4=\"12\" F5=\"058\" F6=\"01\" F7=\"0\" F8=\"1\" F9=\"18\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1402.05.11 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"پايگاه داده ها\" F2=\"1712063 گروه 01\" F3=\"17\" F4=\"12\" F5=\"063\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اختصاصي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1402.05.06 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آزمايشگاه پايگاه داده\" F2=\"1712064 گروه 01\" F3=\"17\" F4=\"12\" F5=\"064\" F6=\"01\" F7=\"0\" F8=\"1\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اختياري\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 12:18 تاريخ 1402.04.09 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آمار و احتمال مهندسي\" F2=\"1712079 گروه 01\" F3=\"17\" F4=\"12\" F5=\"079\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"14.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"كارگاه كامپيوتر\" F2=\"1712081 گروه 02\" F3=\"17\" F4=\"12\" F5=\"081\" F6=\"02\" F7=\"0\" F8=\"1\" F9=\"18\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"مباني كامپيوتر و برنامه سازي\" F2=\"1712082 گروه 01\" F3=\"17\" F4=\"12\" F5=\"082\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3991\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"مدار هاي الكتريكي\" F2=\"1712083 گروه 02\" F3=\"17\" F4=\"12\" F5=\"083\" F6=\"02\" F7=\"3\" F8=\"\" F9=\"\" F10=\"\" F11=\"حذف اضطراري\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"مدار هاي الكتريكي\" F2=\"1712083 گروه 01\" F3=\"17\" F4=\"12\" F5=\"083\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"9.9\" F10=\"رد\" F11=\"اعلام شده در حذف آيين نامه\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.30 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"مدار هاي الكتريكي\" F2=\"1712083 گروه 02\" F3=\"17\" F4=\"12\" F5=\"083\" F6=\"02\" F7=\"3\" F8=\"\" F9=\"17\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1402.05.11 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"رياضيات گسسته\" F2=\"1712084 گروه 01\" F3=\"17\" F4=\"12\" F5=\"084\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"11.25\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3991\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"برنامه سازي پيشرفته\" F2=\"1712085 گروه 01\" F3=\"17\" F4=\"12\" F5=\"085\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"18.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3992\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"مدار منطقي\" F2=\"1712086 گروه 01\" F3=\"17\" F4=\"12\" F5=\"086\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"19\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3992\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"زبان تخصصي\" F2=\"1712087 گروه 01\" F3=\"17\" F4=\"12\" F5=\"087\" F6=\"01\" F7=\"2\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.30 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"معماري كامپيوتر\" F2=\"1712089 گروه 01\" F3=\"17\" F4=\"12\" F5=\"089\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"18.8\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"سيستم هاي عامل\" F2=\"1712090 گروه 01\" F3=\"17\" F4=\"12\" F5=\"090\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"14.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.26 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"طراحي كامپيوتري سيستمهاي ديجيتال\" F2=\"1712091 گروه 01\" F3=\"17\" F4=\"12\" F5=\"091\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 10:29 تاريخ 1401.06.15 امکان پذير بوده است\" F17=\"4002\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"سيگنال ها و سيستم ها\" F2=\"1712092 گروه 02\" F3=\"17\" F4=\"12\" F5=\"092\" F6=\"02\" F7=\"3\" F8=\"\" F9=\"15.51\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1402.05.11 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"ريزپردازنده و زبان اسمبلي\" F2=\"1712093 گروه 01\" F3=\"17\" F4=\"12\" F5=\"093\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 15:19 تاريخ 1401.06.31 امکان پذير بوده است\" F17=\"4002\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"شبكه هاي كامپيوتري\" F2=\"1712094 گروه 01\" F3=\"17\" F4=\"12\" F5=\"094\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1402.05.06 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آزمايشگاه مدارمنطقي و معماري كامپيوتر\" F2=\"1712097 گروه 04\" F3=\"17\" F4=\"12\" F5=\"097\" F6=\"04\" F7=\"0\" F8=\"1\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4002\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آزمايشگاه ريزپردازنده\" F2=\"1712098 گروه 01\" F3=\"17\" F4=\"12\" F5=\"098\" F6=\"01\" F7=\"0\" F8=\"1\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.26 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"انتقال داده ها\" F2=\"1712099 گروه 01\" F3=\"17\" F4=\"12\" F5=\"099\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"16\" F10=\"تاييد نشده\" F11=\"\" F12=\"\" F13=\"اختصاصي\" F14=\"\" F15=\"\" F16=\"\" F17=\"4021\" F18=\"[{&quot;Ftype&quot;:&quot;0&quot;,&quot;Fid&quot;:15390,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;رسيدگي به اعتراض\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;0\\\\\\&quot; FID=\\\\\\&quot;15390\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row STDNO=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; TRMNO=\\\\\\&quot;4021\\\\\\&quot; CFACNO=\\\\\\&quot;17\\\\\\&quot; CGRPNO=\\\\\\&quot;12\\\\\\&quot; CRSNO=\\\\\\&quot;099\\\\\\&quot; CBRNNO=\\\\\\&quot;0\\\\\\&quot; GRP=\\\\\\&quot;01\\\\\\&quot; \\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آزمايشگاه مدارهاي الكترونيكي\" F2=\"1712101 گروه 01\" F3=\"17\" F4=\"12\" F5=\"101\" F6=\"01\" F7=\"0\" F8=\"1\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اختصاصي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 00:39 تاريخ 1402.11.14 امکان پذير بوده است\" F17=\"4021\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آزمايشگاه سيستم هاي عامل\" F2=\"1712104 گروه 01\" F3=\"17\" F4=\"12\" F5=\"104\" F6=\"01\" F7=\"0\" F8=\"1\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 13:59 تاريخ 1402.11.15 امکان پذير بوده است\" F17=\"4021\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"كارآموزي\" F2=\"1712105 گروه 00\" F3=\"17\" F4=\"12\" F5=\"105\" F6=\"00\" F7=\"0\" F8=\"1\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اختصاصي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4013\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"مهندسي اينترنت\" F2=\"1712110 گروه 01\" F3=\"17\" F4=\"12\" F5=\"110\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"تاييد نشده\" F11=\"\" F12=\"\" F13=\"اختصاصي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 15:50 تاريخ 1402.11.22 امکان پذير بوده است\" F17=\"4021\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"طراحي الگوريتم ها\" F2=\"1712122 گروه 01\" F3=\"17\" F4=\"12\" F5=\"122\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"19.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.26 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"امنيت پايگاه داده\" F2=\"1712162 گروه 01\" F3=\"17\" F4=\"12\" F5=\"162\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"14\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"اختياري\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 12:35 تاريخ 1402.11.17 امکان پذير بوده است\" F17=\"4021\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"معادلات ديفرانسيل\" F2=\"1714006 گروه 01\" F3=\"17\" F4=\"14\" F5=\"006\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"0\" F10=\"رد\" F11=\"اعلام شده در حذف آيين نامه\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3992\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"معادلات ديفرانسيل\" F2=\"1714006 گروه 01\" F3=\"17\" F4=\"14\" F5=\"006\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"0\" F10=\"رد\" F11=\"اعلام شده در حذف آيين نامه\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"معادلات ديفرانسيل\" F2=\"1714006 گروه 03\" F3=\"17\" F4=\"14\" F5=\"006\" F6=\"03\" F7=\"3\" F8=\"\" F9=\"17\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 15:52 تاريخ 1401.06.08 امکان پذير بوده است\" F17=\"4002\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"رياضي مهندسي\" F2=\"1714008 گروه 01\" F3=\"17\" F4=\"14\" F5=\"008\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"9.5\" F10=\"رد\" F11=\"اعلام شده در حذف آيين نامه\" F12=\"\" F13=\"اصلي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.26 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"رياضي(2)\" F2=\"1714024 گروه 01\" F3=\"17\" F4=\"14\" F5=\"024\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"18\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"پايه\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3992\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"فارسي\" F2=\"9014055 گروه 00\" F3=\"90\" F4=\"14\" F5=\"055\" F6=\"00\" F7=\"3\" F8=\"\" F9=\"16\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"عمومي\" F14=\"مهمان در دانشگاه ديگر\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4003\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"زبان خارجي\" F2=\"9014056 گروه 10\" F3=\"90\" F4=\"14\" F5=\"056\" F6=\"10\" F7=\"3\" F8=\"\" F9=\"\" F10=\"\" F11=\"حذف اضطراري\" F12=\"\" F13=\"عمومي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"3992\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"زبان خارجي\" F2=\"9014056 گروه 01\" F3=\"90\" F4=\"14\" F5=\"056\" F6=\"01\" F7=\"3\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"عمومي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 11:33 تاريخ 1401.06.24 امکان پذير بوده است\" F17=\"4002\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"انقلاب اسلامي ايران\" F2=\"9014088 گروه 09\" F3=\"90\" F4=\"14\" F5=\"088\" F6=\"09\" F7=\"2\" F8=\"\" F9=\"20\" F10=\"تاييد نشده\" F11=\"\" F12=\"\" F13=\"عمومي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 21:25 تاريخ 1402.11.26 امکان پذير بوده است\" F17=\"4021\" F18=\"[{&quot;Ftype&quot;:&quot;0&quot;,&quot;Fid&quot;:15390,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;رسيدگي به اعتراض\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;0\\\\\\&quot; FID=\\\\\\&quot;15390\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row STDNO=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; TRMNO=\\\\\\&quot;4021\\\\\\&quot; CFACNO=\\\\\\&quot;90\\\\\\&quot; CGRPNO=\\\\\\&quot;14\\\\\\&quot; CRSNO=\\\\\\&quot;088\\\\\\&quot; CBRNNO=\\\\\\&quot;0\\\\\\&quot; GRP=\\\\\\&quot;09\\\\\\&quot; \\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"آشنايي با فرهنگ و ارزشهاي دفاع مقدس\" F2=\"9014089 گروه 02\" F3=\"90\" F4=\"14\" F5=\"089\" F6=\"02\" F7=\"2\" F8=\"\" F9=\"17.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"عمومي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1401.11.26 امکان پذير بوده است\" F17=\"4011\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"دانش خانواده و جمعيت\" F2=\"9014093 گروه 02\" F3=\"90\" F4=\"14\" F5=\"093\" F6=\"02\" F7=\"2\" F8=\"\" F9=\"14.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"عمومي\" F14=\"\" F15=\"\" F16=\"اعتراض به نمره فقط تا ساعت 23:59 تاريخ 1402.05.06 امکان پذير بوده است\" F17=\"4012\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"تربيت بدني\" F2=\"9014094 گروه 07\" F3=\"90\" F4=\"14\" F5=\"094\" F6=\"07\" F7=\"0.5\" F8=\"0.5\" F9=\"17\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"عمومي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"ورزش (1)\" F2=\"9014095 گروه 00\" F3=\"90\" F4=\"14\" F5=\"095\" F6=\"00\" F7=\"0\" F8=\"1\" F9=\"15.5\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"عمومي\" F14=\"مهمان در دانشگاه ديگر\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4003\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/><row F1=\"كارآفريني\" F2=\"9014100 گروه 03\" F3=\"90\" F4=\"14\" F5=\"100\" F6=\"03\" F7=\"2\" F8=\"\" F9=\"20\" F10=\"قبول\" F11=\"اعلام شده\" F12=\"\" F13=\"عمومي\" F14=\"\" F15=\"\" F16=\"محدوده زماني براي اعتراض پيش بيني نشده است\" F17=\"4001\" F18=\"\" F19=\"\" F20=\"\" F21=\"\"/></dat></grd>"
+            },
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"شهريه ثابت\",\"Name\":\"TRMCONSTTUT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":2,\"Caption\":\"شهريه متغير\",\"Name\":\"TRMCRSTUT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":3,\"Caption\":\"خدمات\",\"Name\":\"TRANING\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":4,\"Caption\":\"بيمه\",\"Name\":\"INSURANCE\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":5,\"Caption\":\"ساير موارد\",\"Name\":\"ADDTUT\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":6,\"Caption\":\"مبلغ تخفيف\",\"Name\":\"TOTTAKH\",\"Hide\":0,\"HideIfEmpty\":1,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":7,\"Caption\":\"جمع شهريه\",\"Name\":\"TOTTRMTUT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":8,\"Caption\":\"پرداختي\",\"Name\":\"Pay\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":9,\"Caption\":\"وضعيت نهايي ترم\",\"Name\":\"FinalStat\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":10,\"Caption\":\"trmno\",\"Name\":\"Key\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":11,\"Caption\":\"Title\",\"Name\":\"Title\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":0},{\"COLSEQ\":12,\"Caption\":\"Buttons\",\"Name\":\"Buttons\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":13,\"Caption\":\"وضعيت نهايي\",\"Name\":\"FINALTUTSTAT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"AVVY\" ><dat><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"4022\" F11=\"اطلاعات شهريه \" F12=\"[{&quot;Ftype&quot;:&quot;0&quot;,&quot;Fid&quot;:15450,&quot;PARAM&quot;:&quot;[{\\&quot;Title\\&quot;:\\&quot;پرداخت شهريه\\&quot;,\\&quot;DoAct\\&quot;:\\&quot;08\\&quot;,\\&quot;ScrOpenParam\\&quot;:\\&quot;&lt;row FTYPE=\\\\\\&quot;0\\\\\\&quot; FID=\\\\\\&quot;15450\\\\\\&quot;&gt;&lt;Parm&gt;&lt;row TRMNO=\\\\\\&quot;4022\\\\\\&quot; STDNO=\\\\\\&quot;$STD_NUMBER\\\\\\&quot; TUTSTAT=\\\\\\&quot;0\\\\\\&quot;  PAYSUBJ=\\\\\\&quot;1\\\\\\&quot; ENBSTAT=\\\\\\&quot;0X6\\\\\\&quot;\\\\\\/&gt;&lt;\\\\\\/Parm&gt;&lt;\\\\\\/row&gt;\\&quot;}]&quot;}]\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"120,000\" F9=\"120,000بستانکار\" F10=\"4021\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"4013\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"120,000\" F6=\"\" F7=\"120,000\" F8=\"0\" F9=\"120,000بدهکار\" F10=\"4012\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"4011\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"4003\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"4002\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"4001\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"3992\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/><row F1=\"\" F2=\"\" F3=\"\" F4=\"\" F5=\"\" F6=\"\" F7=\"\" F8=\"0\" F9=\"\" F10=\"3991\" F11=\"اطلاعات شهريه \" F12=\"\" F13=\"_\"/></dat></grd>"
+            },
+            {
+              "struc": "{\"Cols\":[{\"COLSEQ\":1,\"Caption\":\"ترم\",\"Width\":50,\"Name\":\"TRMNO\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":2,\"Caption\":\"وضع و نوع ترم\",\"Width\":100,\"Name\":\"TRMSTAT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":3,\"Caption\":\"واحد ترم\",\"TopTitle\":\"اخذ شده\",\"ColSpan\":2,\"Width\":50,\"Name\":\"TRMREGUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":4,\"Caption\":\"متوالي\",\"Width\":50,\"Name\":\"COMULREGUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":5,\"Caption\":\"گذرانده ترم\",\"TopTitle\":\"واحد گذرانده\",\"ColSpan\":3,\"Width\":50,\"Name\":\"CTRMPASUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":6,\"Caption\":\"كل\",\"Width\":50,\"Name\":\"TOTPASUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":7,\"Caption\":\"متوالي\",\"Width\":50,\"Name\":\"NOTREPORT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":8,\"Caption\":\"اعلام نشده\",\"Width\":50,\"Name\":\"COMULPASUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":9,\"Caption\":\"ناتمام\",\"Width\":50,\"Name\":\"INCOMPLETE\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":10,\"Caption\":\"حذف\",\"Width\":50,\"Name\":\"TRMDROPUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":11,\"Caption\":\"رد\",\"Width\":50,\"Name\":\"TRMFAILUNT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":12,\"Caption\":\"معدل ترم\",\"TopTitle\":\"معدل\",\"ColSpan\":2,\"Width\":50,\"Name\":\"TRMGPA\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":13,\"Caption\":\"متوالي\",\"Width\":50,\"Name\":\"COMULGPA\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":14,\"Caption\":\"مشروط\",\"Width\":50,\"Name\":\"MSHTAG\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":15,\"Caption\":\"شهريه\",\"Width\":50,\"Name\":\"TUTSTAT\",\"Hide\":0,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1},{\"COLSEQ\":16,\"Caption\":\"Title\",\"Name\":\"Title\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":17,\"Caption\":\"Buttons\",\"Name\":\"Buttons\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":6,\"ColXsWidth\":6,\"ShowLabel\":1},{\"COLSEQ\":18,\"Caption\":\"key\",\"Name\":\"key\",\"Hide\":1,\"HideIfEmpty\":0,\"ColMdWidth\":4,\"ColXsWidth\":12,\"ShowLabel\":1}]}",
+              "xml": "<grd id=\"AfqV\" ><dat><row F1=\"3991\" F2=\"مشغول به تحصيل _ عادي\" F3=\"12\" F4=\"12\" F5=\"9\" F6=\"9\" F7=\"9\" F8=\"0\" F9=\"0\" F10=\"3\" F11=\"0\" F12=\"14.75\" F13=\"14.75     \" F15=\"_____\" STDSTATINREG=\"0\" F16=\"3991\" F17=\"\" F18=\"3991\"/><row F1=\"3992\" F2=\"مشغول به تحصيل _ عادي\" F3=\"18\" F4=\"30\" F5=\"12\" F6=\"12\" F7=\"21\" F8=\"0\" F9=\"0\" F10=\"3\" F11=\"3\" F12=\"13.7\" F13=\"16.11     \" F15=\"_____\" STDSTATINREG=\"0\" F16=\"3992\" F17=\"\" F18=\"3992\"/><row F1=\"4001\" F2=\"مشغول به تحصيل _ عادي\" F3=\"19\" F4=\"49\" F5=\"10\" F6=\"10\" F7=\"31\" F8=\"0\" F9=\"0\" F10=\"3\" F11=\"6\" F12=\"12.76\" F13=\"15.95     \" F15=\"_____\" STDSTATINREG=\"0\" F16=\"4001\" F17=\"\" F18=\"4001\"/><row F1=\"4002\" F2=\"مشغول به تحصيل _ عادي\" F3=\"17\" F4=\"66\" F5=\"17\" F6=\"17\" F7=\"48\" F8=\"0\" F9=\"0\" F10=\"0\" F11=\"0\" F12=\"19.47\" F13=\"17.13     \" F15=\"_____\" STDSTATINREG=\"0\" F16=\"4002\" F17=\"\" F18=\"4002\"/><row F1=\"4003\" F2=\"مشغول به تحصيل _ عادي\" F3=\"4\" F4=\"70\" F5=\"4\" F6=\"4\" F7=\"52\" F8=\"0\" F9=\"0\" F10=\"0\" F11=\"0\" F12=\"15.88\" F13=\"17.03     \" F14=\"_____\" F15=\"_____\" STDSTATINREG=\"0\" F16=\"4003\" F17=\"\" F18=\"4003\"/><row F1=\"4011\" F2=\"مشغول به تحصيل _ عادي\" F3=\"20\" F4=\"90\" F5=\"14\" F6=\"14\" F7=\"66\" F8=\"0\" F9=\"0\" F10=\"0\" F11=\"6\" F12=\"15.09\" F13=\"17.11     \" F15=\"_____\" STDSTATINREG=\"0\" F16=\"4011\" F17=\"\" F18=\"4011\"/><row F1=\"4012\" F2=\"مشغول به تحصيل _ عادي\" F3=\"19\" F4=\"109\" F5=\"19\" F6=\"19\" F7=\"85\" F8=\"0\" F9=\"0\" F10=\"0\" F11=\"0\" F12=\"17.86\" F13=\"17.27     \" F15=\"مشاهده\" STDSTATINREG=\"0\" F16=\"4012\" F17=\"\" F18=\"4012\"/><row F1=\"4013\" F2=\"مشغول به تحصيل _ عادي\" F3=\"1\" F4=\"110\" F5=\"1\" F6=\"1\" F7=\"86\" F8=\"0\" F9=\"0\" F10=\"0\" F11=\"0\" F12=\"20\" F13=\"17.30     \" F14=\"_____\" F15=\"_____\" STDSTATINREG=\"0\" F16=\"4013\" F17=\"\" F18=\"4013\"/><row F1=\"4021\" F2=\"مشغول به تحصيل _ عادي\" F3=\"16\" F4=\"126\" F5=\"8\" F6=\"8\" F7=\"94\" F8=\"8\" F9=\"0\" F10=\"0\" F11=\"0\" F12=\"17.3\" F13=\"17.30     \" F15=\"_____\" STDSTATINREG=\"0\" F16=\"4021\" F17=\"\" F18=\"4021\"/><row F1=\"4022\" F2=\"در حال ثبت نام _ عادي\" F3=\"0\" F4=\"126\" F5=\"0\" F6=\"0\" F7=\"94\" F8=\"0\" F9=\"0\" F10=\"0\" F11=\"0\" F12=\"\" F13=\"17.30     \" F15=\"_____\" STDSTATINREG=\"1\" F16=\"4022\" F17=\"\" F18=\"4022\"/></dat></grd>"
+            }
+          ],
+          "n": [],
+          "nopt": []
+        }
+      },
+      "cookies": [
+        {
+          "name": "stdno",
+          "value": "$CK_STD_NO"
+        }
+      ]
+    }
+  }
+]
