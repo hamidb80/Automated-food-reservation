@@ -1,16 +1,13 @@
-import std/json
+import std/[json, uri]
 
 # track request and response tokens ...
 
 let j = parseJson readfile "eduportal.shahed.ac.ir.har"
+var i = 0
 
 for e in j{"log", "entries"}:
   let url = getStr e{"request", "url"}
 
-
-  echo "-------------"
-  echo url["https://eduportal.shahed.ac.ir/".len .. ^1]
-  
   case getStr e{"request", "method"}
   of "POST":
     let
@@ -19,9 +16,14 @@ for e in j{"log", "entries"}:
       reqd = parseJson getStr reqt
       resd = parseJson getStr rest
 
-    echo ">> ", getStr reqd{"aut", "tck"}
-    echo "<< ", getStr resd{"aut", "tck"}
-    echo "<< ", getStr resd{"oaut", "oa", "nmtck"}
-  
+    if "" != getStr reqd{"aut", "tck"}:
+      echo "--------------------------------------- #", i, " -----"
+      echo url["https://eduportal.shahed.ac.ir/".len .. ^1]
+    
+      echo "-- ", getStr reqd{"aut", "tck"}
+      echo "++ ", getStr resd{"aut", "tck"}
+      echo "++ ", getStr resd{"oaut", "oa", "nmtck"}
+      inc i
+    
   of "GET":
     discard
