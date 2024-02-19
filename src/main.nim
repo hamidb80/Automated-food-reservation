@@ -3,25 +3,31 @@ import client, api/food, utils
 
 import karax/vdom
 
-when isMainModule:
-  refreshDir "./temp/"
+const captchaPath = "./temp/capcha.jpg"
 
+proc main(usr, pass: string) = 
   var c = initCustomHttpClient()
-  let (data, captchaBin) = loginBeforeCaptcha(c)
+  let 
+    (data, captchaBin) = loginBeforeCaptcha(c)
+    cap = 
+      if c.isCaptchaEnabled:
+        writeFile captchaPath, captchaBin
 
-  writeFile "./temp/capcha.jpg", captchaBin
-  echo "enter captcha: "
-  c.loginAfterCaptcha(
-    data, 
-    "992164019", 
-    getEnv "FOOD_PASS", 
-    readLine stdin)
+        echo "enter captcha saved in ", captchaPath, " :"
+        readLine stdin
+        
+      else: ""
 
+  c.loginAfterCaptcha(data, usr, pass, cap)
+  
   # ----- logged in now -----
 
+  dump c.ping 0
   dump c.credit.int
   dump c.financialInfo fisLast
-  dump c.personalInfo["LastName"]
+  dump c.personalInfo
+  dump c.centerInfo.pretty
+  dump c.rolePermissions.pretty
   dump c.availableBanks.pretty
   
   let invoice = c.registerInvoice(1, 10000.Rial)
@@ -29,7 +35,13 @@ when isMainModule:
 
   let t = c.prepareBankTransaction(
     invoice["InvoiceNumber"].getInt,
-    10000.Rial)
+    100000.Rial)
 
   writeFile "./temp/form.html", $t.genRedirectTransactionForm
   openDefaultBrowser "./temp/form.html"
+
+
+when isMainModule:
+  refreshDir "./temp/"
+  main "992164019", getEnv "FOOD_PASS"
+  

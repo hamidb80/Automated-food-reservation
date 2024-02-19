@@ -29,7 +29,6 @@ type
 
 const
   baseUrl* = "https://food.shahed.ac.ir"
-  apiv0* = baseUrl & "/api/v0"
 
   foodsEmoji = {
     "ماکارونی": "🍝",  # Spaghetti
@@ -163,8 +162,11 @@ macro staticAPI(pattern, typecast, url): untyped =
         "invalid API pattern: " & treeRepr pattern)
 
     body = quote:
-      let data = c.request(apiv0 & `url`, accept = cJson).body
-      convertFn(`typecast`)(data)
+      let data = c.request(baseUrl & `url`, accept = cJson).body
+      try:
+        convertFn(`typecast`)(data)
+      except:
+        raise newException(ValueError, "the data was: " & data)
 
     args = extraArgs.mapIt newIdentDefs(it[0], it[1])
 
@@ -179,42 +181,47 @@ macro staticAPI(pattern, typecast, url): untyped =
 const userPage* = baseUrl & "/#!/UserIndex"
 
 proc freshCaptchaUrl*: string =
-  apiv0 & "/Captcha?id=" & $(rand 1..1000000)
+  baseUrl & "/api/v0/Captcha?id=" & $(rand 1..1000000)
 
 # --- json API
 
-staticAPI isCaptchaEnabled, bool, "/Captcha?isactive=wehavecaptcha"
-staticAPI personalInfo, JsonNode, "/Student"
-staticAPI credit, Rial, "/Credit"
-staticAPI personalNotifs, JsonNode, "/PersonalNotification?postname=LastNotifications"
-staticAPI instantSale, JsonNode, "/InstantSale"
-staticAPI availableBanks, JsonNode, "/Chargecard"
+staticAPI isCaptchaEnabled, bool, "/api/v0/Captcha?isactive=wehavecaptcha"
+staticAPI rolePermissions, JsonNode, "/api/v0/RolePermissions"
+staticAPI personalInfo, JsonNode, "/api/v1/Student/GetCurrent"
+staticAPI centerInfo, JsonNode, "/api/v0/CenterInfo"
+staticAPI credit, Rial, "/api/v0/Credit"
+staticAPI personalNotifs, JsonNode, "/api/v0/PersonalNotification?postname=LastNotifications"
+staticAPI instantSale, JsonNode, "/api/v0/InstantSale"
+staticAPI availableBanks, JsonNode, "/api/v0/Chargecard"
+staticAPI ping(unixtime: int), JsonNode, fmt"/signalr/ping?_={unixtime}"
+staticAPI financialInfo(state: FinancialInfoState), JsonNode,
+  fmt"/api/v0/ReservationFinancial?state={state.int}"
 
-staticAPI financialInfo(state: FinancialInfoState), JsonNode:
-  fmt"/ReservationFinancial?state={state.int}"
+staticAPI reservation(week: int), JsonNode,
+  fmt"/api/v0/Reservation?lastdate=&navigation={week*7}"
 
-staticAPI reservation(week: int), JsonNode:
-  fmt"/Reservation?lastdate=&navigation={week*7}"
-
-staticAPI registerInvoice(bid: int, amount: Rial), JsonNode:
-  fmt"/Chargecard?IpgBankId={bid}&amount={amount.int}"
+staticAPI registerInvoice(bid: int, amount: Rial), JsonNode,
+  fmt"/api/v0/Chargecard?IpgBankId={bid}&accommodationId=0&amount={amount.int}&type=1"
 
 proc prepareBankTransaction*(c: var CustomHttpClient,
     invoiceId: int,
     amount: Rial
 ): JsonNode =
 
-  let data = %* {
-      "amount": $amount.int,
+  let
+    data = %* {
       "Applicant": "web",
+      "amount": $amount.int,
       "invoicenumber": invoiceId}
 
-  parseJson body request(
-    c,
-    apiv0 & "/Chargecard", HttpPost,
-    $data,
-    content = cJson,
-    accept = cJson)
+    req = request(
+      c,
+      baseUrl & "/api/v0/Chargecard", HttpPost,
+      $data,
+      content = cJson,
+      accept = cJson)
+
+  parseJson body req
 
 # --- login API
 
