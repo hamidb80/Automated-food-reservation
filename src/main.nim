@@ -25,7 +25,7 @@ proc main(usr, pass: string) =
   dump c.ping 0
   dump c.credit.int
   dump c.financialInfo fisLast
-  dump c.personalInfo
+  dump c.personalInfo.pretty
   dump c.centerInfo.pretty
   dump c.rolePermissions.pretty
   dump c.availableBanks.pretty
@@ -43,5 +43,5 @@ proc main(usr, pass: string) =
 
 when isMainModule:
   refreshDir "./temp/"
-  main "992164019", getEnv "FOOD_PASS"
+  main getEnv "FOOD_USER", getEnv "FOOD_PASS"
   

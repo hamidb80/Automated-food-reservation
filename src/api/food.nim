@@ -28,8 +28,6 @@ type
 # ----- consts -----
 
 const
-  baseUrl* = "https://food.shahed.ac.ir"
-
   foodsEmoji = {
     "ماکارونی": "🍝",  # Spaghetti
     "مرغ": "🍗",            # Chicken
@@ -79,6 +77,19 @@ func toHumanReadable(s: string): string =
 
 # ----- working with data objects -----
 
+# ----- API -----
+
+const
+  baseUrl* = "https://food.shahed.ac.ir"
+  userPage* = baseUrl & "/#!/UserIndex"
+
+func wrapUrl(path: string): string =
+  baseUrl & path
+
+proc freshCaptchaUrl*: string =
+  wrapUrl "/api/v0/Captcha?id=" & $(rand 1..1000000)
+
+
 proc extractLoginPageData*(htmlPage: string): JsonNode =
   const
     headSig = "{&quot;loginUrl&quot"
@@ -92,8 +103,8 @@ proc extractLoginPageData*(htmlPage: string): JsonNode =
   .toHumanReadable
   .parseJson
 
-func extractLoginUrl(loginPageData: JsonNode): string =
-  baseUrl & loginPageData["loginUrl"].getStr
+func extractLoginPath(loginPageData: JsonNode): string =
+  getStr loginPageData["loginUrl"]
 
 func extractLoginXsrfToken(loginPageData: JsonNode): string =
   getStr loginPageData{"antiForgery", "value"}
@@ -176,13 +187,6 @@ macro staticAPI(pattern, typecast, url): untyped =
       newTree(nnkVarTy, ident "CustomHttpClient"))] & args,
     body)
 
-# ----- API -----
-
-const userPage* = baseUrl & "/#!/UserIndex"
-
-proc freshCaptchaUrl*: string =
-  baseUrl & "/api/v0/Captcha?id=" & $(rand 1..1000000)
-
 # --- json API
 
 staticAPI isCaptchaEnabled, bool, "/api/v0/Captcha?isactive=wehavecaptcha"
@@ -216,7 +220,7 @@ proc prepareBankTransaction*(c: var CustomHttpClient,
 
     req = request(
       c,
-      baseUrl & "/api/v0/Chargecard", HttpPost,
+      wrapUrl "/api/v0/Chargecard", HttpPost,
       $data,
       content = cJson,
       accept = cJson)
@@ -228,7 +232,7 @@ proc prepareBankTransaction*(c: var CustomHttpClient,
 proc loginBeforeCaptcha*(c: var CustomHttpClient
   ): tuple[loginPageData: JsonNode, captchaBinary: string] =
 
-  let resp = c.request(baseUrl, HttpGet)
+  let resp = c.request(wrapUrl "", HttpGet)
   assert resp.code.is2xx
 
   result.loginPageData = extractLoginPageData body resp
@@ -243,26 +247,25 @@ proc loginAfterCaptcha*(c: var CustomHttpClient,
   uname, pass, capcha: string
 ) =
 
-  let resp = c.request(
-    extractLoginUrl loginPageData,
-      HttpPost,
-      encodeQuery loginForm(
-        uname, pass, capcha,
-        extractLoginXsrfToken loginPageData),
-      content = cForm)
+  let
+    loginurl = wrapUrl extractLoginPath loginPageData
+    xsrf = extractLoginXsrfToken loginPageData
+    data = loginForm(uname, pass, capcha, xsrf)
+    resp = c.request(loginurl, HttpPost, encodeQuery data, content = cForm)
 
-  assert resp.code.is2xx
+  assert is2xx code resp
 
   let
     form = resp.body.parsehtml.findAll("form")[0]
-    url = form.attr "action"
+    submitUrl = form.attr "action"
     inputs = form.findall("input").items.iterrr:
       map el => (el.attr("name"), el.attr("value"))
       toseq()
 
-  if url.startsWith "{{":
+  if submitUrl.startsWith "{{":
     raise newException(ValueError, "login failed")
 
   else:
-    let resp = c.request(url, HttpPost, inputs.encodeQuery, content = cForm)
-    assert resp.code.is2xx
+    let resp = c.request(submitUrl, HttpPost, encodeQuery inputs,
+        content = cForm)
+    assert is2xx code resp
