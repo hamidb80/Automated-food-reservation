@@ -1,5 +1,7 @@
 .vscode/
 temp/
+assets/
+final/
 
 play.*
 *.exe
