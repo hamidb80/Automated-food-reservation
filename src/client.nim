@@ -5,8 +5,7 @@ import std/[
   strtabs,
   cookies,
   strformat,
-  httpclient,
-  logging]
+  httpclient]
 
 import iterrr
 
@@ -21,10 +20,6 @@ type
   CustomHttpClient* = object
     httpc*: HttpClient
     counter*: int
-
-
-var logger = newConsoleLogger(lvlInfo)
-addHandler logger
 
 
 func toCookie(name, val: string): string =
@@ -81,21 +76,6 @@ proc request*(
         else: `method`
 
     result = c.httpc.request(currentUrl, currentMethod, data)
-
-    when defined debug:
-      info fmt"[{c.counter}]"
-      info currentMethod, " to ", url
-      info "Status: ", result.code
-      debug "Sent Headers: "
-      for k, h in c.httpc.headers.pairs:
-        debug fmt"  {k} = {h}"
-      if data.len > 0:
-        debug "Body: " & data
-      if result.body.len > 0:
-        let p = "./temp/" / ($c.counter & ".html")
-        writefile p, result.body
-        debug "Result: ", p
-
     inc c.counter
     updateCookie c, result
 

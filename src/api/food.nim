@@ -21,10 +21,6 @@ import macroplus, iterrr
 type
   Rial* = distinct int
 
-  FinancialInfoState* = enum
-    fisAll = 1
-    fisLast = 2
-
   WeekDayId* = enum
     sat = 0
     sun = 1
@@ -108,7 +104,7 @@ func toHumanReadable(s: string): string =
   {.cast(noSideEffect).}:
     s.replace(re"&(\w+);", repl)
 
-func `$`*(r: Rial): string = 
+func `$`*(r: Rial): string =
   $r.int & "Rials"
 
 # ----- API -----
@@ -228,23 +224,58 @@ macro staticAPI(pattern, typecast, url): untyped =
 # --- json API
 
 staticAPI isCaptchaEnabled, bool, "/api/v0/Captcha?isactive=wehavecaptcha"
-staticAPI getFirstFoodCookie, JsonNode, "/api/v1/ReserveOperator/GetFirstFoodCookie"
-staticAPI rolePermissions, JsonNode, "/api/v0/RolePermissions"
+
 staticAPI personalInfo, JsonNode, "/api/v1/Student/GetCurrent"
-staticAPI centerInfo, JsonNode, "/api/v0/CenterInfo"
+
 staticAPI credit, Rial, "/api/v0/Credit"
-staticAPI personalNotifs, JsonNode, "/api/v0/PersonalNotification?postname=LastNotifications"
-staticAPI instantSale, JsonNode, "/api/v0/InstantSale"
+
 staticAPI availableBanks, JsonNode, "/api/v0/Chargecard"
-staticAPI ping(unixtime: int), JsonNode, fmt"/signalr/ping?_={unixtime}"
-staticAPI financialInfo(state: FinancialInfoState), JsonNode,
-  fmt"/api/v0/ReservationFinancial?state={state.int}"
 
 staticAPI reservationImpl(week: int), JsonNode,
   fmt"/api/v0/Reservation?lastdate=&navigation={week*7}"
 
 staticAPI registerInvoice(bid: int, amount: Rial), JsonNode,
   fmt"/api/v0/Chargecard?IpgBankId={bid}&accommodationId=0&amount={amount.int}&type=1"
+
+type ResvrAction* = enum
+  cancel = 0
+  rsv = 1
+
+func `not`(ra: ResvrAction): ResvrAction = 
+  case ra:
+  of cancel: rsv
+  of rsv: cancel
+
+proc reserve*(
+  c: var CustomHttpClient,
+
+  action: ResvrAction,
+  jalalidate: string,
+
+  foodId: int,
+  mealId: MealId,
+  selfId: int,
+): JsonNode =
+
+  let 
+    data = %* [{
+      "Date": jalalidate,
+      "FoodId": foodId,
+      "MealId": int mealId,
+      "SelfId": selfId,
+      "Counts": int action,
+      "PriceType":2,
+      "Provider": 1,
+      "OP": 1}]
+
+    req = request(
+      c,
+      wrapUrl "/api/v0/Reservation", HttpPost,
+      $data,
+      content = cJson,
+      accept = cJson)
+
+  parseJson body req
 
 
 proc loginBeforeCaptcha(c: var CustomHttpClient
@@ -333,17 +364,35 @@ type
     self: Restaurant
     price: Rial
 
+  FoodState* = enum
+    what0 = 0
+    what1 = 1
+    # what2 = 2
+    reserved = 2
+    what3 = 3
+    what4 = 4
+    what5 = 5
+    what6 = 6
+
   RevFood* = object
     id*: int
-    state*: int
+    state*: FoodState
     name*: string
     orders*: seq[RevFoodSelfPack]
+
+  LastReservedFood = object
+    factor*: int
+    selfId*: int
+    foodId*: int
+    selfname*: string
+    foodname*: string
 
   RevMeal* = object
     id*: MealId
     wid*: int # id in whole week
-    state: MealState
-    foods: seq[RevFood]
+    state*: MealState
+    foods*: seq[RevFood]
+    selected*: Option[LastReservedFood]
 
   RevDay* = object
     id*: WeekDayId
@@ -367,7 +416,6 @@ func `[]`*(day: RevDay, mealId: MealId): RevMeal =
   raise newException(ValueError, "Cannot find meal: " & $mealId)
 
 
-
 func parseRevFoodOrderData(menu: JsonNode): RevFoodSelfPack =
   RevFoodSelfPack(
     price: Rial getInt menu["ShowPrice"],
@@ -378,15 +426,29 @@ func parseRevFoodOrderData(menu: JsonNode): RevFoodSelfPack =
 func parseRevFoodData(food: JsonNode): RevFood =
   RevFood(
     id: getInt food["FoodId"],
-    state: getInt food["FoodState"],
+    state: FoodState getInt food["FoodState"],
     name: getStr food["FoodName"],
     orders: food["SelfMenu"].mapit parseRevFoodOrderData it)
+
+
+func parseLastReservedData(lastReservedArr: JsonNode): Option[LastReservedFood] =
+  if 0 < len lastReservedArr:
+    let r = lastReservedArr[0]
+    some LastReservedFood(
+      factor: parseInt getStr r["ReserveNumber"],
+      foodId: getInt r["FoodId"],
+      selfId: getInt r["SelfId"],
+      foodName: getStr r["FoodName"],
+      selfName: getStr r["SelfName"])
+  else:
+    none LastReservedFood
 
 func parseRevMealData(meal: JsonNode): RevMeal =
   RevMeal(
     id: MealId getInt meal["MealId"],
     wid: getInt meal["Id"],
     state: MealState getInt meal["MealState"],
+    selected: parseLastReservedData meal["LastReserved"],
     foods: meal["FoodMenu"].mapit parseRevFoodData it)
 
 func parseRevDayData(day: JsonNode): RevDay =

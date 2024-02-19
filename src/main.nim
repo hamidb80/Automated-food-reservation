@@ -1,34 +1,29 @@
 import std/[sugar, json, browsers, os]
 import client, api/food, utils
 
-import karax/vdom
+# import karax/vdom
+
+
 
 const captchaPath = "./temp/capcha.jpg"
 
-import print
-
-proc captchaHandler(captchaBin: string): string =
-  writeFile captchaPath, captchaBin
-
-  echo "enter captcha saved in ", captchaPath, " :"
-  readLine stdin
-
 proc main(usr, pass: string) =
   var c = initCustomHttpClient()
-  login c, usr, pass, captchaHandler
+  
+  login c, usr, pass, proc(captchaBin: string): string =
+    writeFile captchaPath, captchaBin
+    echo "enter captcha saved in ", captchaPath, " :"
+    readLine stdin
 
-  # ----- logged in now -----
-
-  dump c.ping 0
   dump c.credit
-  dump c.financialInfo fisLast
-  dump c.personalInfo.pretty
-  dump c.centerInfo.pretty
-  dump c.rolePermissions.pretty
-  dump c.availableBanks.pretty
+  dump pretty c.personalInfo
+  dump pretty c.availableBanks
 
   let weekRevs = c.reservation 0
-  echo weekRevs[mon][lunch]
+  echo weekRevs[mon][lunch].selected
+
+  discard reserve(c, cancel, "1402/12/02", 44, lunch, 1)
+  discard reserve(c, rsv, "1402/12/02", 44, lunch, 1)
 
   # writeFile "temp.json", pretty rvdata
 
