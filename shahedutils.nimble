@@ -10,7 +10,7 @@ bin           = @["main"]
 
 # Dependencies
 
-requires "nim >= 1.6.14"
+requires "nim >= 2.0.0"
 requires "macroplus"
 requires "iterrr"
 requires "karax"

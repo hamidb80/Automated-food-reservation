@@ -30,6 +30,40 @@ API: https://eduportal.shahed.ac.ir/frm/SBS1201_CODES_LOOKUP_DSC/SBS1201_CODES_L
 <row C1="35" C2="قالب پرديس" C3="Pardis" C4="6"/>
 ```
 
+### API URLs
+take 
+https://eduportal.shahed.ac.ir/frm/SBS1201_CODES_LOOKUP_DSC/SBS1201_CODES_LOOKUP_DSC.svc/%7B$6r$6$1%7B$6MaxHlp$6$1$610000$6,$6RWM$6$1$6SYS$6,$6_LkId$6$1$6$6,$6AYPY$6$1$61$6%7D,$6act$6$1$620$6%7D for example. 
+
+the last part of url is:
+```
+%7B$6r$6$1%7B$6MaxHlp$6$1$610000$6,$6RWM$6$1$6SYS$6,$6_LkId$6$1$6$6,$6AYPY$6$1$61$6%7D,$6act$6$1$620$6%7D
+```
+
+if we "url decode" it:
+```
+/{$6r$6$1{$6MaxHlp$6$1$610000$6,$6RWM$6$1$6LVL$6,$6_LkId$6$1$610$6,$6ySF$6$1$610$6,$6AYPX$6$1$610$6,$6AYPY$6$1$61$6},$6act$6$1$620$6}
+```
+
+replace `$6` with `"` and $1 with `:`:
+```json
+{"r":{"MaxHlp":"10000","RWM":"LVL","_LkId":"10","ySF":"10","AYPX":"10","AYPY":"1"},"act":"20"}
+```
+
+pretty form:
+```json
+{
+  "r": {
+    "MaxHlp": "10000",
+    "RWM": "LVL",
+    "_LkId": "10",
+    "ySF": "10",
+    "AYPX": "10",
+    "AYPY": "1"
+  },
+  "act": "20"
+}
+```
+
 #### Typos
 one of the APIs is `BAS0274_UserFavorate_Show_Beh` which `Favorate` should be `favorite` AFAIK
 
@@ -82,8 +116,6 @@ then again the value for `ScrOpenParam` is XML:
   </Parm>
 </row>
 ```
-
-this is insane!!!
 
 #### Autentication and access control
 it is based on `ticket` and API calls are sequential
@@ -142,6 +174,7 @@ it is based on `ticket` and API calls are sequential
 - `sguid`: ... generated unique id [seems like randomly generated uuid]
 - `ri`:
 - `su`: 
+- `H`: 
 - `F`: field/form
 - `C`: column
 - `DASHB`: dashboard
@@ -152,9 +185,7 @@ it is based on `ticket` and API calls are sequential
 - `I`: icon [icon name/css-class]
 - `AsYt`: as your time
 - `AsYs`: as your ...(date)
-- `H`: 
-- `TRM`: term (semester)
-- `trm`: term (semester)
+- `TRM`/`trm`: term (semester)
 - `edu`: education
 - `fac`: faculty
 - `nav`: navigation
