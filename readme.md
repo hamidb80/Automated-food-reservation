@@ -8,7 +8,6 @@
 1. export all the HTTP requests as `.har` file from `FireFox`
 2. clean it by `./scripts/har.nim`
 3. simulate by `./scripts/sim.nim`
-4. `./scripts/tck_tracer.nim` helped
 
 
 ### Fun facts
@@ -44,7 +43,7 @@ if we "url decode" it:
 /{$6r$6$1{$6MaxHlp$6$1$610000$6,$6RWM$6$1$6LVL$6,$6_LkId$6$1$610$6,$6ySF$6$1$610$6,$6AYPX$6$1$610$6,$6AYPY$6$1$61$6},$6act$6$1$620$6}
 ```
 
-replace `$6` with `"` and $1 with `:`:
+replace `$6` with `"` and `$1` with `:`
 ```json
 {"r":{"MaxHlp":"10000","RWM":"LVL","_LkId":"10","ySF":"10","AYPX":"10","AYPY":"1"},"act":"20"}
 ```
@@ -118,7 +117,95 @@ then again the value for `ScrOpenParam` is XML:
 ```
 
 #### Autentication and access control
-it is based on `ticket` and API calls are sequential
+it is based on `ticket`, which means API calls are sequential.
+
+the order or API calls matters. if you miss one, ot wont work...
+
+the first ticket is given to you after you have logged in successfully.
+each API take a `ticket` and return 1 or 2 `ticket`s. 
+you use the given tickets for future API calls.
+
+produced by `./scripts/tck_tracer.nim`: (`--` means taken, `++` means given)
+```
+--------------------------------------- #0 -----
+frm/loginapi/loginapi.svc/
+-- 1
+++ $TCK_1  aut.tck
+--------------------------------------- #1 -----
+frm/nav/nav.svc/
+-- $TCK_1
+++ $TCK_2  aut.tck
+++ $TCK_4  oaut.oa.nmtck
+--------------------------------------- #2 -----
+frm/F0213_PROCESS_SYSMENU0/F0213_PROCESS_SYSMENU0.svc/
+-- $TCK_2
+++ $TCK_3  aut.tck
+++ $TCK_3  oaut.oa.nmtck
+--------------------------------------- #3 -----
+frm/nav/nav.svc/
+-- $TCK_4
+++ $TCK_5  aut.tck
+++ $TCK_8  oaut.oa.nmtck
+--------------------------------------- #4 -----
+frm/BAS0274_UserFavorate_Show_Beh/BAS0274_UserFavorate_Show_Beh.svc/
+-- $TCK_5
+++ $TCK_6  aut.tck
+--------------------------------------- #5 -----
+frm/Edu0203_Desktop_BEH/Edu0203_Desktop_BEH.svc/
+-- $TCK_6
+++ $TCK_7  aut.tck
+--------------------------------------- #6 -----
+frm/nav/nav.svc/
+-- $TCK_8
+++ $TCK_10  aut.tck
+++ $TCK_13  oaut.oa.nmtck
+--------------------------------------- #7 -----
+frm/F6524_PROCESS_DASHBOARD_BEH/F6524_PROCESS_DASHBOARD_BEH.svc/
+-- $TCK_10
+++ $TCK_11  aut.tck
+--------------------------------------- #8 -----
+frm/F6524_PROCESS_DASHBOARD_BEH/F6524_PROCESS_DASHBOARD_BEH.svc/
+-- $TCK_11
+++ $TCK_12  aut.tck
+--------------------------------------- #9 -----
+frm/nav/nav.svc/
+-- $TCK_13
+++ $TCK_14  aut.tck
+++ $TCK_??  oaut.oa.nmtck
+--------------------------------------- #10 -----
+frm/Edu0301_Terms_TrmNo_Lookup/Edu0301_Terms_TrmNo_Lookup.svc/
+-- $TCK_14
+++ $TCK_15  aut.tck
+--------------------------------------- #11 -----
+frm/Edu1002_UnvFac_FacNo_Lookup/Edu1002_UnvFac_FacNo_Lookup.svc/
+-- $TCK_15
+++ $TCK_16  aut.tck
+--------------------------------------- #12 -----
+frm/Edu1021_UNVBRANCHES_Brnno_Lookup/Edu1021_UNVBRANCHES_Brnno_Lookup.svc/
+-- $TCK_16
+++ $TCK_17  aut.tck
+--------------------------------------- #13 -----
+frm/nav/nav.svc/
+-- $TCK_17
+++ $TCK_18  aut.tck
+++ $TCK_19  oaut.oa.nmtck
+--------------------------------------- #14 -----
+frm/F1825_PROCESS_STDTOTALINFO_BEH/F1825_PROCESS_STDTOTALINFO_BEH.svc/
+-- $TCK_19
+++ $TCK_19  aut.tck
+--------------------------------------- #15 -----
+frm/F1825_PROCESS_STDTOTALINFO_BEH/F1825_PROCESS_STDTOTALINFO_BEH.svc/
+-- $TCK_19
+++ $TCK_20  aut.tck
+--------------------------------------- #16 -----
+frm/F1809_PROCESS_STD_Personally_BH/F1809_PROCESS_STD_Personally_BH.svc/
+-- $TCK_18
+++ $TCK_21  aut.tck
+--------------------------------------- #17 -----
+frm/F1825_PROCESS_STDTOTALINFOTrmStat_BEH/F1825_PROCESS_STDTOTALINFOTrmStat_BEH.svc/
+-- $TCK_20
+++ $TCK_22  aut.tck
+```
 
 ### API terminologies
 - `tck`: ticket
