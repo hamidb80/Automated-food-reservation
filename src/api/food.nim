@@ -25,6 +25,39 @@ type
     fisAll = 1
     fisLast = 2
 
+  WeekDayId* = enum
+    sat = 0
+    sun = 1
+    mon = 2
+    tue = 3
+    wed = 4
+    thu = 5
+    fri = 6
+
+  DayState* = enum
+    can = 0
+    what1 = 1
+    today = 2
+    what3 = 3
+    off = 4
+    cannot = 5
+
+  MealId* = enum
+    breakfast = 1
+    lunch = 2
+    dinner = 3
+
+  MealState* = enum
+    can = 0
+    what1 = 1
+    what2 = 2
+    what3 = 3
+    what4 = 4
+    undefined = 5
+    reserved = 6
+    maybe = 7
+
+
 # ----- consts -----
 
 const
@@ -75,7 +108,8 @@ func toHumanReadable(s: string): string =
   {.cast(noSideEffect).}:
     s.replace(re"&(\w+);", repl)
 
-# ----- working with data objects -----
+func `$`*(r: Rial): string = 
+  $r.int & "Rials"
 
 # ----- API -----
 
@@ -89,6 +123,7 @@ func wrapUrl(path: string): string =
 proc freshCaptchaUrl*: string =
   wrapUrl "/api/v0/Captcha?id=" & $(rand 1..1000000)
 
+# ----- working with data objects -----
 
 proc extractLoginPageData*(htmlPage: string): JsonNode =
   const
@@ -165,7 +200,7 @@ template convertFn(t: type JsonNode): untyped = parseJson
 
 macro staticAPI(pattern, typecast, url): untyped =
   let
-    (name, extraArgs) =
+    (apiName, extraArgs) =
       case pattern.kind
       of nnkIdent: (pattern, @[])
       of nnkObjConstr: (pattern[ObjConstrIdent], pattern[ObjConstrFields])
@@ -179,17 +214,21 @@ macro staticAPI(pattern, typecast, url): untyped =
       except:
         raise newException(ValueError, "the data was: " & data)
 
-    args = extraArgs.mapIt newIdentDefs(it[0], it[1])
+    moreArgs = extraArgs.mapIt newIdentDefs(it[0], it[1])
 
-  newProc(name.exported,
-    @[typecast, newIdentDefs(
+    firstArg = newIdentDefs(
       ident "c",
-      newTree(nnkVarTy, ident "CustomHttpClient"))] & args,
+      newTree(nnkVarTy, ident "CustomHttpClient"))
+
+  newProc(
+    exported apiName,
+    @[typecast, firstArg] & moreArgs,
     body)
 
 # --- json API
 
 staticAPI isCaptchaEnabled, bool, "/api/v0/Captcha?isactive=wehavecaptcha"
+staticAPI getFirstFoodCookie, JsonNode, "/api/v1/ReserveOperator/GetFirstFoodCookie"
 staticAPI rolePermissions, JsonNode, "/api/v0/RolePermissions"
 staticAPI personalInfo, JsonNode, "/api/v1/Student/GetCurrent"
 staticAPI centerInfo, JsonNode, "/api/v0/CenterInfo"
@@ -201,35 +240,14 @@ staticAPI ping(unixtime: int), JsonNode, fmt"/signalr/ping?_={unixtime}"
 staticAPI financialInfo(state: FinancialInfoState), JsonNode,
   fmt"/api/v0/ReservationFinancial?state={state.int}"
 
-staticAPI reservation(week: int), JsonNode,
+staticAPI reservationImpl(week: int), JsonNode,
   fmt"/api/v0/Reservation?lastdate=&navigation={week*7}"
 
 staticAPI registerInvoice(bid: int, amount: Rial), JsonNode,
   fmt"/api/v0/Chargecard?IpgBankId={bid}&accommodationId=0&amount={amount.int}&type=1"
 
-proc prepareBankTransaction*(c: var CustomHttpClient,
-    invoiceId: int,
-    amount: Rial
-): JsonNode =
 
-  let
-    data = %* {
-      "Applicant": "web",
-      "amount": $amount.int,
-      "invoicenumber": invoiceId}
-
-    req = request(
-      c,
-      wrapUrl "/api/v0/Chargecard", HttpPost,
-      $data,
-      content = cJson,
-      accept = cJson)
-
-  parseJson body req
-
-# --- login API
-
-proc loginBeforeCaptcha*(c: var CustomHttpClient
+proc loginBeforeCaptcha(c: var CustomHttpClient
   ): tuple[loginPageData: JsonNode, captchaBinary: string] =
 
   let resp = c.request(wrapUrl "", HttpGet)
@@ -242,7 +260,7 @@ proc loginBeforeCaptcha*(c: var CustomHttpClient
     HttpGet,
     tempHeaders = {"Referer": "https://food.shahed.ac.ir/identity/login?"})
 
-proc loginAfterCaptcha*(c: var CustomHttpClient,
+proc loginAfterCaptcha(c: var CustomHttpClient,
   loginPageData: JsonNode,
   uname, pass, capcha: string
 ) =
@@ -269,3 +287,117 @@ proc loginAfterCaptcha*(c: var CustomHttpClient,
     let resp = c.request(submitUrl, HttpPost, encodeQuery inputs,
         content = cForm)
     assert is2xx code resp
+
+proc login*(
+  c: var CustomHttpClient,
+  usr, pass: string,
+  captchaSolver: proc(captchaImageBinary: string): string
+) =
+  let
+    (data, captchaBin) = loginBeforeCaptcha c
+    cap =
+      if isCaptchaEnabled c:
+        captchaSolver captchaBin
+      else:
+        ""
+
+  c.loginAfterCaptcha(data, usr, pass, cap)
+
+proc prepareBankTransaction*(c: var CustomHttpClient,
+    invoiceId: int,
+    amount: Rial
+): JsonNode =
+
+  let
+    data = %* {
+      "Applicant": "web",
+      "amount": $amount.int,
+      "invoicenumber": invoiceId}
+
+    req = request(
+      c,
+      wrapUrl "/api/v0/Chargecard", HttpPost,
+      $data,
+      content = cJson,
+      accept = cJson)
+
+  parseJson body req
+
+
+type
+  Restaurant* = object
+    id*: int
+    name*: string
+
+  RevFoodSelfPack = object
+    self: Restaurant
+    price: Rial
+
+  RevFood* = object
+    id*: int
+    state*: int
+    name*: string
+    orders*: seq[RevFoodSelfPack]
+
+  RevMeal* = object
+    id*: MealId
+    wid*: int # id in whole week
+    state: MealState
+    foods: seq[RevFood]
+
+  RevDay* = object
+    id*: WeekDayId
+    state*: DayState
+    date: string
+    meals*: seq[RevMeal]
+
+  RevWeek = seq[RevDay]
+
+
+func `[]`*(week: RevWeek, id: WeekDayId): RevDay =
+  for d in week:
+    if d.id == id:
+      return d
+  raise newException(ValueError, "Cannot find day: " & $id)
+
+func `[]`*(day: RevDay, mealId: MealId): RevMeal =
+  for meal in day.meals:
+    if meal.id == mealId:
+      return meal
+  raise newException(ValueError, "Cannot find meal: " & $mealId)
+
+
+
+func parseRevFoodOrderData(menu: JsonNode): RevFoodSelfPack =
+  RevFoodSelfPack(
+    price: Rial getInt menu["ShowPrice"],
+    self: Restaurant(
+      id: getInt menu["SelfId"],
+      name: getStr menu["SelfName"]))
+
+func parseRevFoodData(food: JsonNode): RevFood =
+  RevFood(
+    id: getInt food["FoodId"],
+    state: getInt food["FoodState"],
+    name: getStr food["FoodName"],
+    orders: food["SelfMenu"].mapit parseRevFoodOrderData it)
+
+func parseRevMealData(meal: JsonNode): RevMeal =
+  RevMeal(
+    id: MealId getInt meal["MealId"],
+    wid: getInt meal["Id"],
+    state: MealState getInt meal["MealState"],
+    foods: meal["FoodMenu"].mapit parseRevFoodData it)
+
+func parseRevDayData(day: JsonNode): RevDay =
+  RevDay(
+      id: WeekDayId getInt day["DayId"],
+      state: DayState getInt day["DayState"],
+      date: getStr day["DayDate"],
+      meals: day["Meals"].mapit parseRevMealData it)
+
+func parseRevervationData(days: JsonNode): RevWeek =
+  days.mapit parseRevDayData it
+
+proc reservation*(c: var CustomHttpClient, week: int): RevWeek =
+  parseRevervationData c.reservationImpl(week)
