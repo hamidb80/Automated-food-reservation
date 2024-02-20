@@ -6,6 +6,18 @@
 
 ## Behestan
 
+### Data
+`Get-ChildItem -Filter *.gif | Remove-Item`
+`magick.exe mogrify -format png *.gif`
+
+convert to black & white
+`magick mogrify -alpha off -auto-threshold otsu *.png`
+
+thanks to https://stackoverflow.com/questions/65945662/how-do-i-convert-a-color-image-to-black-and-white-using-imagemagick
+
+
+https://github.com/pythonlessons/mltu/tree/main/Tutorials/02_captcha_to_text
+
 ### Methodology
 1. export all the HTTP requests as `.har` file from `FireFox`
 2. clean it by `./scripts/har.nim`
