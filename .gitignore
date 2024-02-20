@@ -7,3 +7,6 @@ play.*
 *.exe
 *.har
 temp.*
+
+__pycache__
+models/

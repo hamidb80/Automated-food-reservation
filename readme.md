@@ -7,11 +7,21 @@
 ## Behestan
 
 ### Data
-`Get-ChildItem -Filter *.gif | Remove-Item`
-`magick.exe mogrify -format png *.gif`
+```
+Get-ChildItem -Filter *.gif | Remove-Item
+```
+```
+magick.exe mogrify -format png *.gif
+```
 
 convert to black & white
-`magick mogrify -alpha off -auto-threshold otsu *.png`
+```
+magick mogrify -alpha off -auto-threshold otsu *.png
+```
+
+```
+magick mogrify -crop 140x44+0+0 *.png
+```
 
 thanks to https://stackoverflow.com/questions/65945662/how-do-i-convert-a-color-image-to-black-and-white-using-imagemagick
 
