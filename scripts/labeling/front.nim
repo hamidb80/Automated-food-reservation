@@ -17,19 +17,19 @@ proc updateImage(s: cstring) =
   redraw()
 
 proc nextImage =
-  discard fetch(cstring "/image/next")
+  discard fetch(cstring "/next-image")
   .then((r: Response) => r.text())
   .then((t: cstring) => updateImage t)
 
 proc saveImage(value: cstring) =
-  discard fetch("/save/" & currentImage & "/" & value & "/")
+  discard fetch("/save/" & currentImage & "/" & value)
 
 ## --- views
 
 proc createDom: VNode =
   result = buildHtml main:
     tdiv(class = "frame"):
-      img(src = "/image/" & currentImage)
+      img(src = "/get-image/" & currentImage)
 
     form(class = "user"):
       input(placeholder = "enter captcha", id = "x")
@@ -48,9 +48,6 @@ proc createDom: VNode =
 
 ## --- setup
 
-when isMainModule:
-  proc start =
-    nextImage()
-    setRenderer createDom
-
-  discard settimeout(start, 1000)
+echo "what the hell"
+nextImage()
+setRenderer createDom

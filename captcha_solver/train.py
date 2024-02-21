@@ -84,7 +84,7 @@ train_data_provider.augmentors = [
 
 # Creating TensorFlow model architecture
 model = train_model(
-    input_dim = (configs.height, configs.width, 3),
+    input_dim = (configs.height, configs.width, 1),
     output_dim = len(configs.vocab))
 
 # Compile the model and print summary

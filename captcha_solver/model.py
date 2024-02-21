@@ -34,3 +34,4 @@ def train_model(input_dim, output_dim, activation="leaky_relu", dropout=0.2):
 
     model = Model(inputs=inputs, outputs=output)
     return model
+    
