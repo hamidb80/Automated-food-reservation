@@ -9,6 +9,9 @@
 ###
 [character segmentation of captcha image :: stackoverflow](https://stackoverflow.com/questions/24150431/character-segmentation-of-captcha-image)
 
+https://stackoverflow.com/questions/33294595/segmenting-letters-in-a-captcha-image?rq=3
+
+
 ### Data
 ```
 Get-ChildItem -Filter *.gif | Remove-Item
@@ -38,6 +41,10 @@ https://github.com/pythonlessons/mltu/tree/main/Tutorials/02_captcha_to_text
 
 
 ### Fun facts
+
+#### the Captcha which is sent as `gif` is actually `jpeg`!!
+
+
 #### One of the http headers after you log in:
 ```
 Authorization = Bearer [object Object]
