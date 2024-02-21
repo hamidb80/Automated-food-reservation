@@ -6,6 +6,9 @@
 
 ## Behestan
 
+###
+[character segmentation of captcha image :: stackoverflow](https://stackoverflow.com/questions/24150431/character-segmentation-of-captcha-image)
+
 ### Data
 ```
 Get-ChildItem -Filter *.gif | Remove-Item
