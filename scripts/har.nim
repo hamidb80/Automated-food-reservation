@@ -1,19 +1,7 @@
 import std/[
   json,
   options,
-  strutils,
-  mimetypes]
-
-
-var db = block: 
-  var t = newMimetypes()
-  register t, "woff2", "application/font-woff2"
-  register t, "woff", "font/x-woff"
-  register t, "json", "application/json"
-  t
-
-proc ext(mime: string): string =
-  getExt db, mime
+  strutils]
 
 
 proc summary(j: JsonNode): JsonNode =
@@ -43,13 +31,7 @@ proc summary(j: JsonNode): JsonNode =
           except:
             co
 
-
-    const useless = [
-      "jpg", "jpeg", "png", "gif", "jfif", "ico",
-      "html", "js", "css", "webmanifest",
-      "ttf", "woff2", "woff"]
-  
-    if ("captcha.ashx" in url) or (c.ext notin useless): 
+    if "captcha.ashx" in url or c == "application/json": 
       result.add %*{
         "req": {
           "url": url,
@@ -69,5 +51,5 @@ proc summary(j: JsonNode): JsonNode =
 
 
 when isMainModule:
-  writeFile "temp.json":
+  writeFile "temp.json", 
     pretty summary parseJson readfile "eduportal.shahed.ac.ir.har"

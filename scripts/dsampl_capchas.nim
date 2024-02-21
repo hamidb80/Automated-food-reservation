@@ -1,16 +1,27 @@
-import std/[strformat, httpclient, os]
+import std/[strformat, strutils, httpclient, os]
 
+proc batchDownload(limit: Slice[int]) =
+  let c = newHttpClient()
+  var
+    lastImageLen = 0
+    i = limit.a
 
-const url = "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx"
-let c = newHttpClient()
-var 
-  lastImage = ""
-  i = 1
+  while i in limit:
+    let image = getContent(c, "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx")
+    sleep 1000
+    if lastImageLen != len image:
+      writeFile fmt"./temp/c-{i:03}.gif", image
+      echo i
+      inc i
+      lastImageLen = len image
 
-while i < 1000:
-  let image = getContent(c, url)
-  sleep 1000
-  if lastImage.len != image.len:
-    writeFile fmt"./temp/c-{i:03}.gif", image
-    inc i
-    lastImage = image   
+when isMainModule:
+  if paramCount() != 2:
+    echo "expected 2 but got: ", paramCount() - 1
+    quit "USAGE: app <start-number> <end-number>"
+  else:
+    let
+      a = parseInt paramStr 1
+      b = parseInt paramStr 2
+
+    batchDownload a .. b
