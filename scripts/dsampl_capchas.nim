@@ -17,7 +17,6 @@ proc batchDownload(limit: Slice[int]) =
 
 when isMainModule:
   if paramCount() != 2:
-    echo "expected 2 but got: ", paramCount() - 1
     quit "USAGE: app <start-number> <end-number>"
   else:
     let
