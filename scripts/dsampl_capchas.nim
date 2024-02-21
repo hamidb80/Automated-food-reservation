@@ -7,13 +7,17 @@ proc batchDownload(limit: Slice[int]) =
     i = limit.a
 
   while i in limit:
-    let image = getContent(c, "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx")
     sleep 1000
-    if lastImageLen != len image:
-      writeFile fmt"./temp/c-{i:03}.gif", image
-      echo i
-      inc i
-      lastImageLen = len image
+    try:
+      let image =
+        getContent(c, "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx")
+      if lastImageLen != len image:
+        writeFile fmt"./temp/c-{i:03}.gif", image
+        echo i
+        inc i
+        lastImageLen = len image
+    except:
+      discard
 
 when isMainModule:
   if paramCount() != 2:
