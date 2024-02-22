@@ -1,23 +1,26 @@
-import std/[strformat, strutils, httpclient, os]
+import std/[strformat, strutils, httpclient, os, random]
+
+randomize()
+
+proc newCaptchaUrl: string = 
+  let n = rand 0..100
+  "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx?rr=1&x" & $n
 
 proc batchDownload(limit: Slice[int]) =
-  let c = newHttpClient()
   var
     lastImageLen = 0
     i = limit.a
 
   while i in limit:
-    sleep 1000
-    try:
-      let image =
-        getContent(c, "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx")
-      if lastImageLen != len image:
-        writeFile fmt"./temp/c-{i:03}.gif", image
-        echo i
-        inc i
-        lastImageLen = len image
-    except:
-      discard
+    sleep 100
+    let 
+      c = newHttpClient()
+      image = c.getContent newCaptchaUrl()
+    if lastImageLen != len image:
+      writeFile fmt"./temp/c-{i:05}.gif", image
+      echo i
+      inc i
+      lastImageLen = len image
 
 when isMainModule:
   if paramCount() != 2:

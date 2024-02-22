@@ -4,7 +4,6 @@ import client, api/food, utils
 # import karax/vdom
 
 
-
 const captchaPath = "./temp/capcha.jpg"
 
 proc main(usr, pass: string) =
