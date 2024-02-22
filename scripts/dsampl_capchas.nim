@@ -7,21 +7,24 @@ proc newCaptchaUrl: string =
   "https://eduportal.shahed.ac.ir/frm/captcha/captcha.ashx?rr=1&x" & $n
 
 proc batchDownload(limit: Slice[int]) =
+  let c = newHttpClient()
   var
     lastImageLen = 0
     i = limit.a
 
   while i in limit:
     sleep 100
-    let 
-      c = newHttpClient()
-      image = c.getContent newCaptchaUrl()
-    if lastImageLen != len image:
-      writeFile fmt"./temp/c-{i:05}.gif", image
-      echo i
-      inc i
-      lastImageLen = len image
+    try:
+      let image = c.getContent newCaptchaUrl()
+      if lastImageLen != len image:
+        writeFile fmt"./temp/c-{i:05}.gif", image
+        echo i
+        inc i
+        lastImageLen = len image
 
+    except:
+      echo "Error: ", getCurrentExceptionMsg()
+      
 when isMainModule:
   if paramCount() != 2:
     quit "USAGE: app <start-number> <end-number>"
