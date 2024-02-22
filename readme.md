@@ -6,6 +6,9 @@
 
 ## Behestan
 
+### TODO
+reconsider every little `a` becuase it is either `g` or `q`
+
 ###
 [character segmentation of captcha image :: stackoverflow](https://stackoverflow.com/questions/24150431/character-segmentation-of-captcha-image)
 
