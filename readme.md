@@ -44,6 +44,7 @@ https://github.com/pythonlessons/mltu/tree/main/Tutorials/02_captcha_to_text
 
 #### the Captcha which is sent as `gif` is actually `jpeg`!!
 
+#### the captcha is not unique for users and it remains the same for about 2-10 mins
 
 #### One of the http headers after you log in:
 ```
