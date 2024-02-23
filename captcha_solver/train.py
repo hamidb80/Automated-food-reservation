@@ -24,10 +24,12 @@ class ModelConfigs(BaseModelConfigs):
     def __init__(self):
         super().__init__()
         self.model_path = "models/"
+
         self.vocab = None # assigned later
-        self.height = 44 # 50
+        self.max_text_length = 0 # assigned later
+
+        self.height = 46 # 50
         self.width = 140
-        self.max_text_length = 0
         self.batch_size = 64
         self.learning_rate = 1e-3
         self.train_epochs = 1000
@@ -84,7 +86,7 @@ train_data_provider.augmentors = [
 
 # Creating TensorFlow model architecture
 model = train_model(
-    input_dim = (configs.height, configs.width, 1),
+    input_dim = (configs.height, configs.width, 3),
     output_dim = len(configs.vocab))
 
 # Compile the model and print summary

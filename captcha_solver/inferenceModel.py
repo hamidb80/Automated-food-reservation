@@ -1,6 +1,7 @@
 import cv2
 import typing
 import numpy as np
+import stow
 
 from mltu.inferenceModel import OnnxInferenceModel
 from mltu.utils.text_utils import ctc_decoder, get_cer
@@ -18,13 +19,15 @@ class ImageToWordModel(OnnxInferenceModel):
 
         return text
 
-if __name__ == "__main__":
+
+from mltu.configs import BaseModelConfigs
+
+configs = BaseModelConfigs.load("models/configs.yaml")
+model = ImageToWordModel(model_path=configs.model_path, char_list=configs.vocab)
+
+def testie():
     import pandas as pd
     from tqdm import tqdm
-    from mltu.configs import BaseModelConfigs
-
-    configs = BaseModelConfigs.load("models/configs.yaml")
-    model = ImageToWordModel(model_path=configs.model_path, char_list=configs.vocab)
 
     df = pd.read_csv("models/val.csv").values.tolist()
 
@@ -37,3 +40,14 @@ if __name__ == "__main__":
         print(f"Image: {image_path}, Label: {label}, Prediction: {prediction_text}, CER: {cer}")
 
     print(f"Average CER: {np.average(accum_cer)}")
+
+
+if __name__ == "__main__":
+    import matplotlib.pyplot as plt
+
+    for f in stow.ls("./temp/raw/"):
+        img = cv2.imread(f.path)
+        text = model.predict(img) 
+        plt.title(text)
+        plt.imshow(img)
+        plt.show()
