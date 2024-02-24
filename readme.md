@@ -247,7 +247,90 @@ API: https://eduportal.shahed.ac.ir/frm/SBS1201_CODES_LOOKUP_DSC/SBS1201_CODES_L
 ##### Typos
 one of the APIs is `BAS0274_UserFavorate_Show_Beh` which `Favorate` should be `favorite` AFAIK
 
-`idl`:
-`acr`:
-`fpc`:
-`inf`:
+
+### API terminologies
+- `tck`: ticket
+- `nmtck`: new module/mode ticket
+- `nurlp`: new/next url path
+- `nurlf`: new/next url form/function
+- `std`: student
+- `lvl`: level
+- `frm`: form
+- `usr`: user
+- `nam`: name
+- `fam`: family [last name]
+- `usrnam`: user name [first name]
+- `usrfam`: user family [last name]
+- `aut`: authentication
+- `oaut`: open authentication/access
+- `oa`: open access
+- `_ret`: return
+- `val`: value
+- `dsc`: descrption
+- `sid`: session id
+- `actsign`: actiom sign
+- `subfrm`: sub form
+- `seq`: sequence
+- `rset`: return set [view data]
+- `u`: user
+- `c`: captcha
+- `p`: password
+- `l`: login (std id)
+- `lt`: login token
+- `act`: action
+- `suc`: success
+- `war`: warning
+- `grd`: grid
+- `struc`: struct (json)
+- `llogin`: log login
+- `f`: form/function
+- `nf`: new/next/number/no. form/function
+- `cchg`: can change
+- `outpar`: output parameters
+- `m`: message
+- `e`: error
+- `ttyp`: tansaction type 
+- `ut`: user topic/tag
+- `n`: number (len)
+- `cmp`: compare
+- `ft`: form type
+- `dat`: data
+- `tit`: title
+- `nft`: next form type/tag
+- `nopt`: new options
+- `r`: [payload data]
+- `sguid`: ... generated unique id [seems like randomly generated uuid]
+- `ri`:
+- `su`: 
+- `H`: 
+- `F`: field/form
+- `C`: column
+- `DASHB`: dashboard
+- `IDNUMBERCOL`: id number column
+- `IDWIDTH`: id width
+- `COLTYPE`: column type
+- `HLP`: help
+- `I`: icon [icon name/css-class]
+- `AsYt`: as your time
+- `AsYs`: as your ...(date)
+- `TRM`/`trm`: term (semester)
+- `edu`: education
+- `fac`: faculty
+- `nav`: navigation
+- `BEH`: Behestan 
+- `svc`: service
+- `idl`:
+- `acr`:
+- `fpc`:
+- `inf`:
+- `WS`:
+- `WM`:
+- `T`:
+- `L`:
+- `H`:
+- `P`:
+- `O`:
+
+### seeking JS files:
+- `this.svcManagerService.doNav`
+- `openerSvcManagerService`
