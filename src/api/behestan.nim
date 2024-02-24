@@ -6,7 +6,7 @@ import std/[
 
 import cookiejar
 
-import ../client
+import ../utils/client
 
 
 type
@@ -20,13 +20,13 @@ type
 const
   apiRoot = "https://eduportal.shahed.ac.ir/frm"
 
-  homeNavParams = NavParams(
+  homeNavParams* = NavParams(
     f: 1,
     `seq`: 1,
     su: 0,
     nf: 11130)
 
-  stdInfoNavParams = NavParams(
+  stdInfoNavParams* = NavParams(
     f: 11147,
     `seq`: 5,
     su: 3,
@@ -50,7 +50,7 @@ func extractBehestanMust*(j: JsonNode): BehestanMust =
     getStr j["aut"]["u"],
     getStr j["aut"]["tck"])
 
-func defaultBehestanHeaders: HttpHeaders =
+func defaultBehestanHeaders*: HttpHeaders =
   newHttpHeaders {
     "Referer": "https://eduportal.shahed.ac.ir/index.html",
     "sec-ch-ua-mobile": "?0",
@@ -307,28 +307,3 @@ proc apiEdu1021UnvBranchesBrnnoLookup*(c: var CustomHttpClient,
 
 # XXX sguid: just random uuid4
 # XXX calling APIs without calling nav API does not work
-
-when isMainModule:
-  var c = initCustomHttpClient()
-  c.httpc.headers = defaultBehestanHeaders()
-
-  writeFile "./temp.captcha.gif", c.apiGetCapcha.image
-
-  let
-    stdid = getEnv "BEHESTAN_STD_ID" 
-    pass = getEnv "BEHESTAN_PASS"
-  echo "pass: '", pass, "'"
-  echo "capcha: "
-  let
-    aa = apiLogin(c, stdid, pass, readLine stdin)
-    bb = apiNav(c, homeNavParams, extractBehestanMust aa)
-    cc = apiProcessSysMenu0(c, extractBehestanMust bb)
-    dd = apiNav(c, stdInfoNavParams, extractBehestanMust cc)
-    # dd = apiNav(c, stdInfoNavParams, extractBehestanMust cc)
-    ee = apiProcessStdTotalInfoTrmStat(c, extractBehestanMust dd, "992164019")
-
-  writeFile "./temp/aa.json", pretty aa
-  writeFile "./temp/bb.json", pretty bb
-  writeFile "./temp/cc.json", pretty cc
-  writeFile "./temp/dd.json", pretty dd
-  writeFile "./temp/ee.json", pretty ee

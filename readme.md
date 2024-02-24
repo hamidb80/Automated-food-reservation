@@ -246,3 +246,8 @@ API: https://eduportal.shahed.ac.ir/frm/SBS1201_CODES_LOOKUP_DSC/SBS1201_CODES_L
 
 ##### Typos
 one of the APIs is `BAS0274_UserFavorate_Show_Beh` which `Favorate` should be `favorite` AFAIK
+
+`idl`:
+`acr`:
+`fpc`:
+`inf`:

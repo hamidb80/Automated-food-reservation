@@ -39,7 +39,7 @@ proc here(request: Request) =
 
     of "save":
       let 
-        ext = splitFile( secs[2]).ext
+        ext = splitFile(secs[2]).ext
         imgPath = imgsDir / secs[2]
         destPath = finalDir / secs[3] & ext
       moveFile imgPath, destPath

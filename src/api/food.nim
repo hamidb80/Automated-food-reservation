@@ -8,10 +8,10 @@ import std/[
   htmlparser,
   xmltree,
   random,
-  macros]
+  macros,
+  httpclient]
 
-import ../client, std/httpclient
-import ../utils
+import ../utils/[common, client]
 
 import karax/[karaxdsl, vdom]
 import macroplus, iterrr
@@ -204,7 +204,7 @@ macro staticAPI(pattern, typecast, url): untyped =
         "invalid API pattern: " & treeRepr pattern)
 
     body = quote:
-      let data = c.request(baseUrl & `url`, accept = cJson).body
+      let data = body c.request(baseUrl & `url`, accept = cJson)
       try:
         convertFn(`typecast`)(data)
       except:
