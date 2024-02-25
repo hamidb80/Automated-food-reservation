@@ -17,7 +17,7 @@ type
 
   CustomHttpClient* = object
     h*: HttpClient
-    # cookies
+    cookies*: Table[string, string]
 
 func toCookie(name, val: string): string =
   fmt"{name}={val}"
@@ -75,17 +75,11 @@ proc request*(
     result = c.h.request(currentUrl, currentMethod, data)
     updateCookie c.h, result
 
-    if result.code.is3xx:
+    if is3xx code result:
       isRedirected = true
       currentUrl = result.headers["location"]
     else:
       break
-
-
-  debugEcho "----------------"
-  debugEcho url
-  debugEcho data
-  debugEcho body result
 
   # remove temporary headers
   c.h.headers.del "content-type"
