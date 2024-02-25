@@ -59,7 +59,6 @@ proc request*(
   if data.len > 0:
     c.h.headers["Content-Type"] = $content
 
-
   for (h, v) in tempHeaders:
     c.h.headers[h] = v
 
@@ -81,6 +80,12 @@ proc request*(
       currentUrl = result.headers["location"]
     else:
       break
+
+
+  debugEcho "----------------"
+  debugEcho url
+  debugEcho data
+  debugEcho body result
 
   # remove temporary headers
   c.h.headers.del "content-type"
