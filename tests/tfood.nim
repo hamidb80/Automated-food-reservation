@@ -12,6 +12,7 @@ import api/food
 
 
 const captchaPath = "./temp/capcha.jpg"
+import print
 
 proc main(usr, pass: string) =
   var c = initCustomHttpClient()
@@ -26,10 +27,10 @@ proc main(usr, pass: string) =
   dump pretty c.availableBanks
 
   let weekRevs = c.reservation 0
-  echo weekRevs[mon][lunch].selected
+  print weekRevs
 
-  discard reserve(c, cancel, "1402/12/02", 44, lunch, 1)
-  discard reserve(c, rsv, "1402/12/02", 44, lunch, 1)
+  echo reserve(c, cancel, "1402/12/09", 12, lunch, 1)
+  echo reserve(c, rsv, "1402/12/09", 12, lunch, 1)
 
   # writeFile "temp.json", pretty rvdata
 
@@ -42,7 +43,6 @@ proc main(usr, pass: string) =
 
   # writeFile "./temp/form.html", $t.genRedirectTransactionForm
   # openDefaultBrowser "./temp/form.html"
-
 
 when isMainModule:
   refreshDir "./temp/test"

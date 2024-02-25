@@ -31,12 +31,12 @@ type
     fri = 6
 
   DayState* = enum
-    can = 0
+    can = 0    # active
     what1 = 1
-    today = 2
+    cannot = 2 # inactive
     what3 = 3
     off = 4
-    cannot = 5
+    undefined = 5
 
   MealId* = enum
     breakfast = 1
@@ -45,10 +45,10 @@ type
 
   MealState* = enum
     can = 0
-    what1 = 1
+    past = 1
     what2 = 2
     what3 = 3
-    what4 = 4
+    outOfTime = 4
     undefined = 5
     reserved = 6
     maybe = 7
@@ -252,14 +252,14 @@ proc reserve*(
   selfId: int,
 ): JsonNode =
 
-  let 
+  let
     data = %* [{
       "Date": jalalidate,
       "FoodId": foodId,
       "MealId": int mealId,
       "SelfId": selfId,
       "Counts": int action,
-      "PriceType":2,
+      "PriceType": 2,
       "Provider": 1,
       "OP": 1}]
 
@@ -285,8 +285,8 @@ proc loginBeforeCaptcha(c: var CustomHttpClient
     freshCaptchaUrl(),
     HttpGet,
     "",
-    newHttpHeaders {"Referer": 
-      "https://food.shahed.ac.ir/identity/login?"})
+    newHttpHeaders {"Referer":
+    "https://food.shahed.ac.ir/identity/login?"})
 
 proc loginAfterCaptcha(c: var CustomHttpClient,
   loginPageData: JsonNode,
@@ -363,7 +363,6 @@ type
   FoodState* = enum
     what0 = 0
     what1 = 1
-    # what2 = 2
     reserved = 2
     what3 = 3
     what4 = 4
@@ -427,7 +426,8 @@ func parseRevFoodData(food: JsonNode): RevFood =
     orders: food["SelfMenu"].mapit parseRevFoodOrderData it)
 
 
-func parseLastReservedData(lastReservedArr: JsonNode): Option[LastReservedFood] =
+func parseLastReservedData(lastReservedArr: JsonNode): Option[
+    LastReservedFood] =
   if 0 < len lastReservedArr:
     let r = lastReservedArr[0]
     some LastReservedFood(

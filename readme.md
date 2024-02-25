@@ -326,11 +326,11 @@ one of the APIs is `BAS0274_UserFavorate_Show_Beh` which `Favorate` should be `f
 - `WS`:
 - `WM`:
 - `T`:
-- `L`:
-- `H`:
-- `P`:
+- `L`: label
+- `H`: head
+- `P`: parent
 - `O`:
-- `incoaut`
+- `incoaut`: increament open authentication
 
 ### seeking JS files:
 - `this.svcManagerService.doNav`
