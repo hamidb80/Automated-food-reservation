@@ -241,11 +241,6 @@ type ResvrAction* = enum
   cancel = 0
   rsv = 1
 
-func `not`(ra: ResvrAction): ResvrAction = 
-  case ra:
-  of cancel: rsv
-  of rsv: cancel
-
 proc reserve*(
   c: var CustomHttpClient,
 
@@ -289,7 +284,9 @@ proc loginBeforeCaptcha(c: var CustomHttpClient
     c,
     freshCaptchaUrl(),
     HttpGet,
-    tempHeaders = {"Referer": "https://food.shahed.ac.ir/identity/login?"})
+    "",
+    newHttpHeaders {"Referer": 
+      "https://food.shahed.ac.ir/identity/login?"})
 
 proc loginAfterCaptcha(c: var CustomHttpClient,
   loginPageData: JsonNode,
@@ -345,8 +342,7 @@ proc prepareBankTransaction*(c: var CustomHttpClient,
       "amount": $amount.int,
       "invoicenumber": invoiceId}
 
-    req = request(
-      c,
+    req = request(c,
       wrapUrl "/api/v0/Chargecard", HttpPost,
       $data,
       content = cJson,

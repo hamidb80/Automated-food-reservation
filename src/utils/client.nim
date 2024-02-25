@@ -15,74 +15,58 @@ type
     cForm = "application/x-www-form-urlencoded"
     cJson = "application/json"
 
+  CookieTab = Table[string, string]
+
   CustomHttpClient* = object
-    h*: HttpClient
-    cookies*: Table[string, string]
+    http*: HttpClient
+    cookies*: CookieTab
 
 func toCookie(name, val: string): string =
   fmt"{name}={val}"
 
-func toCookies(stab: StringTableRef): string =
+func toCookies(stab: CookieTab): string =
   iterrr stab.pairs:
     map (k, v) => toCookie(k, v)
     strjoin "; "
 
 proc initCustomHttpClient*: CustomHttpClient = 
   CustomHttpClient(
-    h: newHttpClient("Firefox Gecko", 0))
+    http: newHttpClient("Firefox Gecko", 0))
 
-proc updateCookie*(h: var HttpClient, resp: Response) =
-  var q = parseCookies h.headers.getOrDefault "Cookie"
-
-  if "set-cookie" in resp.headers.table:
-    for c in resp.headers.table["set-cookie"]:
-      let qq = parseCookies c
-
-      for k, v in qq:
-        q[k] = v
-
-  h.headers["Cookie"] = toCookies q
+proc updateCookie*(cookies: var CookieTab, resp: Response) =
+  for c in resp.headers.table.getOrDefault "set-cookie":
+    for k, v in parseCookies c:
+      cookies[k] = v
 
 proc request*(
   c: var CustomHttpClient,
   url: string,
-  `method` = HttpGet,
+  mthd = HttpGet,
   data = "",
-  tempHeaders: openArray[tuple[header, value: string]] = @[],
-  maxRedirects = 10,
+  tempHeaders: sink HttpHeaders = newHttpHeaders(),
   accept = cAnyThing,
   content = cAnyThing,
+  maxRedirects = 10,
 ): Response =
-
-  # apply temporary headers
-  c.h.headers["Accept"] = $accept
-  if data.len > 0:
-    c.h.headers["Content-Type"] = $content
-
-  for (h, v) in tempHeaders:
-    c.h.headers[h] = v
-
   var
     currentUrl = url
     isRedirected = false
 
-  for _ in 1..maxRedirects:
-    let
-      currentMethod =
-        if isRedirected: HttpGet
-        else: `method`
+  if data.len > 0:
+    tempHeaders["Content-Type"] = $content
+  tempHeaders["Accept"] = $accept
 
-    result = c.h.request(currentUrl, currentMethod, data)
-    updateCookie c.h, result
+  for _ in 1..maxRedirects:
+    let currentMethod =
+      if isRedirected: HttpGet
+      else: mthd
+
+    tempHeaders["Cookie"] = toCookies c.cookies
+    result = c.http.request(currentUrl, currentMethod, data, tempHeaders)
+    updateCookie c.cookies, result
 
     if is3xx code result:
       isRedirected = true
       currentUrl = result.headers["location"]
     else:
       break
-
-  # remove temporary headers
-  c.h.headers.del "content-type"
-  c.h.headers.del "Accept"
-  for (h, _) in tempHeaders:
-    c.h.headers.del h
