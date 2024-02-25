@@ -3,10 +3,12 @@ temp/
 assets/
 final/
 
-play.*
+*.js
 *.exe
 *.har
+
 temp.*
+play.*
 
 __pycache__
 models/
