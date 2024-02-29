@@ -26,8 +26,6 @@ type
   Integration
     id
     user
-    service
-    data
 
   # Cache
   #   id

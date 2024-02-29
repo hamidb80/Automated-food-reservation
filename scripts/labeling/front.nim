@@ -1,3 +1,4 @@
+import std/deques
 import std/[
   dom,
   jsfetch,
@@ -8,7 +9,9 @@ include karax/prelude
 
 ## --- global states
 
-var currentImage = cstring""
+var 
+  currentImage = cstring""
+  history      = initDeque[cstring]()
 
 ## --- actions
 
@@ -22,6 +25,7 @@ proc nextImage =
   .then((t: cstring) => updateImage t)
 
 proc saveImage(value: cstring) =
+  addFirst history, value
   discard fetch("/save/" & currentImage & "/" & value)
 
 ## --- views
@@ -46,8 +50,16 @@ proc createDom: VNode =
         saveImage val
         nextImage()
 
+    tdiv:
+      span:
+        text $len history
+
+    ul(class = "history"):
+      for rec in history:
+        li:
+          text rec
+
 ## --- setup
 
-echo "what the hell"
 nextImage()
 setRenderer createDom

@@ -331,6 +331,11 @@ one of the APIs is `BAS0274_UserFavorate_Show_Beh` which `Favorate` should be `f
 - `P`: parent
 - `O`:
 - `incoaut`: increament open authentication
+- `CRS`: course
+- `CFAC`: course faculty
+- `CGRP`: course group
+- `BRN`: Barname? [برنامه]
+- `NO`: Number
 
 ### seeking JS files:
 - `this.svcManagerService.doNav`
