@@ -1,0 +1,4 @@
+mltu==0.1.3
+stow
+librosa
+matplotlib
