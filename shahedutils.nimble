@@ -15,3 +15,5 @@ requires "karax"
 
 requires "macroplus"
 requires "iterrr"
+requires "htmlparser"
+

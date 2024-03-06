@@ -12,7 +12,7 @@ import api/food
 
 
 const captchaPath = "./temp/capcha.jpg"
-import print
+# import print
 
 proc main(usr, pass: string) =
   var c = initCustomHttpClient()
@@ -27,7 +27,7 @@ proc main(usr, pass: string) =
   dump pretty c.availableBanks
 
   let weekRevs = c.reservation 0
-  print weekRevs
+  # print weekRevs
 
   echo reserve(c, cancel, "1402/12/09", 12, lunch, 1)
   echo reserve(c, rsv, "1402/12/09", 12, lunch, 1)
